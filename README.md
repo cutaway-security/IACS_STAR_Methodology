@@ -2,14 +2,14 @@
 A risk rating calculation methodology that uses the [OWASP Risk Rating Methodology](https://owasp.org/www-community/OWASP_Risk_Rating_Methodology) as a basis. 
 
 ## Contributions
-author: Don C. Weber
-contributors: Jeff Williams, Oscar Delgato
-permalink: /OWASP_Risk_Rating_Methodology
-tags: risk rating methodology
 
----
+Author: Don C. Weber
+
+Contributors: Jeff Williams, Oscar Delgado
+
 
 # DISCLAIMER 
+**BELOW IS ORIGINAL AND REQUIRES UPDATING**
 
 Over the years there has be lots of [debate]({{ site.baseurl }}/misc/rrm_debate) about the OWASP Risk Rating Methodology and the weighting of Threat Actor Skill levels.
 There are other more mature, popular, or well established Risk Rating Methodologies that can be followed:
