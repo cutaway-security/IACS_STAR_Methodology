@@ -3,11 +3,9 @@ A risk rating calculation methodology that uses the [OWASP Risk Rating Methodolo
 
 ## Contributions
 
-Author: Don C. Weber
-
-IACS/OT Contributors: Oscar Delgado
-IT/Infosec Contributors: Jeff Williams
-
+* Author: Don C. Weber
+* IACS/OT Contributors: Oscar Delgado
+* IT/Infosec Contributors: Jeff Williams
 
 # DISCLAIMER 
 **BELOW IS ORIGINAL AND REQUIRES UPDATING**
@@ -34,22 +32,20 @@ Alternatively you may wish to review information about Threat Modeling, as that 
 - [OWASP pytm](https://owasp.org/www-project-pytm/) Pythonic framework for threat modeling
 - [OWASP Threat Dragon](https://owasp.org/www-project-threat-dragon/) threat modeling tool
 
-**BELOW IS ORIGINAL AND REQUIRES UPDATING**
-
 # Introduction
 
-Discovering vulnerabilities is important, but being able to estimate the associated risk to the business 
-is just as important. Early in the life cycle, one may identify security concerns in the architecture or 
-design by using [threat modeling](Threat_Modeling).  Later, one may find 
-security issues using [code review](https://wiki.owasp.org/index.php/Category:OWASP_Code_Review_Project) 
-or [penetration testing](https://owasp.org/www-project-web-security-testing-guide/). Or problems may not 
-be discovered until the application is in production and is actually compromised.
+Security assessments and penetration testing of an IACS / OT enviornment are the vulnerability
+assessments for the ISA/IEC 62443 risk assessment process.The Cyber Security Management System (CSMS) 
+process, detailed in ISA/IEC-62443-2-1, requires a detailed risk assessment described in 
+ISA/IEC-62443-3-2. The detailed risk assessment requires that a vulnerability assessment is conducted
+to identify unmitigated risk. Security assessments and penetration tests are processes that can be
+performed to identify these unmitigated risks.
 
 By following the approach here, it is possible to estimate the severity of all of these risks to the 
-business and make an informed decision about what to do about those risks. Having a system in place 
-for rating risks will save time and eliminate arguing about priorities. This system will help to ensure 
-that the business doesn't get distracted by minor risks while ignoring more serious risks that are less 
-well understood.
+IACS / OT environment and make an informed decision about what to do about those risks. Having a system 
+in place for rating risks will save time and eliminate arguing about priorities. This system will help 
+to ensure that the business doesn't get distracted by minor risks while ignoring more serious risks that 
+are less well understood.
 
 Ideally, there would be a universal risk rating system that would accurately estimate all risks for all 
 organizations. But a vulnerability that is critical to one organization may not be very important to 
@@ -60,6 +56,7 @@ The authors have tried hard to make this model simple to use, while keeping enou
 risk estimates to be made. Please reference the section below on customization for more information about 
 tailoring the model for use in a specific organization.
 
+**BELOW IS ORIGINAL AND REQUIRES UPDATING**
 ## Approach
 
 There are many different approaches to risk analysis. See the reference section below for some of the 
