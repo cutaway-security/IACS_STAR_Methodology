@@ -5,35 +5,36 @@ A risk rating calculation methodology that uses the [OWASP Risk Rating Methodolo
 
 Author: Don C. Weber
 
-Contributors: Jeff Williams, Oscar Delgado
+IACS/OT Contributors: Oscar Delgado
+IT/Infosec Contributors: Jeff Williams
 
 
 # DISCLAIMER 
 **BELOW IS ORIGINAL AND REQUIRES UPDATING**
 
-Over the years there has be lots of [debate]({{ site.baseurl }}/misc/rrm_debate) about the OWASP Risk Rating Methodology and the weighting of Threat Actor Skill levels.
-There are other more mature, popular, or well established Risk Rating Methodologies that can be followed:
+Over the years there has be lots of debate about how to rate risk within industrial control and automation environments. Rating risk
+is difficult due to the varying ideas about likelihood, frequency, consequences, and impact ratings. This project is an effort to 
+update the [OWASP Risk Rating Methodology](https://owasp.org/www-community/OWASP_Risk_Rating_Methodology) to be usable when 
+conducting security assessments and pentration tests within these enviornments. It is not designed to replace an organization's 
+risk rating methdodology. It is intended for assessment teams to use when a specific methodology has not been defined.
 
+For background, there are other more mature, popular, or well established Risk Rating Methodologies that can be followed:
+
+- [ISA/IEC 62443 Series of Standards](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards)
 - [NIST 800-30 - Guide for Conducting Risk Assessments](https://csrc.nist.gov/publications/detail/sp/800-30/rev-1/final)
 - [Government of Canada - Harmonized TRA Methodology](https://cyber.gc.ca/en/guidance/harmonized-tra-methodology-tra-1)
 - Mozilla resources:
     - [Risk Assessment Summary](https://infosec.mozilla.org/guidelines/assessing_security_risk)
     - [Rapid Risk Assessment (RRA)](https://infosec.mozilla.org/guidelines/risk/rapid_risk_assessment.html)
 
-Alternatively you may with the review information about Threat Modeling, as that may be a better fit for your app or organization:
+Alternatively you may wish to review information about Threat Modeling, as that may be a better fit for your app or organization:
 
 - <https://owasp.org/www-community/Threat_Modeling>
 - <https://owasp.org/www-community/Application_Threat_Modeling>
 - [OWASP pytm](https://owasp.org/www-project-pytm/) Pythonic framework for threat modeling
 - [OWASP Threat Dragon](https://owasp.org/www-project-threat-dragon/) threat modeling tool
 
-Lastly you might want to refer to the [references](#references) below.
-
-**Note**: Edits/Pull Requests to the content below that deal with changes to Threat Actor Skill will not be accepted.
-
-----
-
-{% include writers.html %}
+**BELOW IS ORIGINAL AND REQUIRES UPDATING**
 
 # Introduction
 
