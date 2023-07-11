@@ -7,7 +7,6 @@ A risk rating calculation methodology that uses the [OWASP Risk Rating Methodolo
 * IACS/OT Contributors: Oscar Delgado, Danielle Jablanski
 * IT/Infosec Contributors: Jeff Williams (Author of original OWASP Risk Rating Methodology)
 
-
 # Introduction
 
 Security assessments and penetration testing of an Industrial and Automation Control Systems (IACS) / Operational Technology (OT) enviornment are two types of vulnerability assessments that feed information into the [ISA/IEC 62443](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards) risk assessment process. The Cyber Security Management System (CSMS) process, detailed in ISA/IEC-62443-2-1 standard, requires a detailed risk assessment which is outlined in full within the ISA/IEC-62443-3-2 standard. The detailed risk assessment requires that a vulnerability assessment is conducted to identify unmitigated risk. These vulnerability assessments required that the assessment findings be qualitatively rated according to the threat, likelihood, and concequences should the vulnerability be exploit and threat actor success realized. 
@@ -46,15 +45,15 @@ The ISA/IEC 62443 CSMS Detailed Risk Assessment process requires that considerat
 
 - [Critical infrastructure cybersecurity prioritization: A cross-sector methodology for ranking operational technology cyber scenarios and critical entities](https://www.atlanticcouncil.org/in-depth-research-reports/issue-brief/critical-infrastructure-cybersecurity-prioritization/)
 
-## Approach
+# Approach
 
 The ISA/IEC-62443-2-1 standard outlines that risk is calculated by taking the likelihood that an event will occur and scaling it with the concequences should the event be realized. Hence the equation **Risk = Likelihood * Consequence**. The assignment of the likelihood and consequence variables is the typical debate. 
 
 Most IACS/OT likelihood calculations, sometimes referred to as frequency, take into consideration the commonly understood cases of equipment failure. Industrial and automation equipment have specific usage tollerances that, when calculated with known usage, can provide a measurable likelihood that the equipment will experience a problem. This often results in a likelihood table that uses specific time tables for an event to occur.
 
-- Highly Likely: will occur in the next year
-- Moderately Likely: will occur in the next 10 years
-- Low Likely: no history of occurance and therefore unlikely
+- High: will occur in the next year
+- Moderate: will occur in the next 10 years
+- Low: no history of occurance and therefore unlikely
 
 These typcial likelihood ratings are not applicable when considering cybersecurity and the likelihood or frequency that a threat actor will attempt to exploit a vulnerability. In 2008 the Federal Energy Regulatory Commission (FERC) determined that electric utilities required specific guidance to understand how to address likelihood and frequency when calculating risk. In [FERC Order 706 Mandatory Reliability Standards for Critical Infrastructure Protection](https://www.ferc.gov/sites/default/files/2020-04/E-2_11.pdf) the following guidance was provided:
 
@@ -73,7 +72,7 @@ In the sections below, the factors that make up "likelihood" and "consequences" 
   Step 7: Customizing Your Risk Rating Model
 ```
 
-### Step 1: Identify Threats (ISA/IEC-62443-3-2 ZCR 5.1)
+## Step 1: Identify Threats (ISA/IEC-62443-3-2 ZCR 5.1)
 
 There are four primary factors that are used to determine the list of threats that affect an IACS/OT environment when trying to understand risk. These factors are used when modeling attack scenarios to prioritize assessment efforts. The information is also used when calculating each vulnerability and will vary according to the specifics of the situation. These factors include: 
 
@@ -82,7 +81,7 @@ There are four primary factors that are used to determine the list of threats th
 - a description of possible threat vectors
 - an identification of the potentially affected assets 
 
-### Step 2: Identify Vulnerabilities (ISA/IEC-62443-3-2 ZCR 5.2)
+## Step 2: Identify Vulnerabilities (ISA/IEC-62443-3-2 ZCR 5.2)
 
 The identification of vulnerabilities depends on the type of vulnerability assessment being conducted. Every IACS/OT environment will have a list of vulnerabilities that are a combination of known hardware and software vulnerabilities, configuration vulnerabilities, and technology implementation vulnerabilities. Some vulnerabilities can be identified using online research i.e. the [NVD Vulnerabilities search page](https://nvd.nist.gov/vuln/search) and vendor cybersecurity resources pages. Configuration and implementation vulnerabilities are identified using passive and active vulnerability testing methods.
 
@@ -90,7 +89,7 @@ The identification of vulnerabilities depends on the type of vulnerability asses
 **BELOW IS ORIGINAL AND REQUIRES UPDATING**
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-#### Threat Agent Factors
+### Threat Agent Factors
 
 The first set of factors are related to the threat agent involved. The goal here is to estimate 
 the likelihood of a successful attack by this group of threat agents. Use the worst-case threat agent.
@@ -103,7 +102,7 @@ the likelihood of a successful attack by this group of threat agents. Use the wo
 
   - **Size** - How large is this group of threat agents? Developers (2), system administrators (2), intranet users (4), partners (5), authenticated users (6), anonymous Internet users (9)
 
-#### Vulnerability Factors
+### Vulnerability Factors
 
 The next set of factors are related to the vulnerability involved. The goal here is to estimate the 
 likelihood of the particular vulnerability involved being discovered and exploited. Assume the threat 
@@ -117,7 +116,7 @@ agent selected above.
 
   - **Intrusion Detection** - How likely is an exploit to be detected? Active detection in application (1), logged and reviewed (3), logged without review (8), not logged (9)
 
-### Step 3: Factors for Estimating Impact
+## Step 3: Factors for Estimating Impact
 
 When considering the impact of a successful attack, it's important to realize that there are 
 two kinds of impacts. The first is the "technical impact" on the application, the data it uses, 
@@ -131,7 +130,7 @@ representative to make a decision about the business risk.
 
 Again, each factor has a set of options, and each option has an impact rating from 0 to 9 associated with it. We'll use these numbers later to estimate the overall impact.
 
-#### Technical Impact Factors
+### Technical Impact Factors
 
 Technical impact can be broken down into factors aligned with the traditional security areas 
 of concern: confidentiality, integrity, availability, and accountability. The goal is to estimate 
@@ -145,7 +144,7 @@ the magnitude of the impact on the system if the vulnerability were to be exploi
 
   - **Loss of Accountability** - Are the threat agents' actions traceable to an individual? Fully traceable (1), possibly traceable (7), completely anonymous (9)
 
-#### Business Impact Factors
+### Business Impact Factors
 
 The business impact stems from the technical impact, but requires a deep understanding of what is 
 important to the company running the application. In general, you should be aiming to support your 
@@ -168,7 +167,7 @@ than the factors related to threat agent, vulnerability, and technical impact.
 
   - **Privacy violation** - How much personally identifiable information could be disclosed? One individual (3), hundreds of people (5), thousands of people (7), millions of people (9)
 
-### Step 4: Determining the Severity of the Risk
+## Step 4: Determining the Severity of the Risk
 
 In this step, the likelihood estimate and the impact estimate are put together to calculate an overall 
 severity for this risk.  This is done by figuring out whether the likelihood is low, medium, or high 
@@ -192,14 +191,14 @@ and then do the same for impact. The 0 to 9 scale is split into three parts:
 </tr>
 </table>
 
-#### Informal Method
+### Informal Method
 
 In many environments, there is nothing wrong with reviewing the factors and simply capturing the answers. 
 The tester should think through the factors and identify the key "driving" factors that are controlling 
 the result. The tester may discover that their initial impression was wrong by considering aspects of the 
 risk that weren't obvious.
 
-#### Repeatable Method
+### Repeatable Method
 
 If it is necessary to defend the ratings or make them repeatable, then it is necessary to go through a 
 more formal process of rating the factors and calculating the result. Remember that there is quite a 
@@ -284,7 +283,7 @@ is high.  For example:
 </table>
 <br/>
 
-#### Determining Severity
+### Determining Severity
 
 However the tester arrives at the likelihood and impact estimates, they can now combine them to get 
 a final severity rating for this risk. Note that if they have good business impact information, they 
@@ -333,7 +332,7 @@ understanding the business context of the vulnerabilities you are evaluating is 
 good risk decisions. Failure to understand this context can lead to the lack of trust between the 
 business and security teams that is present in many organizations.
 
-### Step 5: Deciding What to Fix
+## Step 5: Deciding What to Fix
 
 After the risks to the application have been classified, there will be a prioritized list of what to 
 fix. As a general rule, the most severe risks should be fixed first. It simply doesn't help the overall 
@@ -344,21 +343,21 @@ upon the cost of fixing the issue. For example, if it would cost $100,000 to imp
 $2,000 of fraud per year, it would take 50 years return on investment to stamp out the loss. But 
 remember there may be reputation damage from the fraud that could cost the organization much more.
 
-### Step 6: Customizing the Risk Rating Model
+## Step 6: Customizing the Risk Rating Model
 
 Having a risk ranking framework that is customizable for a business is critical for adoption.  A tailored 
 model is much more likely to produce results that match people's perceptions about what is a serious risk. 
 A lot of time can be wasted arguing about the risk ratings if they are not supported by a model like this. 
 There are several ways to tailor this model for the organization.
 
-#### Adding factors
+### Adding factors
 
 The tester can choose different factors that better represent what's important for the specific organization. 
 For example, a military application might add impact factors related to loss of human life or classified 
 information. The tester might also add likelihood factors, such as the window of opportunity for an attacker 
 or encryption algorithm strength.
 
-#### Customizing options
+### Customizing options
 
 There are some sample options associated with each factor, but the model will be much more effective if the 
 tester customizes these options to the business. For example, use the names of the different teams and the 
@@ -366,14 +365,14 @@ company names for different classifications of information. The tester can also 
 with the options. The best way to identify the right scores is to compare the ratings produced by the model 
 with ratings produced by a team of experts. You can tune the model by carefully adjusting the scores to match.
 
-#### Weighting factors
+### Weighting factors
 
 The model above assumes that all the factors are equally important. You can weight the factors to emphasize 
 the factors that are more significant for the specific business. This makes the model a bit more complex, as 
 the tester needs to use a weighted average. But otherwise everything works the same. Again it is possible to 
 tune the model by matching it against risk ratings the business agrees are accurate.
 
-## References
+# References
 
 * [Managing Information Security Risk: Organization, Mission, and Information System View](https://csrc.nist.gov/publications/detail/sp/800-39/final)
 * [Industry standard vulnerability severity and risk rankings (CVSS)](https://www.first.org/cvss/)
