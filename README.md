@@ -7,9 +7,18 @@ A risk rating calculation methodology that uses the [OWASP Risk Rating Methodolo
 * IACS/OT Contributors: Oscar Delgado, Danielle Jablanski
 * IT/Infosec Contributors: Jeff Williams (Author of original OWASP Risk Rating Methodology)
 
+
+# Introduction
+
+Security assessments and penetration testing of an Industrial and Automation Control Systems (IACS) / Operational Technology (OT) enviornment are two types of vulnerability assessments that feed information into the [ISA/IEC 62443](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards) risk assessment process. The Cyber Security Management System (CSMS) process, detailed in ISA/IEC-62443-2-1 standard, requires a detailed risk assessment which is outlined in full within the ISA/IEC-62443-3-2 standard. The detailed risk assessment requires that a vulnerability assessment is conducted to identify unmitigated risk. These vulnerability assessments required that the assessment findings be qualitatively rated according to the threat, likelihood, and concequences should the vulnerability be exploit and threat actor success realized. 
+
+The IACS Risk Rating Methodology (IRRM) is intended to be a methodology to estimate the severity of identified risks to the IACS/OT environment. This methodology includes the classic qualitative risk calculation elements while adding the consequence considerations necessary for understanding risks to IACS/OT processes and equipment. Having a system in place that addresses IACS/OT concerns for rating risks will save time and eliminate arguing about prioritizations and improve countermeasure selection to quickly reduce risk. 
+
+The authors have tried hard to make this model simple to use, while keeping enough detail for accurate risk estimates to be made. Please reference the section below on customization for more information about tailoring the model for use in a specific organization.
+
 # Overview 
 
-Over the years there has be a lot of debate about how to rate risk within industrial and automation control environments. Rating risk is difficult due to the varying ideas about likelihood, frequency, consequences, and impact ratings. This project is an effort to update the [OWASP Risk Rating Methodology](https://owasp.org/www-community/OWASP_Risk_Rating_Methodology) to be usable when conducting security assessments and pentration tests within Industrial and Automation Control Systems (IACS) / Operational Technology (OT) enviornments. It is not designed to replace an organization's risk rating methdodology. It is intended for assessment teams to use when a specific methodology has not been defined or when a quicker method is needed to quickly rate and reduce risk.
+Over the years there has be a lot of debate about how to rate risk within industrial and automation control environments. Rating risk is difficult due to the varying ideas about likelihood, frequency, consequences, and impact ratings. This project is an effort to update the [OWASP Risk Rating Methodology](https://owasp.org/www-community/OWASP_Risk_Rating_Methodology) to be usable when conducting security assessments and pentration tests within IACS/OT enviornments. It is not designed to replace an organization's risk rating methdodology. It is intended for assessment teams to use when a specific methodology has not been defined or when a quicker method is needed to quickly rate and reduce risk.
 
 For background, there are other more mature, popular, or well established Risk Rating Methodologies that can be followed:
 
@@ -36,14 +45,6 @@ The risk and vulnerability assessment process is augmented by threat modeling to
 The ISA/IEC 62443 CSMS Detailed Risk Assessment process requires that considerations for the criticality of processes, equipment, and procedures are calculated and documented. The following resources provide some details and insight into the considerations for this process. 
 
 - [Critical infrastructure cybersecurity prioritization: A cross-sector methodology for ranking operational technology cyber scenarios and critical entities](https://www.atlanticcouncil.org/in-depth-research-reports/issue-brief/critical-infrastructure-cybersecurity-prioritization/)
-
-# Introduction
-
-Security assessments and penetration testing of an IACS/OT enviornment are two types of vulnerability assessments that feed information into the [ISA/IEC 62443](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards) risk assessment process. The Cyber Security Management System (CSMS) process, detailed in ISA/IEC-62443-2-1 standard, requires a detailed risk assessment which is outlined in full within the ISA/IEC-62443-3-2 standard. The detailed risk assessment requires that a vulnerability assessment is conducted to identify unmitigated risk. These vulnerability assessments required that the assessment findings be qualitatively rated according to the threat, likelihood, and concequences should the vulnerability be exploit and threat actor success realized. 
-
-The IACS Risk Rating Methodology (IRRM) is intended to be a methodology to estimate the severity of identified risks to the IACS/OT environment. This methodology includes the classic qualitative risk calculation elements while adding the consequence considerations necessary for understanding risks to IACS/OT processes and equipment. Having a system in place that addresses IACS/OT concerns for rating risks will save time and eliminate arguing about prioritizations and improve countermeasure selection to quickly reduce risk. 
-
-The authors have tried hard to make this model simple to use, while keeping enough detail for accurate risk estimates to be made. Please reference the section below on customization for more information about tailoring the model for use in a specific organization.
 
 ## Approach
 
