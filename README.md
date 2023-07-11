@@ -1,108 +1,91 @@
-# IACS_Risk_Rating_Methodology
+# IACS Risk Rating Methodology (IRRM)
 A risk rating calculation methodology that uses the [OWASP Risk Rating Methodology](https://owasp.org/www-community/OWASP_Risk_Rating_Methodology) as a basis. 
 
 ## Contributions
 
 * Author: Don C. Weber
-* IACS/OT Contributors: Oscar Delgado
-* IT/Infosec Contributors: Jeff Williams
+* IACS/OT Contributors: Oscar Delgado, Danielle Jablanski
+* IT/Infosec Contributors: Jeff Williams (Author of original OWASP Risk Rating Methodology)
 
-# DISCLAIMER 
-**BELOW IS ORIGINAL AND REQUIRES UPDATING**
+# Overview 
 
-Over the years there has be lots of debate about how to rate risk within industrial control and automation environments. Rating risk
-is difficult due to the varying ideas about likelihood, frequency, consequences, and impact ratings. This project is an effort to 
-update the [OWASP Risk Rating Methodology](https://owasp.org/www-community/OWASP_Risk_Rating_Methodology) to be usable when 
-conducting security assessments and pentration tests within these enviornments. It is not designed to replace an organization's 
-risk rating methdodology. It is intended for assessment teams to use when a specific methodology has not been defined.
+Over the years there has be a lot of debate about how to rate risk within industrial and automation control environments. Rating risk is difficult due to the varying ideas about likelihood, frequency, consequences, and impact ratings. This project is an effort to update the [OWASP Risk Rating Methodology](https://owasp.org/www-community/OWASP_Risk_Rating_Methodology) to be usable when conducting security assessments and pentration tests within Industrial and Automation Control Systems (IACS) / Operational Technology (OT) enviornments. It is not designed to replace an organization's risk rating methdodology. It is intended for assessment teams to use when a specific methodology has not been defined or when a quicker method is needed to quickly rate and reduce risk.
 
 For background, there are other more mature, popular, or well established Risk Rating Methodologies that can be followed:
 
 - [ISA/IEC 62443 Series of Standards](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards)
 - [NIST 800-30 - Guide for Conducting Risk Assessments](https://csrc.nist.gov/publications/detail/sp/800-30/rev-1/final)
+- [National Vulnerability Database (NVD) Common Vulnerability Scoring System Version 3 (CVSSv3) Calculator](https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator)
 - [Government of Canada - Harmonized TRA Methodology](https://cyber.gc.ca/en/guidance/harmonized-tra-methodology-tra-1)
 - Mozilla resources:
     - [Risk Assessment Summary](https://infosec.mozilla.org/guidelines/assessing_security_risk)
     - [Rapid Risk Assessment (RRA)](https://infosec.mozilla.org/guidelines/risk/rapid_risk_assessment.html)
+- [The Blind Spot: How to Simply Calculate Cyber Attack Likelihood Using the Exploitability Assessment](https://www.cybersecureot.info/post/the-blind-spot-how-to-simply-calculate-cyber-attack-likelihood-using-the-exploitability-assessment)
 
-Alternatively you may wish to review information about Threat Modeling, as that may be a better fit for your app or organization:
+The risk and vulnerability assessment process is augmented by threat modeling to identify and prioritize potential attack vectors and successful exploitations. The following are a list of methods to help with the threat modeling process:
 
-- <https://owasp.org/www-community/Threat_Modeling>
-- <https://owasp.org/www-community/Application_Threat_Modeling>
+- [First.org: Threat Modeling](https://www.first.org/global/sigs/cti/curriculum/threat-modelling)
+- [Microsoft Threat Modeling Tool threats](https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats) - aka S.T.R.I.D.E.
+- [Threat Assessment and Remediation Analysis (TARA)](https://www.mitre.org/news-insights/publication/threat-assessment-and-remediation-analysis-tara)
+- [ICS Layered Threat Modeling](https://sansorg.egnyte.com/dl/fztutwiK5J)
+- [OWASP Threat Modeling](https://owasp.org/www-community/Threat_Modeling)
+- [OWASP Application Threat Modeling](https://owasp.org/www-community/Application_Threat_Modeling)
 - [OWASP pytm](https://owasp.org/www-project-pytm/) Pythonic framework for threat modeling
 - [OWASP Threat Dragon](https://owasp.org/www-project-threat-dragon/) threat modeling tool
 
+The ISA/IEC 62443 CSMS Detailed Risk Assessment process requires that considerations for the criticality of processes, equipment, and procedures are calculated and documented. The following resources provide some details and insight into the considerations for this process. 
+
+- [Critical infrastructure cybersecurity prioritization: A cross-sector methodology for ranking operational technology cyber scenarios and critical entities](https://www.atlanticcouncil.org/in-depth-research-reports/issue-brief/critical-infrastructure-cybersecurity-prioritization/)
+
 # Introduction
 
-Security assessments and penetration testing of an IACS / OT enviornment are the vulnerability
-assessments for the ISA/IEC 62443 risk assessment process.The Cyber Security Management System (CSMS) 
-process, detailed in ISA/IEC-62443-2-1, requires a detailed risk assessment described in 
-ISA/IEC-62443-3-2. The detailed risk assessment requires that a vulnerability assessment is conducted
-to identify unmitigated risk. Security assessments and penetration tests are processes that can be
-performed to identify these unmitigated risks.
+Security assessments and penetration testing of an IACS/OT enviornment are two types of vulnerability assessments that feed information into the [ISA/IEC 62443](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards) risk assessment process. The Cyber Security Management System (CSMS) process, detailed in ISA/IEC-62443-2-1 standard, requires a detailed risk assessment which is outlined in full within the ISA/IEC-62443-3-2 standard. The detailed risk assessment requires that a vulnerability assessment is conducted to identify unmitigated risk. These vulnerability assessments required that the assessment findings be qualitatively rated according to the threat, likelihood, and concequences should the vulnerability be exploit and threat actor success realized. 
 
-By following the approach here, it is possible to estimate the severity of all of these risks to the 
-IACS / OT environment and make an informed decision about what to do about those risks. Having a system 
-in place for rating risks will save time and eliminate arguing about priorities. This system will help 
-to ensure that the business doesn't get distracted by minor risks while ignoring more serious risks that 
-are less well understood.
+The IACS Risk Rating Methodology (IRRM) is intended to be a methodology to estimate the severity of identified risks to the IACS/OT environment. This methodology includes the classic qualitative risk calculation elements while adding the consequence considerations necessary for understanding risks to IACS/OT processes and equipment. Having a system in place that addresses IACS/OT concerns for rating risks will save time and eliminate arguing about prioritizations and improve countermeasure selection to quickly reduce risk. 
 
-Ideally, there would be a universal risk rating system that would accurately estimate all risks for all 
-organizations. But a vulnerability that is critical to one organization may not be very important to 
-another. So a basic framework is presented here that should be ''customized'' for the particular 
-organization.
+The authors have tried hard to make this model simple to use, while keeping enough detail for accurate risk estimates to be made. Please reference the section below on customization for more information about tailoring the model for use in a specific organization.
 
-The authors have tried hard to make this model simple to use, while keeping enough detail for accurate 
-risk estimates to be made. Please reference the section below on customization for more information about 
-tailoring the model for use in a specific organization.
-
-**BELOW IS ORIGINAL AND REQUIRES UPDATING**
 ## Approach
 
-There are many different approaches to risk analysis. See the reference section below for some of the 
-most common ones. The OWASP approach presented here is based on these standard methodologies and is 
-customized for application security.
+The ISA/IEC-62443-2-1 standard outlines that risk is calculated by taking the likelihood that an event will occur and scaling it with the concequences should the event be realized. Hence the equation **Risk = Likelihood * Consequence**. The assignment of the likelihood and consequence variables is the typical debate. 
 
-Let's start with the standard risk model:
+Most IACS/OT likelihood calculations, sometimes referred to as frequency, take into consideration the commonly understood cases of equipment failure. Industrial and automation equipment have specific usage tollerances that, when calculated with known usage, can provide a measurable likelihood that the equipment will experience a problem. This often results in a likelihood table that uses specific time tables for an event to occur.
 
-  - **Risk = Likelihood * Impact**
+- Highly Likely: will occur in the next year
+- Moderately Likely: will occur in the next 10 years
+- Low Likely: no history of occurance and therefore unlikely
 
-In the sections below, the factors that make up "likelihood" and "impact" for application security are 
-broken down. The tester is shown how to combine them to determine the overall severity for the risk.
+These typcial likelihood ratings are not applicable when considering cybersecurity and the likelihood or frequency that a threat actor will attempt to exploit a vulnerability. In 2008 the Federal Energy Regulatory Commission (FERC) determined that electric utilities required specific guidance to understand how to address likelihood and frequency when calculating risk. In [FERC Order 706 Mandatory Reliability Standards for Critical Infrastructure Protection](https://www.ferc.gov/sites/default/files/2020-04/E-2_11.pdf) the following guidance was provided:
+
+- "Because there is insufficient data available to determine frequency, it should be assumed that an event will occur." 
+- "Risk-based assessment methodology should focus on the consequences of an outage, not the likelihood of an outage.“
+
+In the sections below, the factors that make up "likelihood" and "consequences" for IACS/OT environments are broken down as defined in the 'ISA/IEC-62443-3-2 Zone and Conduit Requirements (ZCR) 5: Perform a detailed cyber security risk assessment' section. The assessment team is shown how to leverage these factors to determine the overall severity for risks identified during a vulnerability assessment.
 
 ```
-  Step 1: Identifying a Risk
-  Step 2: Factors for Estimating Likelihood
-  Step 3: Factors for Estimating Impact
-  Step 4: Determining Severity of the Risk
-  Step 5: Deciding What to Fix
-  Step 6: Customizing Your Risk Rating Model
+  Step 1: ZCR 5.1: Identify Threats
+  Step 2: ZCR 5.2: Identify Vulnerabilities
+  Step 3: ZCR 5.3: Factors for Estimating Consequences and Impact
+  Step 4: ZCR 5.4: Factors for Estimating Likelihood
+  Step 5: ZCR 5.5: Calculate Unmitigated Cybersecurity Risk
+  Step 6: Deciding What to Fix
+  Step 7: Customizing Your Risk Rating Model
 ```
 
-### Step 1: Identifying a Risk
+### Step 1: Identify Threats (ISA/IEC-62443-3-2 ZCR 5.1)
 
-The first step is to identify a security risk that needs to be rated. The tester needs to gather 
-information about the threat agent involved, the attack that will be used, the vulnerability
-involved, and the impact of a successful exploit on the business. There may be multiple possible 
-groups of attackers, or even multiple possible business impacts.  In general, it's best to err on the 
-side of caution by using the worst-case option, as that will result in the highest overall risk.
+There are four primary factors that are used to determine the list of threats that affect an IACS/OT environment when trying to understand risk. These factors are used when modeling attack scenarios to prioritize assessment efforts. The information is also used when calculating each vulnerability and will vary according to the specifics of the situation. These factors include: 
 
-### Step 2: Factors for Estimating Likelihood
+- a description of the threat source
+- a description of the capability or skill-level of the threat source
+- a description of possible threat vectors
+- an identification of the potentially affected assets 
 
-Once the tester has identified a potential risk and wants to figure out how serious it is, the first 
-step is to estimate the "likelihood". At the highest level, this is a rough measure of how likely this 
-particular vulnerability is to be uncovered and exploited by an attacker. It is not necessary to be 
-over-precise in this estimate. Generally, identifying whether the likelihood is low, medium, or high 
-is sufficient.
+### Step 2: Identify Vulnerabilities (ISA/IEC-62443-3-2 ZCR 5.2)
 
-There are a number of factors that can help determine the likelihood. The first set of factors are 
-related to the threat agent involved. The goal is to estimate the likelihood of a successful attack 
-from a group of possible attackers. Note that there may be multiple threat agents that can exploit a 
-particular vulnerability, so it's usually best to use the worst-case scenario. For example, an insider 
-may be a much more likely attacker than an anonymous outsider, but it depends on a number of factors.
+The identification of vulnerabilities depends on the type of vulnerability assessment being conducted. Every IACS/OT environment will have a list of vulnerabilities that are a combination of known hardware and software vulnerabilities, configuration vulnerabilities, and technology implementation vulnerabilities. Some vulnerabilities can be identified using online research i.e. the [NVD Vulnerabilities search page](https://nvd.nist.gov/vuln/search) and vendor cybersecurity resources pages. Configuration and implementation vulnerabilities are identified using passive and active vulnerability testing methods.
 
-Note that each factor has a set of options, and each option has a likelihood rating from 0 to 9 
-associated with it. These numbers will be used later to estimate the overall likelihood.
+**BELOW IS ORIGINAL AND REQUIRES UPDATING**
 
 #### Threat Agent Factors
 
