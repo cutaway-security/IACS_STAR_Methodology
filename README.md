@@ -85,7 +85,9 @@ There are four primary factors that are used to determine the list of threats th
 
 The identification of vulnerabilities depends on the type of vulnerability assessment being conducted. Every IACS/OT environment will have a list of vulnerabilities that are a combination of known hardware and software vulnerabilities, configuration vulnerabilities, and technology implementation vulnerabilities. Some vulnerabilities can be identified using online research i.e. the [NVD Vulnerabilities search page](https://nvd.nist.gov/vuln/search) and vendor cybersecurity resources pages. Configuration and implementation vulnerabilities are identified using passive and active vulnerability testing methods.
 
+~~~~~~~~~~~~~~~~~~~~~~~
 **BELOW IS ORIGINAL AND REQUIRES UPDATING**
+~~~~~~~~~~~~~~~~~~~~~~~
 
 #### Threat Agent Factors
 
