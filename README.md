@@ -81,6 +81,97 @@ There are four primary factors that are used to determine the list of threats th
 - a description of possible threat vectors
 - an identification of the potentially affected assets 
 
+~~~~~~~~~~~~~~~~~~~~~~~
+**BELOW IS ORIGINAL AND REQUIRES UPDATING**
+~~~~~~~~~~~~~~~~~~~~~~~
+
+### Threat Agent Factors
+
+It is important to understand threat actor groups. There are many lists that outline specific threat actor groups that are known to attack IACS/OT environments. These include: [Wikipedia: threat actor](https://en.wikipedia.org/wiki/Threat_actor), [MITRE](https://attack.mitre.org/groups/), [Mandiant](https://www.mandiant.com/resources/insights/apt-groups), [Crowdstrike](https://www.crowdstrike.com/adversaries/), [Dragos](https://www.dragos.com/threat-groups/), and more. To perform vulnerabilitie assessments there needs to be an easier list that allows all stakeholders to agree. Each of these groups are more accurately defined by their skills, likelihood of success, and their primary objectives. The following is one possible breakdown of threat actors associated with IACS/OT environments (NOTE: skill, likelihood, and objectives are different that corporate threat actors).
+
+<table width="80%" cellspacing="0" cellpadding="5" border="1" align="center">
+<tr>
+<th align="center">Actor</th>
+<th align="center">Description</th>
+<th align="center">Skills</th>
+<th align="center">Likelihood</th>
+<th align="center">Objectives</th>
+</tr>
+<tr>
+<td align="center">Malware</td>
+<td align="center">Malicious programs that have a specific affect on vulnerable / compromised systems. This includes general malware, IACS/OT malware, and custom malware</td>
+<td align="center">Adept Privileged</td>
+<td align="center">High</td>
+<td align="center">Profit<br>Damage</td>
+</tr>
+<tr>
+<td align="center">Script Kiddies</td>
+<td align="center">Uses tools, techiques, and malware that are known, common, and easily accessible.</td>
+<td align="center">Practical Minimal</td>
+<td align="center">Low</td>
+<td align="center">Fame</td>
+</tr>
+<tr>
+<td align="center">Cybercriminal</td>
+<td align="center">An advanced group that have the maturity and financial backing to obtain or develop tools, hire technology experts, and time to conduct research and development to achieve goals</td>
+<td align="center">Adept Minimal</td>
+<td align="center">Medium</td>
+<td align="center">Profit<br>Steal</td>
+</tr>
+<tr>
+<td align="center">Hacker</td>
+<td align="center">Individuals that are mainly comprised of security researchers and sensationalists. Their activities are typcially limited to conducted vulnerability research on products. Select individuals may progress unauthorized access to understand risk and publically disclose information</td>
+<td align="center">Adept Minimal</td>
+<td align="center">Low</td>
+<td align="center">Fame<br>Profit</td>
+</tr>
+<tr>
+<td align="center">Competitor</td>
+<td align="center">Direct competitors with team members that will have access to specific knowledge that will apply in the case of specialized software and equipment</td>
+<td align="center">Adept</td>
+<td align="center">Medium</td>
+<td align="center">Profit<br>Steal</td>
+</tr>
+<tr>
+<td align="center">Employee</td>
+<td align="center">Disgruntled and reckless employees that have privileged access to systems and devices as well as the knowledge about the technologies and networks.</td>
+<td align="center">Practical Minimal Privileged</td>
+<td align="center">Low</td>
+<td align="center">Damage<br>Profit<br>Steal</td>
+</tr>
+<tr>
+<td align="center">Vendor</td>
+<td align="center">Rogue vendor, integrator, or consultant that is disgruntled, reckless, or malicious. Have knowledge about technologies and may have privileged access to systems, networks, and devices.</td>
+<td align="center">Practical Privileged</td>
+<td align="center">Medium</td>
+<td align="center">Damage<br>Profit<br>Steal</td>
+</tr>
+<tr>
+<td align="center">Cyberwarrior</td>
+<td align="center">Nation-state threat actors that typically operate in groups to achieve specific goals. Trained to live-off-the-land, steal credentials, and exfiltrate information. Has access to custom tools and malware designed to maintain persistence, propogate, and achieve their goals.</td>
+<td align="center">Adept</td>
+<td align="center">High</td>
+<td align="center">Damage<br>Profit<br>Steal</td>
+</tr>
+</table>
+
+
+The first set of factors are related to the threat agent involved. The goal here is to estimate 
+the likelihood of a successful attack by this group of threat agents. Use the worst-case threat agent.
+
+- **Skill Level** - How technically skilled is this group of threat agents? No technical skills (1), some technical skills (3), advanced computer user (5), network and programming skills (6), security penetration skills (9) 
+  - Adept: extremely proficient a common and industrial technologies  
+  - Practical: experienced with common technologies and a basic understanding of industrial technologies
+  - Minimal: limited understanding of the common and industrial technologies
+  - Privileged: automatically has authorized access to the environment, systems / devices, services, and applications
+
+
+- **Motive** - How motivated is this group of threat agents to find and exploit this vulnerability? Low or no reward (1), possible reward (4), high reward (9)
+
+- **Opportunity** - What resources and opportunities are required for this group of threat agents to find and exploit this vulnerability? Full access or expensive resources required (0), special access or resources required (4), some access or resources required (7), no access or resources required (9)
+
+- **Size** - How large is this group of threat agents? Developers (2), system administrators (2), intranet users (4), partners (5), authenticated users (6), anonymous Internet users (9)
+
 ## Step 2: Identify Vulnerabilities (ISA/IEC-62443-3-2 ZCR 5.2)
 
 The identification of vulnerabilities depends on the type of vulnerability assessment being conducted. Every IACS/OT environment will have a list of vulnerabilities that are a combination of known hardware and software vulnerabilities, configuration vulnerabilities, and technology implementation vulnerabilities. Some vulnerabilities can be identified using online research i.e. the [NVD Vulnerabilities search page](https://nvd.nist.gov/vuln/search) and vendor cybersecurity resources pages. Configuration and implementation vulnerabilities are identified using passive and active vulnerability testing methods.
@@ -88,19 +179,6 @@ The identification of vulnerabilities depends on the type of vulnerability asses
 ~~~~~~~~~~~~~~~~~~~~~~~
 **BELOW IS ORIGINAL AND REQUIRES UPDATING**
 ~~~~~~~~~~~~~~~~~~~~~~~
-
-### Threat Agent Factors
-
-The first set of factors are related to the threat agent involved. The goal here is to estimate 
-the likelihood of a successful attack by this group of threat agents. Use the worst-case threat agent.
-
-  - **Skill Level** - How technically skilled is this group of threat agents? No technical skills (1), some technical skills (3), advanced computer user (5), network and programming skills (6), security penetration skills (9) 
-
-  - **Motive** - How motivated is this group of threat agents to find and exploit this vulnerability? Low or no reward (1), possible reward (4), high reward (9)
-
-  - **Opportunity** - What resources and opportunities are required for this group of threat agents to find and exploit this vulnerability? Full access or expensive resources required (0), special access or resources required (4), some access or resources required (7), no access or resources required (9)
-
-  - **Size** - How large is this group of threat agents? Developers (2), system administrators (2), intranet users (4), partners (5), authenticated users (6), anonymous Internet users (9)
 
 ### Vulnerability Factors
 
