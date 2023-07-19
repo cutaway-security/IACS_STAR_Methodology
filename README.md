@@ -33,6 +33,7 @@ For background, there are other more mature, popular, or well established Risk R
 The risk and vulnerability assessment process is augmented by threat modeling to identify and prioritize potential attack vectors and successful exploitations. The following are a list of methods to help with the threat modeling process:
 
 - [First.org: Threat Modeling](https://www.first.org/global/sigs/cti/curriculum/threat-modelling)
+- [The Operational esilience Framework](https://www.grf.org/orf)
 - [Microsoft Threat Modeling Tool threats](https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats) - aka S.T.R.I.D.E.
 - [Threat Assessment and Remediation Analysis (TARA)](https://www.mitre.org/news-insights/publication/threat-assessment-and-remediation-analysis-tara)
 - [ICS Layered Threat Modeling](https://sansorg.egnyte.com/dl/fztutwiK5J)
@@ -44,6 +45,7 @@ The risk and vulnerability assessment process is augmented by threat modeling to
 The ISA/IEC 62443 CSMS Detailed Risk Assessment process requires that considerations for the criticality of processes, equipment, and procedures are calculated and documented. The following resources provide some details and insight into the considerations for this process. 
 
 - [Critical infrastructure cybersecurity prioritization: A cross-sector methodology for ranking operational technology cyber scenarios and critical entities](https://www.atlanticcouncil.org/in-depth-research-reports/issue-brief/critical-infrastructure-cybersecurity-prioritization/)
+- [Common Vulnerability Scoring System Version 4.0](https://www.first.org/cvss/v4-0/) - CVSS version 4.0 is the next generation of the Common Vulnerability Scoring System standard.
 
 # Approach
 
@@ -81,96 +83,56 @@ There are four primary factors that are used to determine the list of threats th
 - a description of possible threat vectors
 - an identification of the potentially affected assets 
 
+### Threat Agent Factors
+
+It is important to understand threat actor groups when considering the skills, motivation, opportunities, and population of potential attackers. There are many lists that outline specific threat actor groups that are known to attack IACS/OT environments. These include: [Wikipedia: threat actor](https://en.wikipedia.org/wiki/Threat_actor), [MITRE](https://attack.mitre.org/groups/), [Mandiant](https://www.mandiant.com/resources/insights/apt-groups), [Crowdstrike](https://www.crowdstrike.com/adversaries/), [Dragos](https://www.dragos.com/threat-groups/), and more. To perform vulnerabilitie assessments there needs to be an easier list that allows all stakeholders to agree. Each of these groups are more accurately defined by their skills, likelihood of success, and their primary objectives. The following is one possible breakdown of threat actors associated with IACS/OT environments, each with their own levels of skill, motivation, opportunities, and group size.
+
+- **Malware**: Malicious programs that have a specific affect on vulnerable / compromised systems. This includes general malware, IACS/OT malware, and custom malware.
+- **Script Kiddies**: Uses tools, techiques, and malware that are known, common, and easily accessible.
+- **Cybercriminal**: An advanced group that have the maturity and financial backing to obtain or develop tools, hire technology experts, and time to conduct research and development to achieve goals.
+- **Hacker**: Individuals that are mainly comprised of security researchers and sensationalists. Their activities are typcially limited to conducted vulnerability research on products. Select individuals may progress unauthorized access to understand risk and publically disclose information.
+- **Competitor**: Direct competitors with team members that will have access to specific knowledge that will apply in the case of specialized software and equipment.
+- **Employee**: Disgruntled and reckless employees that have privileged access to systems and devices as well as the knowledge about the technologies and networks.
+- **Vendor**: Rogue vendor, integrator, or consultant that is disgruntled, reckless, or malicious. Have knowledge about technologies and may have privileged access to systems, networks, and devices.
+- **Cyberwarrior**: Nation-state threat actors that typically operate in groups to achieve specific goals. Trained to live-off-the-land, steal credentials, and exfiltrate information. Has access to custom tools and malware designed to maintain persistence, propogate, and achieve their goals.
+
+To compute the likelihood that a threat actor groups will be successful the following numerical breakdowns will be assigned to skill level, motivation, opportunity, and size categories. The level of each category can be estimated to calculate the Threat Agent Factor which will be used to computer the overall likelihood that an event will be realized.  
+
+- **Skill Level** - How technically skilled is this group of threat agents? 
+  - Limited Information Technology (IT), network, and no Operational Technology (OT) skills (1)
+  - Moderate IT, limited network, and no OT technical skills (3)
+  - Advanced IT, moderate network, and limited OT technical skills (5)
+  - Advanced IT, advanced network, and moderate OT technical skills (6)
+  - Advanced OT technical skills (8)
+  - Security penetration skills and knowledge of OT technologies (9) 
+- **Motive** - How motivated of the threat actors once they obtain access to the control environment? An excellent guide for this is the Impact column of the [MITRE ATT&CK ICS Matrix](https://attack.mitre.org/matrices/ics/).
+  - No reward or intention to impact control environment (1)
+  - Theft of operational data or equipment (2)
+  - Create loss of view and control as a result of target-of-opportunity access to assets (3)
+  - Limit access to fileshares and prevent view and control using common malware (5)
+  - Prevent view and control using specially designed malware (6)
+  - Manipulate view and control using privileged remote access and / or specially designed malware (8)
+  - Prevent operation of safety equipment or cause a catastriphic failure (9)
+- **Opportunity** - When accessing the control environment, how are the threat actors limited by deployed countermeasures? 
+  - Physical access and local authentication is required and response time is less than fifteen minutes (0)
+  - Physical access and local authentication is required but response time is more than fifteen minutes (1)
+  - Physical and remote access is possible, local authentication required, and active monitoring is enabled (3)
+  - Limited logging of physical or remote access but administrative privileges are required to access network devices, systems, and applications (5)
+  - Undetected physical or remote access but administrative privileges are required to access network devices, systems, and applications (6)
+  - Undetected physical or remote access that provides requires authentication to some network devices, systems, and applications (8)
+  - Undetected physical or remote access that provides elevated permissions to network devices, systems, and applications (9)
+- **Size** - How large is this group of threat agents as identified by physical or remote access and the group's roles and responsibilities within the process? 
+  - Physical owner/operator users (1)
+  - Physical vendor / integrator users (2)
+  - Physical non-malicious civilian users (4)
+  - Remote owner/operator users (5)
+  - Remote vendor / integrator users (7)
+  - Physical malicious users (8)
+  - Remote anonymous internet users (9)
+
 ~~~~~~~~~~~~~~~~~~~~~~~
 **BELOW IS ORIGINAL AND REQUIRES UPDATING**
 ~~~~~~~~~~~~~~~~~~~~~~~
-
-### Threat Agent Factors
-
-It is important to understand threat actor groups. There are many lists that outline specific threat actor groups that are known to attack IACS/OT environments. These include: [Wikipedia: threat actor](https://en.wikipedia.org/wiki/Threat_actor), [MITRE](https://attack.mitre.org/groups/), [Mandiant](https://www.mandiant.com/resources/insights/apt-groups), [Crowdstrike](https://www.crowdstrike.com/adversaries/), [Dragos](https://www.dragos.com/threat-groups/), and more. To perform vulnerabilitie assessments there needs to be an easier list that allows all stakeholders to agree. Each of these groups are more accurately defined by their skills, likelihood of success, and their primary objectives. The following is one possible breakdown of threat actors associated with IACS/OT environments (NOTE: skill, likelihood, and objectives are different that corporate threat actors).
-
-<table width="80%" cellspacing="0" cellpadding="5" border="1" align="center">
-<tr>
-<th align="center">Actor</th>
-<th align="center">Description</th>
-<th align="center">Skills</th>
-<th align="center">Likelihood</th>
-<th align="center">Objectives</th>
-</tr>
-<tr>
-<td align="center">Malware</td>
-<td align="center">Malicious programs that have a specific affect on vulnerable / compromised systems. This includes general malware, IACS/OT malware, and custom malware</td>
-<td align="center">Adept Privileged</td>
-<td align="center">High</td>
-<td align="center">Profit<br>Damage</td>
-</tr>
-<tr>
-<td align="center">Script Kiddies</td>
-<td align="center">Uses tools, techiques, and malware that are known, common, and easily accessible.</td>
-<td align="center">Practical Minimal</td>
-<td align="center">Low</td>
-<td align="center">Fame</td>
-</tr>
-<tr>
-<td align="center">Cybercriminal</td>
-<td align="center">An advanced group that have the maturity and financial backing to obtain or develop tools, hire technology experts, and time to conduct research and development to achieve goals</td>
-<td align="center">Adept Minimal</td>
-<td align="center">Medium</td>
-<td align="center">Profit<br>Steal</td>
-</tr>
-<tr>
-<td align="center">Hacker</td>
-<td align="center">Individuals that are mainly comprised of security researchers and sensationalists. Their activities are typcially limited to conducted vulnerability research on products. Select individuals may progress unauthorized access to understand risk and publically disclose information</td>
-<td align="center">Adept Minimal</td>
-<td align="center">Low</td>
-<td align="center">Fame<br>Profit</td>
-</tr>
-<tr>
-<td align="center">Competitor</td>
-<td align="center">Direct competitors with team members that will have access to specific knowledge that will apply in the case of specialized software and equipment</td>
-<td align="center">Adept</td>
-<td align="center">Medium</td>
-<td align="center">Profit<br>Steal</td>
-</tr>
-<tr>
-<td align="center">Employee</td>
-<td align="center">Disgruntled and reckless employees that have privileged access to systems and devices as well as the knowledge about the technologies and networks.</td>
-<td align="center">Practical Minimal Privileged</td>
-<td align="center">Low</td>
-<td align="center">Damage<br>Profit<br>Steal</td>
-</tr>
-<tr>
-<td align="center">Vendor</td>
-<td align="center">Rogue vendor, integrator, or consultant that is disgruntled, reckless, or malicious. Have knowledge about technologies and may have privileged access to systems, networks, and devices.</td>
-<td align="center">Practical Privileged</td>
-<td align="center">Medium</td>
-<td align="center">Damage<br>Profit<br>Steal</td>
-</tr>
-<tr>
-<td align="center">Cyberwarrior</td>
-<td align="center">Nation-state threat actors that typically operate in groups to achieve specific goals. Trained to live-off-the-land, steal credentials, and exfiltrate information. Has access to custom tools and malware designed to maintain persistence, propogate, and achieve their goals.</td>
-<td align="center">Adept</td>
-<td align="center">High</td>
-<td align="center">Damage<br>Profit<br>Steal</td>
-</tr>
-</table>
-
-
-The first set of factors are related to the threat agent involved. The goal here is to estimate 
-the likelihood of a successful attack by this group of threat agents. Use the worst-case threat agent.
-
-- **Skill Level** - How technically skilled is this group of threat agents? No technical skills (1), some technical skills (3), advanced computer user (5), network and programming skills (6), security penetration skills (9) 
-  - Adept: extremely proficient a common and industrial technologies  
-  - Practical: experienced with common technologies and a basic understanding of industrial technologies
-  - Minimal: limited understanding of the common and industrial technologies
-  - Privileged: automatically has authorized access to the environment, systems / devices, services, and applications
-
-
-- **Motive** - How motivated is this group of threat agents to find and exploit this vulnerability? Low or no reward (1), possible reward (4), high reward (9)
-
-- **Opportunity** - What resources and opportunities are required for this group of threat agents to find and exploit this vulnerability? Full access or expensive resources required (0), special access or resources required (4), some access or resources required (7), no access or resources required (9)
-
-- **Size** - How large is this group of threat agents? Developers (2), system administrators (2), intranet users (4), partners (5), authenticated users (6), anonymous Internet users (9)
 
 ## Step 2: Identify Vulnerabilities (ISA/IEC-62443-3-2 ZCR 5.2)
 
