@@ -76,12 +76,13 @@ In the sections below, the factors that make up "likelihood" and "consequences" 
 
 ## Step 1: Identify Threats (ISA/IEC-62443-3-2 ZCR 5.1)
 
-There are four primary factors that are used to determine the list of threats that affect an IACS/OT environment when trying to understand risk. These factors are used when modeling attack scenarios to prioritize assessment efforts. The information is also used when calculating each vulnerability and will vary according to the specifics of the situation. These factors include: 
+Following the model of the OWASP risk rating system, there are a few factors that aid in the determination of risk. This effort has modified the OWASP model slightly to fit into the IACS/OT modle. These factors are used when modeling attack scenarios to prioritize assessment efforts. The fartors are also used when calculating the risk rating each vulnerability and will vary according to the specifics of the situation. These factors include: 
 
-- a description of the threat source
-- a description of the capability or skill-level of the threat source
-- a description of possible threat vectors
-- an identification of the potentially affected assets 
+- a description of the threat actor group
+- the capabilities or skill-level of the threat actors
+- the possible motivations for the threat actors
+- the opportunities provided to the threat actors by the environment's architecture
+- the level of access achieved when successfully exploiting the vulnerability
 
 ### Threat Agent Factors
 
@@ -121,7 +122,7 @@ To compute the likelihood that a threat actor groups will be successful the foll
   - Undetected physical or remote access but administrative privileges are required to access network devices, systems, and applications (6)
   - Undetected physical or remote access that provides requires authentication to some network devices, systems, and applications (8)
   - Undetected physical or remote access that provides elevated permissions to network devices, systems, and applications (9)
-- **Size** - How large is this group of threat agents as identified by physical or remote access and the group's roles and responsibilities within the process? 
+- **Access** - What is the physical or remote access capabilities achieved by successful exploitation within the process? 
   - Physical owner/operator users (1)
   - Physical vendor / integrator users (2)
   - Physical non-malicious civilian users (4)
@@ -130,13 +131,14 @@ To compute the likelihood that a threat actor groups will be successful the foll
   - Physical malicious users (8)
   - Remote anonymous internet users (9)
 
-~~~~~~~~~~~~~~~~~~~~~~~
-**BELOW IS ORIGINAL AND REQUIRES UPDATING**
-~~~~~~~~~~~~~~~~~~~~~~~
-
 ## Step 2: Identify Vulnerabilities (ISA/IEC-62443-3-2 ZCR 5.2)
 
-The identification of vulnerabilities depends on the type of vulnerability assessment being conducted. Every IACS/OT environment will have a list of vulnerabilities that are a combination of known hardware and software vulnerabilities, configuration vulnerabilities, and technology implementation vulnerabilities. Some vulnerabilities can be identified using online research i.e. the [NVD Vulnerabilities search page](https://nvd.nist.gov/vuln/search) and vendor cybersecurity resources pages. Configuration and implementation vulnerabilities are identified using passive and active vulnerability testing methods.
+The identification of vulnerabilities depends on the type of vulnerability assessment being conducted. Every IACS/OT environment will have a list of vulnerabilities that are a combination of known hardware and software vulnerabilities, configuration vulnerabilities, and technology implementation vulnerabilities. Some vulnerabilities can be identified using online research i.e. the [NVD Vulnerabilities search page](https://nvd.nist.gov/vuln/search) and vendor cybersecurity resources pages. Configuration and implementation vulnerabilities are identified using passive and active vulnerability testing methods. The factors that play into rating identified vulnerabilities include:
+
+- the ease of discovery
+- the ease of exploitation
+- public awareness of the vulnerability
+- detection and response of attempts to exploit the vulnerability
 
 ~~~~~~~~~~~~~~~~~~~~~~~
 **BELOW IS ORIGINAL AND REQUIRES UPDATING**
@@ -148,13 +150,30 @@ The next set of factors are related to the vulnerability involved. The goal here
 likelihood of the particular vulnerability involved being discovered and exploited. Assume the threat 
 agent selected above.
 
-  - **Ease of Discovery** - How easy is it for this group of threat agents to discover this vulnerability? Practically impossible (1), difficult (3), easy (7), automated tools available (9)
-
-  - **Ease of Exploit** - How easy is it for this group of threat agents to actually exploit this vulnerability? Theoretical (1), difficult (3), easy (5), automated tools available (9)
-
-  - **Awareness** - How well known is this vulnerability to this group of threat agents? Unknown (1), hidden (4), obvious (6), public knowledge (9)
-
-  - **Intrusion Detection** - How likely is an exploit to be detected? Active detection in application (1), logged and reviewed (3), logged without review (8), not logged (9)
+- **Ease of Discovery** - How easy is it for this group of threat agents to discover this vulnerability? 
+  - Practically impossible (1)
+  - Difficult (3)
+  - Easy (7)
+Automated tools available (9)
+- **Ease of Exploit** - How easy is it to actually exploit the vulnerability? 
+  - Theoretical (1)
+  - Difficult (3)
+  - Easy (5)
+Automated tools available (9)
+- **Awareness** - How well known is this vulnerability? 
+  - Unknown (1)
+  - Not publicly known but common [configuration vulnerability](https://cwe.mitre.org/) (3)
+  - Publicly identified on vendor website or within [NVD Vulnerabilities database](https://nvd.nist.gov/vuln/search) but no known exploit available (5)
+  - Publicly identified on vendor website or within [NVD Vulnerabilities database](https://nvd.nist.gov/vuln/search) no known exploit available but target threat actor group can develop exploit (6)
+  - Publicly identified on vendor website, vulnerability databases, and exploit available in public forums, i.e. [Metasploit](https://www.metasploit.com/), [Exploit-DB](https://www.exploit-db.com/) (8)
+  - Public identified and in [CISA Known Exploited Vulnerabilityes Catalog](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) (9)
+- **Detection/Response** - How likely is an exploit to be detected? 
+  - Centrally logged with alerts and formal review and response plan (1)
+  - Centrally logged with alerts and formal review but no response plan (3)
+  - Centrally logged with alerts, but no formal review or response plan (6)
+  - Centrally logged and without review (7)
+  - Locally logged without review (8)
+  - Not logged (9)
 
 ## Step 3: Factors for Estimating Impact
 
