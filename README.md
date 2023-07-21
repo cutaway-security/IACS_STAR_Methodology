@@ -71,7 +71,7 @@ In the sections below, the factors that make up "likelihood" and "consequences" 
   Step 4: ZCR 5.4: Factors for Estimating Likelihood
   Step 5: ZCR 5.5: Calculate Unmitigated Cybersecurity Risk
   Step 6: Reporting Vulnerabilities and Vector Scores
-  Step 7: Customizing Your Risk Rating Model
+  Step 7: IRRM Calculator
 ```
 
 ## Step 1: Identify Threats (ISA/IEC-62443-3-2 ZCR 5.1)
@@ -84,7 +84,7 @@ Following the model of the OWASP risk rating system, there are a few factors tha
 - the opportunities provided to the threat actors by the environment's architecture
 - the level of access achieved when successfully exploiting the vulnerability
 
-### Threat Agent Factors
+### Threat Actor Factors
 
 It is important to understand threat actor groups when considering the skills, motivation, opportunities, and population of potential attackers. There are many lists that outline specific threat actor groups that are known to attack IACS/OT environments. These include: [Wikipedia: threat actor](https://en.wikipedia.org/wiki/Threat_actor), [MITRE](https://attack.mitre.org/groups/), [Mandiant](https://www.mandiant.com/resources/insights/apt-groups), [Crowdstrike](https://www.crowdstrike.com/adversaries/), [Dragos](https://www.dragos.com/threat-groups/), and more. To perform vulnerabilitie assessments there needs to be an easier list that allows all stakeholders to agree. Each of these groups are more accurately defined by their skills, likelihood of success, and their primary objectives. The following is one possible breakdown of threat actors associated with IACS/OT environments, each with their own levels of skill, motivation, opportunities, and group size.
 
@@ -99,7 +99,7 @@ It is important to understand threat actor groups when considering the skills, m
 
 To compute the likelihood that a threat actor groups will be successful the following numerical breakdowns will be assigned to skill level, motivation, opportunity, and size categories. The level of each category can be estimated to calculate the Threat Agent Factor which will be used to computer the overall likelihood that an event will be realized.  
 
-- **Skill Level** - How technically skilled is this group of threat agents? 
+- **Skill Level** - How technically skilled is this group of threat actors? 
   - Limited Information Technology (IT), network, and no Operational Technology (OT) skills (1)
   - Moderate IT, limited network, and no OT technical skills (3)
   - Advanced IT, moderate network, and limited OT technical skills (5)
@@ -189,12 +189,13 @@ The original OWASP risk rating methodology used a combination of technical and b
 Technical impact can be broken down into factors aligned with the traditional security areas of concern: confidentiality, integrity, availability, and accountability. The goal is to estimate the magnitude of the impact on the system if the vulnerability were to be exploited.
 
 - **Loss of Confidentiality** - How much data could be disclosed and how sensitive is it? 
+  - No data lost (0)
   - Minimal architecture configuration data disclosed (2)
   - Minimal network configuration data but no device configuration data disclosed (4)
   - Extensive network configuration data and some device configuration data disclosed (6)
   - Some process network and device configuration data disclosed (7)
   - All process network and device configuration data disclosed (9)
-- **Loss of Integrity** - How is the process' data changed and does it impact critical functions? 
+- **Loss of Integrity** - How is the process data changed and does it impact critical functions? 
   - Modification of historical data not used for control (1)
   - Modification of historical data used for control (2)
   - Local modification of set points used for non-critical functions (4)
@@ -211,7 +212,7 @@ Technical impact can be broken down into factors aligned with the traditional se
   - Production services interrupted and impacts other processes (7)
   - All production services completely lost (8)
   - Loss of process safety functionality (9)
-- **Loss of Accountability** - Are the threat agents' actions traceable to an individual? 
+- **Loss of Accountability** - Are the threat actor actions traceable to an individual? 
   - Central logging, Multifactor Authentication (MFA), and cameras (1)
   - Central logging, Multifactor Authentication (MFA), but no cameras (2)
   - Local logging, Multifactor Authentication (MFA), and cameras but no central logging (3)
@@ -368,3 +369,7 @@ The assessment report is the most important part of an assessment. It provide co
 Once computed the resulting score vector would be represented in the following format:
 
 **(SL:0/M:0/O:0/A:0/EA:0/EE:0/AW:0/DR:0/LC:0/LI:0/LA:0/LAC:0/ED:0/PD:0/SE:0/R:0)**
+
+# IRRM Calculator
+
+The IRRM Calculator (To Be Developed and Deployed) has been set up to aid in the calculation of the IRRM vulnerability scores. This calculator follows the model provided by the [OWASP Risk Rating Calculator](https://owasp-risk-rating.com/). It can be used when considering the scoring of each of the factors that are used to calculate likelihood and consequence. It is intended to aid in discussions and to move towards concensus amongst stakeholders. It can also be used to provide the vector score to be added to the assessment findings.
