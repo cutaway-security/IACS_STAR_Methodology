@@ -135,33 +135,37 @@ To compute the likelihood that a threat actor groups will be successful the foll
 
 The identification of vulnerabilities depends on the type of vulnerability assessment being conducted. Every IACS/OT environment will have a list of vulnerabilities that are a combination of known hardware and software vulnerabilities, configuration vulnerabilities, and technology implementation vulnerabilities. Some vulnerabilities can be identified using online research i.e. the [NVD Vulnerabilities search page](https://nvd.nist.gov/vuln/search) and vendor cybersecurity resources pages. Configuration and implementation vulnerabilities are identified using passive and active vulnerability testing methods. The factors that play into rating identified vulnerabilities include:
 
-- the ease of discovery
+- the ease of access
 - the ease of exploitation
 - public awareness of the vulnerability
 - detection and response of attempts to exploit the vulnerability
 
-~~~~~~~~~~~~~~~~~~~~~~~
-**BELOW IS ORIGINAL AND REQUIRES UPDATING**
-~~~~~~~~~~~~~~~~~~~~~~~
-
 ### Vulnerability Factors
 
 The next set of factors are related to the vulnerability involved. The goal here is to estimate the 
-likelihood of the particular vulnerability involved being discovered and exploited. Assume the threat 
+likelihood of the particular vulnerability involved being access, discover, and exploited. Assume the threat 
 agent selected above.
 
-- **Ease of Discovery** - How easy is it for this group of threat agents to discover this vulnerability? 
-  - Practically impossible (1)
-  - Difficult (3)
-  - Easy (7)
-Automated tools available (9)
+- **Ease of Access** - How easy is it for this group of threat agents to access the environment and discover the existence of the vulnerability? 
+  - Requires physical access to environment or OT device (1)
+  - Requires physical access to environment or IT device (2)
+  - Remotely accessible but countermeasures protecting OT technology (3)
+  - Remotely accessible but countermeasures protecting IT technology (4)
+  - Remotely accessible but no automated tools to discover for OT technology (6)
+  - Remotely accessible but no automated tools to discover for IT technology (7)
+  - Remotely accessible and automated tools available for IT technology (8)
+  - Remotely accessible and automated tools available for OT technology (9)
 - **Ease of Exploit** - How easy is it to actually exploit the vulnerability? 
-  - Theoretical (1)
-  - Difficult (3)
-  - Easy (5)
-Automated tools available (9)
+  - No known proof of concept (1)
+  - Countermeasures protecting OT technology (2)
+  - Denial-of-Service possible but no code execution (3)
+  - Custom scripts / tools can be made to exploit IT technology (5)
+  - Custom scripts / tools can be made to exploit OT technology (6)
+  - Automated tools available for IT technology (8)
+  - Automated tools available for OT technology (9)
 - **Awareness** - How well known is this vulnerability? 
-  - Unknown (1)
+  - Unknown OT Vulnerability (1)
+  - Unknown IT Vulnerability (2)
   - Not publicly known but common [configuration vulnerability](https://cwe.mitre.org/) (3)
   - Publicly identified on vendor website or within [NVD Vulnerabilities database](https://nvd.nist.gov/vuln/search) but no known exploit available (5)
   - Publicly identified on vendor website or within [NVD Vulnerabilities database](https://nvd.nist.gov/vuln/search) no known exploit available but target threat actor group can develop exploit (6)
@@ -174,6 +178,10 @@ Automated tools available (9)
   - Centrally logged and without review (7)
   - Locally logged without review (8)
   - Not logged (9)
+
+~~~~~~~~~~~~~~~~~~~~~~~
+**BELOW IS ORIGINAL AND REQUIRES UPDATING**
+~~~~~~~~~~~~~~~~~~~~~~~
 
 ## Step 3: Factors for Estimating Impact
 
