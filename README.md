@@ -280,7 +280,7 @@ To calculate the likelihood and consequences rating category the 0 to 9 scale is
 </tr>
 <tr>
 <td width="50%"  style="text-align: center">0 to &lt;3</td>
-<td width="50%" bgcolor="green"  style="text-align: center">LOW</td>
+<td width="50%" style="background-color: green"  style="text-align: center">LOW</td>
 </tr>
 <tr>
 <td  style="text-align: center">3 to &lt;6</td>
