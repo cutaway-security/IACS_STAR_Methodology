@@ -70,7 +70,7 @@ In the sections below, the factors that make up "likelihood" and "consequences" 
   Step 3: ZCR 5.3: Factors for Estimating Consequences and Impact
   Step 4: ZCR 5.4: Factors for Estimating Likelihood
   Step 5: ZCR 5.5: Calculate Unmitigated Cybersecurity Risk
-  Step 6: Deciding What to Fix
+  Step 6: Reporting Vulnerabilities and Vector Scores
   Step 7: Customizing Your Risk Rating Model
 ```
 
@@ -227,7 +227,7 @@ Many companies have an asset classification guide and/or a business impact refer
 
 The factors below are common areas for many businesses, but this area is even more unique to a company than the factors related to threat agent, vulnerability, and technical impact.
 
-- **Environment damage** - How much damage to the local environment, plant or public, will be realized by successful exploitation?
+- **Environment Damage** - How much damage to the local environment, plant or public, will be realized by successful exploitation?
   - No environmental impact (0)
   - Environment damage limited by safety equipment, active, and passive protections (1)
   - Environment damage limited by active and passive protections (2)
@@ -236,7 +236,7 @@ The factors below are common areas for many businesses, but this area is even mo
   - Safety equipment remotely accessible but active and passive protections are sufficient (7) 
   - Safety equipment remotely accessible and situation might overwhelm active protections but passive protections are sufficient (8) 
   - Safety equipment on production network and situation might overwhelm active or passive protections (9) 
-- **Process damage** - How much damange to the process equipment will be realized by successful exploitation?
+- **Process Damage** - How much damange to the process equipment will be realized by successful exploitation?
   - No devices can be damaged and configurations cannot be modified (0)
   - Device or monitoring systems / applications can be modified but do not damage device or process (1)
   - Device device configuration can be changed but easily recoverable (3)
@@ -245,7 +245,7 @@ The factors below are common areas for many businesses, but this area is even mo
   - Safety equipment configuration changed but limited impact to process (7)
   - Safety equipment damaged but limited impact to process (8)
   - Safety equipment damaged causing process failure or automatic shutdown (9)
-- **Safety equipment** - How well are digital safety equipment deployed and protected?
+- **Safety Equipment** - How well are digital safety equipment deployed and protected?
   - Safety equipment not required for process (0)
   - Safety equipment required for process but not remotely accessible or on the same network as vulnerability (1)
   - Safety equipment required for process, remotely accessible, and requires MFA but not on the same network as vulnerability (2)
@@ -274,97 +274,97 @@ The same method will be used when calculating scores for concequences and impact
 
 To calculate the likelihood and consequences rating category the 0 to 9 scale is split into three parts:
 
+![Scoring Categories](./images/irrm_scoring_categories_20230721.jpg)
+
+<!---
 <table width="40%" cellspacing="0" cellpadding="5" border="1" align=center>
 <tr>
-<th colspan="2" style="text-align: center">Scoring Categories</th>
+<th colspan="2" style="color: black; background-color: white; text-align: center; border: 2px solid black">Scoring Categories</th>
 </tr>
 <tr>
-<td width="50%" align=center>0 to &lt;3</td>
-<td width="50%" bgcolor=green align=center>LOW</td>
+<td width="50%" style="color: black; background-color: white; text-align: center; border: 1px solid black">0 to &lt;3</td>
+<td width="50%" style="color: black; background-color: green; text-align: center; border: 1px solid black">LOW</td>
 </tr>
 <tr>
-<td align=center>3 to &lt;6</td>
-<td bgcolor=yellow align=center>MEDIUM</td>
+<td style="color: black; background-color: white; text-align: center; border: 1px solid black">3 to &lt;6</td>
+<td style="color: black; background-color: yellow; text-align: center; border: 1px solid black">MEDIUM</td>
 </tr>
 <tr>
-<td align=center>6 to 9</td>
-<td bgcolor=red align=center>HIGH</td>
+<td style="color: black; background-color: white; text-align: center; border: 1px solid black">6 to 9</td>
+<td style="color: black; background-color: red; text-align: center; border: 1px solid black">HIGH</td>
 </tr>
 </table>
+--->
 
 ## Step 5: Calculate Unmitigated Cybersecurity Risk (ISA/IEC-62443-3-2 ZCR 5.5)
 
 Once the likelihood and consequence ratings have been determined the overall risk associated with the vulnerability can be calculated. This calculation will result in the unmitigated risk rating for the vulnerability which is required for input into the ISA/IEC 62443 Detailed Risk Analysis. The following table will be used to combine the resulting likelihood and consequence categories and assign and unmitigated risk score.
 
+![Scoring Categories](./images/irrm_unmitigated_risk_categories_20230721.jpg)
+
+<!---
 <table cellspacing="0" cellpadding="5" border="1" align=center>
 <tr>
-<th colspan="5" style="text-align: center">Unmitigated Risk Score</th>
+<th colspan="5" style="color: black; background-color: white; text-align: center; border: 2px solid black">Unmitigated Risk Score</th>
 </tr>
 <tr>
-<th rowspan="4" width="15%" align=center>Consequences</th>
-<td width="15%" bgcolor=red align=center>HIGH</td>
-<td width="15%" bgcolor=orange align=center>Medium</td>
-<td width="15%" bgcolor=red align=center>High</td>
-<td width="15%" bgcolor=gold align=center>Critical</td>
+<th rowspan="4" width="15%" style="color: black; background-color: white; text-align: center; border: 2px solid black">Consequences</th>
+<td width="15%" style="color: black; background-color: red; text-align: center; border: 1px solid black">HIGH</td>
+<td width="15%" style="color: black; background-color: orange; text-align: center; border: 1px solid black">Medium</td>
+<td width="15%" style="color: black; background-color: red; text-align: center; border: 1px solid black">High</td>
+<td width="15%" style="color: black; background-color: gold; text-align: center; border: 1px solid black">Critical</td>
 </tr>
 <tr>
-<td style="color: black" bgcolor=yellow align=center>MEDIUM</td>
-<td bgcolor=yellow align=center>Low</td>
-<td bgcolor=orange align=center>Medium</td>
-<td bgcolor=red align=center>High</td>
+<td style="color: black" style="color: black" bgcolor=yellow align=center>MEDIUM</td>
+<td style="color: black; background-color: yellow; text-align: center; border: 1px solid black">Low</td>
+<td style="color: black; background-color: orange; text-align: center; border: 1px solid black">Medium</td>
+<td style="color: black; background-color: red; text-align: center; border: 1px solid black">High</td>
 </tr>
 <tr>
-<td bgcolor=green align=center>LOW</td>
-<td bgcolor=green align=center>Note</td>
-<td bgcolor=yellow align=center>Low</td>
-<td bgcolor=orange align=center>Medium</td>
+<td style="color: black; background-color: green; text-align: center; border: 1px solid black">LOW</td>
+<td style="color: black; background-color: green; text-align: center; border: 1px solid black">Informational</td>
+<td style="color: black; background-color: yellow; text-align: center; border: 1px solid black">Low</td>
+<td style="color: black; background-color: orange; text-align: center; border: 1px solid black">Medium</td>
 </tr>
 <tr>
-<td align=center>&nbsp;</td>
-<td bgcolor=green align=center>LOW</td>
-<td bgcolor=yellow align=center>MEDIUM</td>
-<td bgcolor=red align=center>HIGH</td>
+<td style="color: black; background-color: white; text-align: center; border: 1px solid black">&nbsp;</td>
+<td style="color: black; background-color: green; text-align: center; border: 1px solid black">LOW</td>
+<td style="color: black; background-color: orange; text-align: center; border: 1px solid black">MEDIUM</td>
+<td style="color: black; background-color: red; text-align: center; border: 1px solid black">HIGH</td>
 </tr>
 <tr>
-<td align=center>&nbsp;</td>
-<th colspan="4" style="text-align: center">Likelihood</th>
+<td style="color: black; background-color: white; text-align: center; ">&nbsp;</td>
+<th colspan="4" style="color: black; background-color: white; text-align: center; border: 2px solid black">Likelihood</th>
 </tr>
 </table>
 <br/>
+--->
 
 ~~~~~~~~~~~~~~~~~~~~~~~
 **BELOW IS ORIGINAL AND REQUIRES UPDATING**
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-## Step 5: Deciding What to Fix
+## Step 5: Reporting Vulnerabilities and Vector Scores
 
-After the risks to the application have been classified, there will be a prioritized list of what to fix. As a general rule, the most severe risks should be fixed first. It simply doesn't help the overall risk profile to fix less important risks, even if they're easy or cheap to fix.
+The assessment report is the most important part of an assessment. It provide context about the scope of the assessment, the assets involved, the communications between assets and across enforcement boundaries, the methodology used to gather information, details about the findings, and the vulnerability scores for these findings. The report should be clearly written to convey all of this information and the results should be reviewed by all stakeholders. Eventually the information from the assessment will be used in a Detailed Risk Assessment. To this end, like the OWASP risk rating methodology, the IRRM scores can be categorized using a vector score. This vector score provides the likelihood and consequence factor scores when rating the risk. This allows easy integration most automated risk and vulnerability management systems and scoring calculators. To aid the generationg of a vector score each of the factors have been provided an identifier. 
 
-Remember that not all risks are worth fixing, and some loss is not only expected, but justifiable based upon the cost of fixing the issue. For example, if it would cost $100,000 to implement controls to stem $2,000 of fraud per year, it would take 50 years return on investment to stamp out the loss. But remember there may be reputation damage from the fraud that could cost the organization much more.
+- Skill Level (SL)
+- Motive (M)
+- Opportunity (O)
+- Access (A)
+- Ease of Access (EA)
+- Ease of Exploit (EE)
+- Awareness (AW)
+- Detection/Response (DR)
+- Loss of Confidentiality (LC)
+- Loss of Integrity (LI)
+- Loss of Availability (LA)
+- Loss of Accountability (LAC)
+- Environmental Damage (ED)
+- Process Damage (PD)
+- Safety Equipment (SE)
+- Recoverability (R)
 
-## Step 6: Customizing the Risk Rating Model
+Once computed the resulting score vector would be represented in the following format:
 
-Having a risk ranking framework that is customizable for a business is critical for adoption.  A tailored model is much more likely to produce results that match people's perceptions about what is a serious risk. A lot of time can be wasted arguing about the risk ratings if they are not supported by a model like this. There are several ways to tailor this model for the organization.
-
-### Adding factors
-
-The tester can choose different factors that better represent what's important for the specific organization. For example, a military application might add impact factors related to loss of human life or classified information. The tester might also add likelihood factors, such as the window of opportunity for an attacker or encryption algorithm strength.
-
-### Customizing options
-
-There are some sample options associated with each factor, but the model will be much more effective if the tester customizes these options to the business. For example, use the names of the different teams and the company names for different classifications of information. The tester can also change the scores associated with the options. The best way to identify the right scores is to compare the ratings produced by the model with ratings produced by a team of experts. You can tune the model by carefully adjusting the scores to match.
-
-### Weighting factors
-
-The model above assumes that all the factors are equally important. You can weight the factors to emphasize the factors that are more significant for the specific business. This makes the model a bit more complex, as the tester needs to use a weighted average. But otherwise everything works the same. Again it is possible to tune the model by matching it against risk ratings the business agrees are accurate.
-
-# References
-
-* [Managing Information Security Risk: Organization, Mission, and Information System View](https://csrc.nist.gov/publications/detail/sp/800-39/final)
-* [Industry standard vulnerability severity and risk rankings (CVSS)](https://www.first.org/cvss/)
-* [Threat Modeling Web Applications](https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ff648006(v=pandp.10))
-* [Threat Modeling](Threat_Modeling)
-* [A Platform for Risk Analysis of Security Critical Systems](https://sourceforge.net/projects/coras/)
-* [Model-driven Development and Analysis of Secure Information Systems](http://heim.ifi.uio.no/~ketils/securis/)
-* [Value Driven Security Threat Modeling Based on Attack Path Analysis](https://ieeexplore.ieee.org/document/4076949)
-* [Risk Rating Template Example in MS Excel](https://wiki.owasp.org/index.php/File:OWASP_Risk_Rating_Template_Example.xlsx)
+**(SL:0/M:0/O:0/A:0/EA:0/EE:0/AW:0/DR:0/LC:0/LI:0/LA:0/LAC:0/ED:0/PD:0/SE:0/R:0)**
