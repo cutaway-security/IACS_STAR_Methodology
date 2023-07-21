@@ -296,38 +296,38 @@ To calculate the likelihood and consequences rating category the 0 to 9 scale is
 
 Once the likelihood and consequence ratings have been determined the overall risk associated with the vulnerability can be calculated. This calculation will result in the unmitigated risk rating for the vulnerability which is required for input into the ISA/IEC 62443 Detailed Risk Analysis. The following table will be used to combine the resulting likelihood and consequence categories and assign and unmitigated risk score.
 
-<table cellspacing="0" cellpadding="5" border="1" style="text-align: center">
+<table cellspacing="0" cellpadding="5" border="1" align=center>
 <tr>
-<th colspan="5" style="text-align: center">Unmitigated Risk Score</th>
+<th colspan="5" align=center>Unmitigated Risk Score</th>
 </tr>
 <tr>
-<th rowspan="4" width="15%" style="text-align: center">Consequences</th>
-<td width="15%" style="text-align: center">HIGH</td>
-<td width="15%" bgcolor="orange" style="text-align: center">Medium</td>
-<td width="15%" bgcolor="red" style="text-align: center">High</td>
-<td width="15%" bgcolor="pink" style="text-align: center">Critical</td>
+<th rowspan="4" width="15%" align=center>Consequences</th>
+<td width="15%" align=center>HIGH</td>
+<td width="15%" bgcolor="orange" align=center>Medium</td>
+<td width="15%" bgcolor="red" align=center>High</td>
+<td width="15%" bgcolor="pink" align=center>Critical</td>
 </tr>
 <tr>
-<td  style="text-align: center">MEDIUM</td>
-<td bgcolor="yellow" style="text-align: center">Low</td>
-<td bgcolor="orange" style="text-align: center">Medium</td>
-<td bgcolor="red" style="text-align: center">High</td>
+<td  align=center>MEDIUM</td>
+<td bgcolor="yellow" align=center>Low</td>
+<td bgcolor="orange" align=center>Medium</td>
+<td bgcolor="red" align=center>High</td>
 </tr>
 <tr>
-<td  style="text-align: center">LOW</td>
-<td bgcolor="green" style="text-align: center">Note</td>
-<td bgcolor="yellow" style="text-align: center">Low</td>
-<td bgcolor="orange" style="text-align: center">Medium</td>
+<td  align=center>LOW</td>
+<td bgcolor="green" align=center>Note</td>
+<td bgcolor="yellow" align=center>Low</td>
+<td bgcolor="orange" align=center>Medium</td>
 </tr>
 <tr>
-<td style="text-align: center">&nbsp;</td>
-<td style="text-align: center">LOW</td>
-<td style="text-align: center">MEDIUM</td>
-<td style="text-align: center">HIGH</td>
+<td align=center>&nbsp;</td>
+<td align=center>LOW</td>
+<td align=center>MEDIUM</td>
+<td align=center>HIGH</td>
 </tr>
 <tr>
-<td style="text-align: center">&nbsp;</td>
-<th colspan="4" style="text-align: center">Likelihood</th>
+<td align=center>&nbsp;</td>
+<th colspan="4" align=center>Likelihood</th>
 </tr>
 </table>
 <br/>
