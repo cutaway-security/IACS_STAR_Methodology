@@ -274,21 +274,21 @@ The same method will be used when calculating scores for concequences and impact
 
 To calculate the likelihood and consequences rating category the 0 to 9 scale is split into three parts:
 
-<table width="40%" cellspacing="0" cellpadding="5" border="1"  style="text-align: center">
+<table width="40%" cellspacing="0" cellpadding="5" border="1" align=center>
 <tr>
-<th colspan="2" style="text-align: center">Scoring Categories</th>
+<th colspan="2" align=center>Scoring Categories</th>
 </tr>
 <tr>
-<td width="50%"  style="text-align: center">0 to &lt;3</td>
-<td width="50%" style="background-color: green"  style="text-align: center">LOW</td>
+<td width="50%" align=center>0 to &lt;3</td>
+<td width="50%" bgcolor=green align=center>LOW</td>
 </tr>
 <tr>
-<td  style="text-align: center">3 to &lt;6</td>
-<td bgcolor="yellow"  style="text-align: center">MEDIUM</td>
+<td align=center>3 to &lt;6</td>
+<td bgcolor="yellow" align=center>MEDIUM</td>
 </tr>
 <tr>
-<td  style="text-align: center">6 to 9</td>
-<td bgcolor="red"  style="text-align: center">HIGH</td>
+<td align=center>6 to 9</td>
+<td bgcolor="red" align=center>HIGH</td>
 </tr>
 </table>
 
