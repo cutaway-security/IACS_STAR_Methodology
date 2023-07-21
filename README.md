@@ -266,214 +266,97 @@ The factors below are common areas for many businesses, but this area is even mo
   - Recovery not possible without moderate government and vendor / integrator assistance (8)
   - Recovery not possible without significant government and vendor / integrator assistance (9)
 
+## Step 4: Estimating Likelihood (ISA/IEC-62443-3-2 ZCR 5.4) and Consequences
+
+The likelihood that the exploitation of a vulnerability will be realized is defined by using the factors calculated when identifying threats and vulnerabilities. The scores of the threat and vulnerability factors, respectively, are added together and deviced by the number of factors used in the calculation. The resulting values can then be assigned a less granular catorization, such as low, medium, and high, to limit subjectivity and improve consensus. 
+
+The same method will be used when calculating scores for concequences and impacts. The scores for the technical and safety impacts will be combined to achieve a low, medium, or high categorization.
+
+To calculate the likelihood and consequences rating category the 0 to 9 scale is split into three parts:
+
+<table width="40%" cellspacing="0" cellpadding="5" border="1"  style="text-align: center">
+<tr>
+<th colspan="2" style="text-align: center">Scoring Categories</th>
+</tr>
+<tr>
+<td width="50%"  style="text-align: center">0 to &lt;3</td>
+<td width="50%" bgcolor="green"  style="text-align: center">LOW</td>
+</tr>
+<tr>
+<td  style="text-align: center">3 to &lt;6</td>
+<td bgcolor="yellow"  style="text-align: center">MEDIUM</td>
+</tr>
+<tr>
+<td  style="text-align: center">6 to 9</td>
+<td bgcolor="red"  style="text-align: center">HIGH</td>
+</tr>
+</table>
+
+## Step 5: Calculate Unmitigated Cybersecurity Risk (ISA/IEC-62443-3-2 ZCR 5.5)
+
+Once the likelihood and consequence ratings have been determined the overall risk associated with the vulnerability can be calculated. This calculation will result in the unmitigated risk rating for the vulnerability which is required for input into the ISA/IEC 62443 Detailed Risk Analysis. The following table will be used to combine the resulting likelihood and consequence categories and assign and unmitigated risk score.
+
+<table cellspacing="0" cellpadding="5" border="1" style="text-align: center">
+<tr>
+<th colspan="5" style="text-align: center">Unmitigated Risk Score</th>
+</tr>
+<tr>
+<th rowspan="4" width="15%" style="text-align: center">Consequences</th>
+<td width="15%" style="text-align: center">HIGH</td>
+<td width="15%" bgcolor="orange" style="text-align: center">Medium</td>
+<td width="15%" bgcolor="red" style="text-align: center">High</td>
+<td width="15%" bgcolor="pink" style="text-align: center">Critical</td>
+</tr>
+<tr>
+<td  style="text-align: center">MEDIUM</td>
+<td bgcolor="yellow" style="text-align: center">Low</td>
+<td bgcolor="orange" style="text-align: center">Medium</td>
+<td bgcolor="red" style="text-align: center">High</td>
+</tr>
+<tr>
+<td  style="text-align: center">LOW</td>
+<td bgcolor="green" style="text-align: center">Note</td>
+<td bgcolor="yellow" style="text-align: center">Low</td>
+<td bgcolor="orange" style="text-align: center">Medium</td>
+</tr>
+<tr>
+<td style="text-align: center">&nbsp;</td>
+<td style="text-align: center">LOW</td>
+<td style="text-align: center">MEDIUM</td>
+<td style="text-align: center">HIGH</td>
+</tr>
+<tr>
+<td style="text-align: center">&nbsp;</td>
+<th colspan="4" style="text-align: center">Likelihood</th>
+</tr>
+</table>
+<br/>
+
 ~~~~~~~~~~~~~~~~~~~~~~~
 **BELOW IS ORIGINAL AND REQUIRES UPDATING**
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-## Step 4: Determining the Severity of the Risk
-
-In this step, the likelihood estimate and the impact estimate are put together to calculate an overall 
-severity for this risk.  This is done by figuring out whether the likelihood is low, medium, or high 
-and then do the same for impact. The 0 to 9 scale is split into three parts:
-
-<table width="40%" cellspacing="0" cellpadding="5" border="1" align="center">
-<tr>
-<th colspan="2" align="center">Likelihood and Impact Levels</th>
-</tr>
-<tr>
-<td width="50%" align="center">0 to &lt;3</td>
-<td width="50%" bgcolor="lightgreen" align="center">LOW</td>
-</tr>
-<tr>
-<td align="center">3 to &lt;6</td>
-<td bgcolor="yellow" align="center">MEDIUM</td>
-</tr>
-<tr>
-<td align="center">6 to 9</td>
-<td bgcolor="red" align="center">HIGH</td>
-</tr>
-</table>
-
-### Informal Method
-
-In many environments, there is nothing wrong with reviewing the factors and simply capturing the answers. 
-The tester should think through the factors and identify the key "driving" factors that are controlling 
-the result. The tester may discover that their initial impression was wrong by considering aspects of the 
-risk that weren't obvious.
-
-### Repeatable Method
-
-If it is necessary to defend the ratings or make them repeatable, then it is necessary to go through a 
-more formal process of rating the factors and calculating the result. Remember that there is quite a 
-lot of uncertainty in these estimates and that these factors are intended to help the tester arrive 
-at a sensible result. This process can be supported by automated tools to make the calculation easier. 
-
-The first step is to select one of the options associated with each factor and enter the associated 
-number in the table. Then simply take the average of the scores to calculate the overall likelihood. 
-For example:
-
-<table cellspacing="0" cellpadding="5" border="1" align="center">
-<tr>
-<td colspan="4" align="center">'''Threat agent factors'''</td>
-<td></td>
-<td colspan="4" align="center">'''Vulnerability factors'''</td>
-</tr>
-<tr>
-<td width="10%" align="center">Skill level</td>
-<td width="10%" align="center">Motive</td>
-<td width="10%" align="center">Opportunity</td>
-<td width="10%" align="center">Size</td>
-<td width="2%" align="center"></td>
-<td width="10%" align="center">Ease of discovery</td>
-<td width="10%" align="center">Ease of exploit</td>
-<td width="10%" align="center">Awareness</td>
-<td width="10%" align="center">Intrusion detection</td>
-</tr>
-<tr>
-<td align="center">5</td>
-<td align="center">2</td>
-<td align="center">7</td>
-<td align="center">1</td>
-<td align="center"></td>
-<td align="center">3</td>
-<td align="center">6</td>
-<td align="center">9</td>
-<td align="center">2</td>
-</tr>
-<tr>
-<td colspan="9" bgcolor="lightblue" align="center">Overall likelihood=4.375 (MEDIUM)</td>
-</tr>
-</table>
-<br/>
-Next, the tester needs to figure out the overall impact. The process is similar here. In many cases the 
-answer will be obvious, but the tester can make an estimate based on the factors, or they can average 
-the scores for each of the factors. Again, less than 3 is low, 3 to less than 6 is medium, and 6 to 9 
-is high.  For example:
-
-<table cellspacing="0" cellpadding="5" border="1" align="center">
-<tr>
-<th colspan="4" align="center">Technical Impact</th>
-<td></td>
-<th colspan="4" align="center">Business Impact</th>
-</tr>
-<tr>
-<td width="10%" align="center">Loss of confidentiality</td>
-<td width="10%" align="center">Loss of integrity</td>
-<td width="10%" align="center">Loss of availability</td>
-<td width="10%" align="center">Loss of accountability</td>
-<td width="2%" align="center"></td>
-<td width="10%" align="center">Financial damage</td>
-<td width="10%" align="center">Reputation damage</td>
-<td width="10%" align="center">Non-compliance</td>
-<td width="10%" align="center">Privacy violation</td>
-</tr>
-<tr>
-<td align="center">9</td>
-<td align="center">7</td>
-<td align="center">5</td>
-<td align="center">8</td>
-<td align="center"></td>
-<td align="center">1</td>
-<td align="center">2</td>
-<td align="center">1</td>
-<td align="center">5</td>
-</tr>
-<tr>
-<td colspan="4" bgcolor="lightblue" align="center">Overall technical impact=7.25 (HIGH)</td>
-<td></td>
-<td colspan="4" bgcolor="lightblue" align="center">Overall business impact=2.25 (LOW)</td>
-</tr>
-</table>
-<br/>
-
-### Determining Severity
-
-However the tester arrives at the likelihood and impact estimates, they can now combine them to get 
-a final severity rating for this risk. Note that if they have good business impact information, they 
-should use that instead of the technical impact information.  But if they have no information about 
-the business, then technical impact is the next best thing.
-
-<table cellspacing="0" cellpadding="5" border="1" align="center">
-<tr>
-<th colspan="5" align="center">Overall Risk Severity</th>
-</tr>
-<tr>
-<th rowspan="4" width="15%" align="center">Impact</th>
-<td width="15%" align="center">HIGH</td>
-<td width="15%" bgcolor="orange" align="center">Medium</td>
-<td width="15%" bgcolor="red" align="center">High</td>
-<td width="15%" bgcolor="pink" align="center">Critical</td>
-</tr>
-<tr>
-<td align="center">MEDIUM</td>
-<td bgcolor="yellow" align="center">Low</td>
-<td bgcolor="orange" align="center">Medium</td>
-<td bgcolor="red" align="center">High</td>
-</tr>
-<tr>
-<td align="center">LOW</td>
-<td bgcolor="lightgreen" align="center">Note</td>
-<td bgcolor="yellow" align="center">Low</td>
-<td bgcolor="orange" align="center">Medium</td>
-</tr>
-<tr>
-<td align="center">&nbsp;</td>
-<td align="center">LOW</td>
-<td align="center">MEDIUM</td>
-<td align="center">HIGH</td>
-</tr>
-<tr>
-<td align="center">&nbsp;</td>
-<th colspan="4" align="center">Likelihood</th>
-</tr>
-</table>
-<br/>
-In the example above, the likelihood is medium and the technical impact is high, so from a purely 
-technical perspective it appears that the overall severity is high.  However, note that the business 
-impact is actually low, so the overall severity is best described as low as well. This is why 
-understanding the business context of the vulnerabilities you are evaluating is so critical to making 
-good risk decisions. Failure to understand this context can lead to the lack of trust between the 
-business and security teams that is present in many organizations.
-
 ## Step 5: Deciding What to Fix
 
-After the risks to the application have been classified, there will be a prioritized list of what to 
-fix. As a general rule, the most severe risks should be fixed first. It simply doesn't help the overall 
-risk profile to fix less important risks, even if they're easy or cheap to fix.
+After the risks to the application have been classified, there will be a prioritized list of what to fix. As a general rule, the most severe risks should be fixed first. It simply doesn't help the overall risk profile to fix less important risks, even if they're easy or cheap to fix.
 
-Remember that not all risks are worth fixing, and some loss is not only expected, but justifiable based 
-upon the cost of fixing the issue. For example, if it would cost $100,000 to implement controls to stem 
-$2,000 of fraud per year, it would take 50 years return on investment to stamp out the loss. But 
-remember there may be reputation damage from the fraud that could cost the organization much more.
+Remember that not all risks are worth fixing, and some loss is not only expected, but justifiable based upon the cost of fixing the issue. For example, if it would cost $100,000 to implement controls to stem $2,000 of fraud per year, it would take 50 years return on investment to stamp out the loss. But remember there may be reputation damage from the fraud that could cost the organization much more.
 
 ## Step 6: Customizing the Risk Rating Model
 
-Having a risk ranking framework that is customizable for a business is critical for adoption.  A tailored 
-model is much more likely to produce results that match people's perceptions about what is a serious risk. 
-A lot of time can be wasted arguing about the risk ratings if they are not supported by a model like this. 
-There are several ways to tailor this model for the organization.
+Having a risk ranking framework that is customizable for a business is critical for adoption.  A tailored model is much more likely to produce results that match people's perceptions about what is a serious risk. A lot of time can be wasted arguing about the risk ratings if they are not supported by a model like this. There are several ways to tailor this model for the organization.
 
 ### Adding factors
 
-The tester can choose different factors that better represent what's important for the specific organization. 
-For example, a military application might add impact factors related to loss of human life or classified 
-information. The tester might also add likelihood factors, such as the window of opportunity for an attacker 
-or encryption algorithm strength.
+The tester can choose different factors that better represent what's important for the specific organization. For example, a military application might add impact factors related to loss of human life or classified information. The tester might also add likelihood factors, such as the window of opportunity for an attacker or encryption algorithm strength.
 
 ### Customizing options
 
-There are some sample options associated with each factor, but the model will be much more effective if the 
-tester customizes these options to the business. For example, use the names of the different teams and the 
-company names for different classifications of information. The tester can also change the scores associated 
-with the options. The best way to identify the right scores is to compare the ratings produced by the model 
-with ratings produced by a team of experts. You can tune the model by carefully adjusting the scores to match.
+There are some sample options associated with each factor, but the model will be much more effective if the tester customizes these options to the business. For example, use the names of the different teams and the company names for different classifications of information. The tester can also change the scores associated with the options. The best way to identify the right scores is to compare the ratings produced by the model with ratings produced by a team of experts. You can tune the model by carefully adjusting the scores to match.
 
 ### Weighting factors
 
-The model above assumes that all the factors are equally important. You can weight the factors to emphasize 
-the factors that are more significant for the specific business. This makes the model a bit more complex, as 
-the tester needs to use a weighted average. But otherwise everything works the same. Again it is possible to 
-tune the model by matching it against risk ratings the business agrees are accurate.
+The model above assumes that all the factors are equally important. You can weight the factors to emphasize the factors that are more significant for the specific business. This makes the model a bit more complex, as the tester needs to use a weighted average. But otherwise everything works the same. Again it is possible to tune the model by matching it against risk ratings the business agrees are accurate.
 
 # References
 
