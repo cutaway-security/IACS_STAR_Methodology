@@ -178,10 +178,6 @@ likelihood of the particular vulnerability will be exploited and used to gain ac
   - Locally logged without review (8)
   - Not logged (9)
 
-~~~~~~~~~~~~~~~~~~~~~~~
-**BELOW IS ORIGINAL AND REQUIRES UPDATING**
-~~~~~~~~~~~~~~~~~~~~~~~
-
 ## Step 3: Estimating Consequences and Impact (ISA/IEC-62443-3-2 ZCR 5.3)
 
 The original OWASP risk rating methodology used a combination of technical and business impact factors to analyze the impact when a vulnerability's exploitation was realized. While useful these are not the best ways to understand the impact of an exploited vulnerability to an IACS/OT enviornment. The Impact column of the [MITRE ATT&CK ICS Matrix](https://attack.mitre.org/matrices/ics/) provides good details about what can happen after successful exploitation. These Impacts are a combination of denial, loss, and manipulation to the process or locations that monitor the process. The FIRST.og [CVSSv4.0](https://www.first.org/cvss/v4-0/) scoring system has been updated to include a new supplemental metric group which includes rating factors that involve safety, automatable, recovery, value density, vulnerability response effort, and provider urgeny. Hence, the IRRM will estimate consequences and impacts using technical factors and safety factors.
@@ -220,6 +216,10 @@ Technical impact can be broken down into factors aligned with the traditional se
   - Local logging and cameras but no MFA and no central logging (5)
   - Local logging but no MFA, no central logging, and no cameras (7)
   - No local or central logging, no MFA, and no cameras (9)
+
+~~~~~~~~~~~~~~~~~~~~~~~
+**BELOW IS ORIGINAL AND REQUIRES UPDATING**
+~~~~~~~~~~~~~~~~~~~~~~~
 
 ### Business Impact Factors
 
