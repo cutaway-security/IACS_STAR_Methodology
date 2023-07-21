@@ -341,10 +341,6 @@ Once the likelihood and consequence ratings have been determined the overall ris
 <br/>
 --->
 
-~~~~~~~~~~~~~~~~~~~~~~~
-**BELOW IS ORIGINAL AND REQUIRES UPDATING**
-~~~~~~~~~~~~~~~~~~~~~~~
-
 ## Step 5: Reporting Vulnerabilities and Vector Scores
 
 The assessment report is the most important part of an assessment. It provide context about the scope of the assessment, the assets involved, the communications between assets and across enforcement boundaries, the methodology used to gather information, details about the findings, and the vulnerability scores for these findings. The report should be clearly written to convey all of this information and the results should be reviewed by all stakeholders. Eventually the information from the assessment will be used in a Detailed Risk Assessment. To this end, like the OWASP risk rating methodology, the IRRM scores can be categorized using a vector score. This vector score provides the likelihood and consequence factor scores when rating the risk. This allows easy integration most automated risk and vulnerability management systems and scoring calculators. To aid the generationg of a vector score each of the factors have been provided an identifier. 
