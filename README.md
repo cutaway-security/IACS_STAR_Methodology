@@ -142,9 +142,8 @@ The identification of vulnerabilities depends on the type of vulnerability asses
 
 ### Vulnerability Factors
 
-The next set of factors are related to the vulnerability involved. The goal here is to estimate the 
-likelihood of the particular vulnerability involved being access, discover, and exploited. Assume the threat 
-agent selected above.
+The next set of factors are related to understanding the identified vulnerability. The goal here is to estimate the 
+likelihood of the particular vulnerability will be exploited and used to gain access to the environment, provide persistence on a system or device, and be used to achieve the threat actor's goals. To understand the vulnerability the factors involving access, exploitation, and public awareness should be considered. Additionally, one of the Foundational Requirements outlined in the ISA/IEC 62443 series of standards includes Timely Response to Events (TRE). This should be added to the factors when understanding the vulnerability within the IACS/OT environment.
 
 - **Ease of Access** - How easy is it for this group of threat agents to access the environment and discover the existence of the vulnerability? 
   - Requires physical access to environment or OT device (1)
@@ -183,33 +182,44 @@ agent selected above.
 **BELOW IS ORIGINAL AND REQUIRES UPDATING**
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-## Step 3: Factors for Estimating Impact
+## Step 3: Estimating Consequences and Impact (ISA/IEC-62443-3-2 ZCR 5.3)
 
-When considering the impact of a successful attack, it's important to realize that there are 
-two kinds of impacts. The first is the "technical impact" on the application, the data it uses, 
-and the functions it provides.  The other is the "business impact" on the business and company 
-operating the application.
-
-Ultimately, the business impact is more important. However, you may not have access to all the 
-information required to figure out the business consequences of a successful exploit. In this 
-case, providing as much detail about the technical risk will enable the appropriate business 
-representative to make a decision about the business risk.
-
-Again, each factor has a set of options, and each option has an impact rating from 0 to 9 associated with it. We'll use these numbers later to estimate the overall impact.
+The original OWASP risk rating methodology used a combination of technical and business impact factors to analyze the impact when a vulnerability's exploitation was realized. While useful these are not the best ways to understand the impact of an exploited vulnerability to an IACS/OT enviornment. The Impact column of the [MITRE ATT&CK ICS Matrix](https://attack.mitre.org/matrices/ics/) provides good details about what can happen after successful exploitation. These Impacts are a combination of denial, loss, and manipulation to the process or locations that monitor the process. The FIRST.og [CVSSv4.0](https://www.first.org/cvss/v4-0/) scoring system has been updated to include a new supplemental metric group which includes rating factors that involve safety, automatable, recovery, value density, vulnerability response effort, and provider urgeny. Hence, the IRRM will estimate consequences and impacts using technical factors and safety factors.
 
 ### Technical Impact Factors
 
-Technical impact can be broken down into factors aligned with the traditional security areas 
-of concern: confidentiality, integrity, availability, and accountability. The goal is to estimate 
-the magnitude of the impact on the system if the vulnerability were to be exploited.
+Technical impact can be broken down into factors aligned with the traditional security areas of concern: confidentiality, integrity, availability, and accountability. The goal is to estimate the magnitude of the impact on the system if the vulnerability were to be exploited.
 
-  - **Loss of Confidentiality** - How much data could be disclosed and how sensitive is it? Minimal non-sensitive data disclosed (2), minimal critical data disclosed (6), extensive non-sensitive data disclosed (6), extensive critical data disclosed (7), all data disclosed (9)
-
-  - **Loss of Integrity** - How much data could be corrupted and how damaged is it? Minimal slightly corrupt data (1), minimal seriously corrupt data (3), extensive slightly corrupt data (5), extensive seriously corrupt data (7), all data totally corrupt (9)
-
-  - **Loss of Availability** - How much service could be lost and how vital is it? Minimal secondary services interrupted (1), minimal primary services interrupted (5), extensive secondary services interrupted (5), extensive primary services interrupted (7), all services completely lost (9)
-
-  - **Loss of Accountability** - Are the threat agents' actions traceable to an individual? Fully traceable (1), possibly traceable (7), completely anonymous (9)
+- **Loss of Confidentiality** - How much data could be disclosed and how sensitive is it? 
+  - Minimal architecture configuration data disclosed (2)
+  - Minimal network configuration data but no device configuration data disclosed (4)
+  - Extensive network configuration data and some device configuration data disclosed (6)
+  - Some process network and device configuration data disclosed (7)
+  - All process network and device configuration data disclosed (9)
+- **Loss of Integrity** - How is the process' data changed and does it impact critical functions? 
+  - Modification of historical data not used for control (1)
+  - Modification of historical data used for control (2)
+  - Local modification of set points used for non-critical functions (4)
+  - Remote modification of set points used for non-critical functions (5)
+  - Remote modification of device configurations used for non-critical functions (6)
+  - Local modification of set points used for critical functions (7)
+  - Remote modification of set points used for critical functions (8)
+  - Remote modification of device configurations used for critical functions (9)
+- **Loss of Availability** - How are production and safety services impacted? 
+  - Minimal production interruption and easily recoverable (1)
+  - Device or service interrupted but process not impacted (3)
+  - Production services temperarily interrupted by easily recoverable (4)
+  - Production services interrupted but does not affect other processes (6)
+  - Production services interrupted and impacts other processes (7)
+  - All production services completely lost (8)
+  - Loss of process safety functionality (9)
+- **Loss of Accountability** - Are the threat agents' actions traceable to an individual? 
+  - Central logging, Multifactor Authentication (MFA), and cameras (1)
+  - Central logging, Multifactor Authentication (MFA), but no cameras (2)
+  - Local logging, Multifactor Authentication (MFA), and cameras but no central logging (3)
+  - Local logging and cameras but no MFA and no central logging (5)
+  - Local logging but no MFA, no central logging, and no cameras (7)
+  - No local or central logging, no MFA, and no cameras (9)
 
 ### Business Impact Factors
 
