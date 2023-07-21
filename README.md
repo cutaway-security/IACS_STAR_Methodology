@@ -182,6 +182,8 @@ likelihood of the particular vulnerability will be exploited and used to gain ac
 
 The original OWASP risk rating methodology used a combination of technical and business impact factors to analyze the impact when a vulnerability's exploitation was realized. While useful these are not the best ways to understand the impact of an exploited vulnerability to an IACS/OT enviornment. The Impact column of the [MITRE ATT&CK ICS Matrix](https://attack.mitre.org/matrices/ics/) provides good details about what can happen after successful exploitation. These Impacts are a combination of denial, loss, and manipulation to the process or locations that monitor the process. The FIRST.og [CVSSv4.0](https://www.first.org/cvss/v4-0/) scoring system has been updated to include a new supplemental metric group which includes rating factors that involve safety, automatable, recovery, value density, vulnerability response effort, and provider urgeny. Hence, the IRRM will estimate consequences and impacts using technical factors and safety factors.
 
+**NOTE**: Business impacts are still an important factor for rating risk. However, business impact factors are considerations should be left to the Detailed Risk Analysis. The IRRM is designed to be used when rating the risk of vulnerabilities which feed into the Detailed Risk Analysis process. Therefore, the IRRM calculations will attempt to understand the safety impact factors rather than the business impact factors. (These may be added at a future date.)
+
 ### Technical Impact Factors
 
 Technical impact can be broken down into factors aligned with the traditional security areas of concern: confidentiality, integrity, availability, and accountability. The goal is to estimate the magnitude of the impact on the system if the vulnerability were to be exploited.
@@ -217,32 +219,56 @@ Technical impact can be broken down into factors aligned with the traditional se
   - Local logging but no MFA, no central logging, and no cameras (7)
   - No local or central logging, no MFA, and no cameras (9)
 
+### Safety Impact Factors
+
+The business impact stems from the technical impact, but requires a deep understanding of what is important to the company running the application. In general, you should be aiming to support your risks with business impact, particularly if your audience is executive level. The business risk is what justifies investment in fixing security problems.
+
+Many companies have an asset classification guide and/or a business impact reference to help formalize what is important to their business. These standards can help you focus on what's truly important for security. If these aren't available, then it is necessary to talk with people who understand the business to get their take on what's important.
+
+The factors below are common areas for many businesses, but this area is even more unique to a company than the factors related to threat agent, vulnerability, and technical impact.
+
+- **Environment damage** - How much damage to the local environment, plant or public, will be realized by successful exploitation?
+  - No environmental impact (0)
+  - Environment damage limited by safety equipment, active, and passive protections (1)
+  - Environment damage limited by active and passive protections (2)
+  - Environment damage limited by passive protections only (4)
+  - Safety equipment not remotely accessible and active and passive protections are in place (5) 
+  - Safety equipment remotely accessible but active and passive protections are sufficient (7) 
+  - Safety equipment remotely accessible and situation might overwhelm active protections but passive protections are sufficient (8) 
+  - Safety equipment on production network and situation might overwhelm active or passive protections (9) 
+- **Process damage** - How much damange to the process equipment will be realized by successful exploitation?
+  - No devices can be damaged and configurations cannot be modified (0)
+  - Device or monitoring systems / applications can be modified but do not damage device or process (1)
+  - Device device configuration can be changed but easily recoverable (3)
+  - Device damaged requiring manual update but limited impact to process (4)
+  - Device damaged requiring manual update but significant impact to process (6)
+  - Safety equipment configuration changed but limited impact to process (7)
+  - Safety equipment damaged but limited impact to process (8)
+  - Safety equipment damaged causing process failure or automatic shutdown (9)
+- **Safety equipment** - How well are digital safety equipment deployed and protected?
+  - Safety equipment not required for process (0)
+  - Safety equipment required for process but not remotely accessible or on the same network as vulnerability (1)
+  - Safety equipment required for process, remotely accessible, and requires MFA but not on the same network as vulnerability (2)
+  - Safety equipment required for process and remotely accessible but does not require MFA and not on the same network as vulnerability (3)
+  - Safety equipment required for process, remotely accessible, requires MFA, and on the same network as vulnerability (4)
+  - Safety equipment required for process, remotely accessible, does not require MFA, and on the same network as vulnerability (5)
+  - Safety equipment vulnerable and remotely accessible but requires MFA (6)
+  - Safety equipment vulnerable and remotely accessible but requires authentication but no MFA (7)
+  - Safety equipment vulnerable and remotely accessible but requires authentication but but default/hardcoded password in place and no MFA (8)
+  - Safety equipment vulnerable, remotely accessible, and does not require authentication (9)
+- **Recoverability** - How well is the organization / process team prepared to recover during successful exploitation?
+  - Vulnerability will not require or limit recovery operations (0)
+  - Process will automatically recover with no manual efforts (1)
+  - Process will recover with minimal manual efforts (2)
+  - Process will recover with extensive manual efforts (4)
+  - Recovery not possible without vendor / integrator assistance (6)
+  - Recovery not possible without limited government and vendor / integrator assistance (7)
+  - Recovery not possible without moderate government and vendor / integrator assistance (8)
+  - Recovery not possible without significant government and vendor / integrator assistance (9)
+
 ~~~~~~~~~~~~~~~~~~~~~~~
 **BELOW IS ORIGINAL AND REQUIRES UPDATING**
 ~~~~~~~~~~~~~~~~~~~~~~~
-
-### Business Impact Factors
-
-The business impact stems from the technical impact, but requires a deep understanding of what is 
-important to the company running the application. In general, you should be aiming to support your 
-risks with business impact, particularly if your audience is executive level. The business risk is 
-what justifies investment in fixing security problems.
-
-Many companies have an asset classification guide and/or a business impact reference to help formalize 
-what is important to their business. These standards can help you focus on what's truly important for 
-security. If these aren't available, then it is necessary to talk with people who understand the 
-business to get their take on what's important.
-
-The factors below are common areas for many businesses, but this area is even more unique to a company 
-than the factors related to threat agent, vulnerability, and technical impact.
-
-  - **Financial damage** - How much financial damage will result from an exploit? Less than the cost to fix the vulnerability (1), minor effect on annual profit (3), significant effect on annual profit (7), bankruptcy (9)
-
-  - **Reputation damage** - Would an exploit result in reputation damage that would harm the business? Minimal damage (1), Loss of major accounts (4), loss of goodwill (5), brand damage (9)
-
-  - **Non-compliance** - How much exposure does non-compliance introduce? Minor violation (2), clear violation (5), high profile violation (7)
-
-  - **Privacy violation** - How much personally identifiable information could be disclosed? One individual (3), hundreds of people (5), thousands of people (7), millions of people (9)
 
 ## Step 4: Determining the Severity of the Risk
 
