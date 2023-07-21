@@ -164,7 +164,7 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                         score = score + 'ED:' + $("#ed").val() + '/';
                         score = score + 'PD:' + $("#pd").val() + '/';
                         score = score + 'SE:' + $("#se").val() + '/';
-                        score = score + 'r:' + $("#r").val();
+                        score = score + 'R:' + $("#r").val();
                         score = score + ')';
                         $('#score').text(score);
                         $("#score").attr("href", "https://owasp-risk-rating.com/?vector=" + score);
@@ -178,11 +178,14 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                         matrix[1][2] = 'High';
                         matrix[2][2] = 'Critical';
                         LF = (TAF + VF) / 2;
+                        CF = (TIF + SIF) / 2;
+                        /*
                         if (SIF != 0) {
                             CF = SIF;
                         } else {
                             CF = TIF;
                         }
+                        */
                         setFactor(TAF, 'TAF');
                         setFactor(VF, 'VF');
                         setFactor(TIF, 'TIF');
@@ -209,7 +212,7 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
     <body>
 
         <div class="container">
-            <h1>OWASP Risk Rating Calculator</h1>
+            <h1>IACS Risk Rating Calculator</h1>
             <div class="row">
 <div class="col-md-6">                
     <h2>Likelihood Factors</h2>
@@ -249,16 +252,16 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
             <!--Threat Actor Opportunity:  When accessing the control environment, how are the threat actors limited by deployed countermeasures?-->
             <h6>Opportunity</h6>
             <select class="custom-select custom-select-sm" id="o" data-toggle="tooltip" data-placement="top" title="What resources and opportunities are required for this group of threat agents to find and exploit this vulnerability?">
-              <option class="text-0" value="0">0 - Full access or expensive resources required</option>
-              <option class="text-1" value="1">1</option>
-              <option class="text-2" value="2">2</option>
-              <option class="text-3" value="3">3</option>
-              <option class="text-4" value="4">4 - Special access or resources required</option>
-              <option class="text-5" value="5">5</option>
-              <option class="text-6" value="6">6</option>
-              <option class="text-7" value="7">7 - Some access or resources required</option>
-              <option class="text-8" value="8">8</option>
-              <option class="text-9" value="9">9 - No access or resources required</option>
+                <option class="text-0" value="0">0 - Physical access and local authentication is required and response time is less than fifteen minutes</option>
+                <option class="text-1" value="1">1 - Physical access and local authentication is required but response time is more than fifteen minutes</option>
+                <option class="text-2" value="2">2</option>
+                <option class="text-3" value="3">3 - Physical and remote access is possible, local authentication required, and active monitoring is enabled</option>
+                <option class="text-4" value="4">4</option>
+                <option class="text-5" value="5">5 - Limited logging of physical or remote access but administrative privileges are required to access network devices, systems, and applications</option>
+                <option class="text-6" value="6">6 -Undetected physical or remote access but administrative privileges are required to access network devices, systems, and applications</option>
+                <option class="text-7" value="7">7</option>
+                <option class="text-8" value="8">8 - Undetected physical or remote access that provides requires authentication to some network devices, systems, and applications</option>
+                <option class="text-9" value="9">9 - Undetected physical or remote access that provides elevated permissions to network devices, systems, and applications</option>   
             </select>
 
             <!--Threat Actor Access: What is the physical or remote access capabilities achieved by successful exploitation within the process?-->
@@ -493,7 +496,6 @@ Overall Risk Severity: <span id="R"></span>
 </div>
 <div class="alert m-3" role="alert">
 Score Vector: <a id="score" target="_blank"></a>
-</div>
 </div>
 <p>This Risk Rating Calculator is based on <a href="https://github.com/cutaway-security/IACS_Risk_Rating_Methodology" target="_blank">IACS Risk Rating Methodology</a>.</p> 
 <p>This Risk Rating Calculator was generated using the example of <a href="https://owasp-risk-rating.com/" target="_blank">OWASP's Risk Rating Calculator</a>.</p> 

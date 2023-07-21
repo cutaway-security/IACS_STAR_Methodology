@@ -373,3 +373,9 @@ Once computed the resulting score vector would be represented in the following f
 # IRRM Calculator
 
 The IRRM Calculator (To Be Developed and Deployed) has been set up to aid in the calculation of the IRRM vulnerability scores. This calculator follows the model provided by the [OWASP Risk Rating Calculator](https://owasp-risk-rating.com/). It can be used when considering the scoring of each of the factors that are used to calculate likelihood and consequence. It is intended to aid in discussions and to move towards concensus amongst stakeholders. It can also be used to provide the vector score to be added to the assessment findings.
+
+To run this calculator locally clone this repository, open a terminal to the repo directory, and run a Python web server with the following command:
+
+**python3 -m http.server 9000**
+
+Open your web browser to your [local IRRM calculator](http://localhost:9000/iacs_risk_rating_calculator.html).
