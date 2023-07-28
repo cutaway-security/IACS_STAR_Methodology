@@ -1,17 +1,17 @@
-# IACS Risk Rating Methodology (IRRM)
+# IACS System Testing and Assessment Rating (STAR) Methodology (IACS STAR)
 A risk rating calculation methodology that uses the [OWASP Risk Rating Methodology](https://owasp.org/www-community/OWASP_Risk_Rating_Methodology) as a basis. 
 
 ## Contributions
 
 * Author: Don C. Weber
-* IACS/OT Contributors: Oscar Delgado, Danielle Jablanski
+* IACS/OT Contributors: Oscar Delgado, Danielle Jablanski, Tim Conway
 * IT/Infosec Contributors: Jeff Williams (Author of original OWASP Risk Rating Methodology)
 
 # Introduction
 
 Security assessments and penetration testing of an Industrial and Automation Control Systems (IACS) / Operational Technology (OT) enviornment are two types of vulnerability assessments that feed information into the [ISA/IEC 62443](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards) risk assessment process. The Cyber Security Management System (CSMS) process, detailed in ISA/IEC-62443-2-1 standard, requires a detailed risk assessment which is outlined in full within the ISA/IEC-62443-3-2 standard. The detailed risk assessment requires that a vulnerability assessment is conducted to identify unmitigated risk. These vulnerability assessments required that the assessment findings be qualitatively rated according to the threat, likelihood, and concequences should the vulnerability be exploit and threat actor success realized. 
 
-The IACS Risk Rating Methodology (IRRM) is intended to be a methodology to estimate the severity of identified risks to the IACS/OT environment. This methodology includes the classic qualitative risk calculation elements while adding the consequence considerations necessary for understanding risks to IACS/OT processes and equipment. Having a system in place that addresses IACS/OT concerns for rating risks will save time and eliminate arguing about prioritizations and improve countermeasure selection to quickly reduce risk. 
+The IACS System Testing and Assessment Rating (STAR) Methodology (IACS STAR) is intended to be a methodology to estimate the severity of identified risks to the IACS/OT environment. This methodology includes the classic qualitative risk calculation elements while adding the consequence considerations necessary for understanding risks to IACS/OT processes and equipment. Having a system in place that addresses IACS/OT concerns for rating risks will save time and eliminate arguing about prioritizations and improve countermeasure selection to quickly reduce risk. 
 
 The authors have tried hard to make this model simple to use, while keeping enough detail for accurate risk estimates to be made. Please reference the section below on customization for more information about tailoring the model for use in a specific organization.
 
@@ -71,7 +71,7 @@ In the sections below, the factors that make up "likelihood" and "consequences" 
   Step 4: ZCR 5.4: Factors for Estimating Likelihood
   Step 5: ZCR 5.5: Calculate Unmitigated Cybersecurity Risk
   Step 6: Reporting Vulnerabilities and Vector Scores
-  Step 7: IRRM Calculator
+  Step 7: IACS STAR Calculator
 ```
 
 ## Step 1: Identify Threats (ISA/IEC-62443-3-2 ZCR 5.1)
@@ -180,9 +180,9 @@ likelihood of the particular vulnerability will be exploited and used to gain ac
 
 ## Step 3: Estimating Consequences and Impact (ISA/IEC-62443-3-2 ZCR 5.3)
 
-The original OWASP risk rating methodology used a combination of technical and business impact factors to analyze the impact when a vulnerability's exploitation was realized. While useful these are not the best ways to understand the impact of an exploited vulnerability to an IACS/OT enviornment. The Impact column of the [MITRE ATT&CK ICS Matrix](https://attack.mitre.org/matrices/ics/) provides good details about what can happen after successful exploitation. These Impacts are a combination of denial, loss, and manipulation to the process or locations that monitor the process. The FIRST.og [CVSSv4.0](https://www.first.org/cvss/v4-0/) scoring system has been updated to include a new supplemental metric group which includes rating factors that involve safety, automatable, recovery, value density, vulnerability response effort, and provider urgeny. Hence, the IRRM will estimate consequences and impacts using technical factors and safety factors.
+The original OWASP risk rating methodology used a combination of technical and business impact factors to analyze the impact when a vulnerability's exploitation was realized. While useful these are not the best ways to understand the impact of an exploited vulnerability to an IACS/OT enviornment. The Impact column of the [MITRE ATT&CK ICS Matrix](https://attack.mitre.org/matrices/ics/) provides good details about what can happen after successful exploitation. These Impacts are a combination of denial, loss, and manipulation to the process or locations that monitor the process. The FIRST.og [CVSSv4.0](https://www.first.org/cvss/v4-0/) scoring system has been updated to include a new supplemental metric group which includes rating factors that involve safety, automatable, recovery, value density, vulnerability response effort, and provider urgeny. Hence, the IACS STAR will estimate consequences and impacts using technical factors and safety factors.
 
-**NOTE**: Business impacts are still an important factor for rating risk. However, business impact factors are considerations that should be left to the Detailed Risk Analysis. The IRRM is designed to be used when rating the risk of vulnerabilities which feed into the Detailed Risk Analysis process. Therefore, the IRRM calculations will attempt to understand the safety impact factors rather than the business impact factors. (These may be added at a future date.)
+**NOTE**: Business impacts are still an important factor for rating risk. However, business impact factors are considerations that should be left to the Detailed Risk Analysis. The IACS STAR is designed to be used when rating the risk of vulnerabilities which feed into the Detailed Risk Analysis process. Therefore, the IACS STAR calculations will attempt to understand the safety impact factors rather than the business impact factors. (These may be added at a future date.)
 
 ### Technical Impact Factors
 
@@ -275,7 +275,7 @@ The same method will be used when calculating scores for concequences and impact
 
 To calculate the likelihood and consequences rating category the 0 to 9 scale is split into three parts:
 
-![Scoring Categories](./images/irrm_scoring_categories_20230721.jpg)
+![Scoring Categories](./images/istar_scoring_categories_20230721.jpg)
 
 <!---
 <table width="40%" cellspacing="0" cellpadding="5" border="1" align=center>
@@ -301,7 +301,7 @@ To calculate the likelihood and consequences rating category the 0 to 9 scale is
 
 Once the likelihood and consequence ratings have been determined the overall risk associated with the vulnerability can be calculated. This calculation will result in the unmitigated risk rating for the vulnerability which is required for input into the ISA/IEC 62443 Detailed Risk Analysis. The following table will be used to combine the resulting likelihood and consequence categories and assign and unmitigated risk score.
 
-![Scoring Categories](./images/irrm_unmitigated_risk_categories_20230721.jpg)
+![Scoring Categories](./images/istar_unmitigated_risk_categories_20230721.jpg)
 
 <!---
 <table cellspacing="0" cellpadding="5" border="1" align=center>
@@ -343,7 +343,7 @@ Once the likelihood and consequence ratings have been determined the overall ris
 
 ## Step 5: Reporting Vulnerabilities and Vector Scores
 
-The assessment report is the most important part of an assessment. It provide context about the scope of the assessment, the assets involved, the communications between assets and across enforcement boundaries, the methodology used to gather information, details about the findings, and the vulnerability scores for these findings. The report should be clearly written to convey all of this information and the results should be reviewed by all stakeholders. Eventually the information from the assessment will be used in a Detailed Risk Assessment. To this end, like the OWASP risk rating methodology, the IRRM scores can be categorized using a vector score. This vector score provides the likelihood and consequence factor scores when rating the risk. This allows easy integration most automated risk and vulnerability management systems and scoring calculators. To aid the generationg of a vector score each of the factors have been provided an identifier. 
+The assessment report is the most important part of an assessment. It provide context about the scope of the assessment, the assets involved, the communications between assets and across enforcement boundaries, the methodology used to gather information, details about the findings, and the vulnerability scores for these findings. The report should be clearly written to convey all of this information and the results should be reviewed by all stakeholders. Eventually the information from the assessment will be used in a Detailed Risk Assessment. To this end, like the OWASP risk rating methodology, the IACS STAR scores can be categorized using a vector score. This vector score provides the likelihood and consequence factor scores when rating the risk. This allows easy integration most automated risk and vulnerability management systems and scoring calculators. To aid the generationg of a vector score each of the factors have been provided an identifier. 
 
 - Skill Level (SL)
 - Motive (M)
@@ -366,12 +366,12 @@ Once computed the resulting score vector would be represented in the following f
 
 **(SL:0/M:0/O:0/A:0/EA:0/EE:0/AW:0/DR:0/LC:0/LI:0/LA:0/LAC:0/ED:0/PD:0/SE:0/R:0)**
 
-# IRRM Calculator
+# IACS STAR Calculator
 
-The IRRM Calculator (To Be Developed and Deployed) has been set up to aid in the calculation of the IRRM vulnerability scores. This calculator follows the model provided by the [OWASP Risk Rating Calculator](https://owasp-risk-rating.com/). It can be used when considering the scoring of each of the factors that are used to calculate likelihood and consequence. It is intended to aid in discussions and to move towards concensus amongst stakeholders. It can also be used to provide the vector score to be added to the assessment findings.
+The IACS STAR score calculator (website coming soon) has been set up to aid in the calculation of the IACS STAR vulnerability scores. This calculator follows the model provided by the [OWASP Risk Rating Calculator](https://owasp-risk-rating.com/). It can be used when considering the scoring of each of the factors that are used to calculate likelihood and consequence. It is intended to aid in discussions and to move towards concensus amongst stakeholders. It can also be used to provide the vector score to be added to the assessment findings.
 
 To run this calculator locally clone this repository, open a terminal to the repo directory, and run a Python web server with the following command:
 
 **python3 -m http.server 9000**
 
-Open your web browser to your [local IRRM calculator](http://localhost:9000/iacs_risk_rating_calculator.html).
+Open your web browser to your [local IACS STAR score calculator](http://localhost:9000/iacs_star_calculator.html).
