@@ -1,5 +1,5 @@
 # IACS System Testing and Assessment Rating (STAR) Methodology (IACS STAR)
-A risk rating calculation methodology that uses the [OWASP Risk Rating Methodology](https://owasp.org/www-community/OWASP_Risk_Rating_Methodology) as a basis. 
+A methodology for scoring implementation vulnerabilities identified when testing and doing cybersecurity assessments of industrial and automation control environments.  
 
 ## Contributions
 
