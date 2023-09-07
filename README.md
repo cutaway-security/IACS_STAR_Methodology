@@ -222,11 +222,9 @@ Technical impact can be broken down into factors aligned with the traditional se
 
 ### Safety Impact Factors
 
-The business impact stems from the technical impact, but requires a deep understanding of what is important to the company running the application. In general, you should be aiming to support your risks with business impact, particularly if your audience is executive level. The business risk is what justifies investment in fixing security problems.
+The safety impact stems from the technical impact and requires a deep understanding of the process itself. The stakeholders of the System-Under-Consideration (SUC) will have an understanding of how each system and device within the SUC affects safe operations. These stakeholders will be able to provide details relating to how a situation, should exploitation of a condition be realized, will affect the environment, process, equipment and issues related to recoverability. 
 
-Many companies have an asset classification guide and/or a business impact reference to help formalize what is important to their business. These standards can help you focus on what's truly important for security. If these aren't available, then it is necessary to talk with people who understand the business to get their take on what's important.
-
-The factors below are common areas for many businesses, but this area is even more unique to a company than the factors related to threat agent, vulnerability, and technical impact.
+Rating these factors takes a discussion between all team members. Initial ratings can be selected according to the information provided and conditions witnessed during the assessment. Selecting an initial rating will allow follow on discussions that will rate the factors more accurately.
 
 - **Environment Damage** - How much damage to the local environment, plant or public, will be realized by successful exploitation?
   - No environmental impact (0)
