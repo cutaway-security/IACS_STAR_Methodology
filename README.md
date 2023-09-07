@@ -19,7 +19,8 @@ The authors have tried hard to make this model simple to use, while keeping enou
 
 Over the years there has been a lot of debate about how to rate risk within industrial and automation control environments. Rating risk is difficult due to the varying ideas about likelihood, frequency, consequences, and impact ratings. This project is an effort to update the [OWASP Risk Rating Methodology](https://owasp.org/www-community/OWASP_Risk_Rating_Methodology) to be usable when conducting security assessments and pentration tests within IACS/OT enviornments. It is not designed to replace a mature organization's risk rating methdodology. It is intended for assessment teams to use when a specific methodology has not been defined or when a quicker method is needed to quickly rate and reduce risk.
 
-For background, there are other more mature, popular, or well-established Risk Rating Methodologies that can be followed:
+<details>
+<summary>For background, there are other more mature, popular, or well-established Risk Rating Methodologies that can be followed. Click the arrow for a list.</summary>
 
 - [ISA/IEC 62443 Series of Standards](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards)
 - [NIST 800-30 - Guide for Conducting Risk Assessments](https://csrc.nist.gov/publications/detail/sp/800-30/rev-1/final)
@@ -29,8 +30,12 @@ For background, there are other more mature, popular, or well-established Risk R
     - [Risk Assessment Summary](https://infosec.mozilla.org/guidelines/assessing_security_risk)
     - [Rapid Risk Assessment (RRA)](https://infosec.mozilla.org/guidelines/risk/rapid_risk_assessment.html)
 - [The Blind Spot: How to Simply Calculate Cyber Attack Likelihood Using the Exploitability Assessment](https://www.cybersecureot.info/post/the-blind-spot-how-to-simply-calculate-cyber-attack-likelihood-using-the-exploitability-assessment)
+</details>
 
-The risk and vulnerability assessment process is augmented by threat modeling to identify and prioritize potential attack vectors and successful exploitations. The following are a list of methods to help with the threat modeling process:
+The risk and vulnerability assessment process is augmented by threat modeling to identify and prioritize potential attack vectors and successful exploitations. 
+
+<details>
+<summary>Click the arrow for list of methods to help with the threat modeling process.</summary>
 
 - [FIRST.org: Threat Modelling](https://www.first.org/global/sigs/cti/curriculum/threat-modelling)
 - [The Operational Resilience Framework](https://www.grf.org/orf)
@@ -41,11 +46,17 @@ The risk and vulnerability assessment process is augmented by threat modeling to
 - [OWASP Application Threat Modeling](https://owasp.org/www-community/Application_Threat_Modeling)
 - [OWASP pytm](https://owasp.org/www-project-pytm/) - Pythonic framework for threat modeling
 - [OWASP Threat Dragon](https://owasp.org/www-project-threat-dragon/) - threat modeling tool
+</details>
 
-The ISA/IEC 62443 CSMS Detailed Risk Assessment process requires that considerations for the criticality of processes, equipment, and procedures are calculated and documented. The following resources provide some details and insight into the considerations for this process. 
+The ISA/IEC 62443 CSMS Detailed Risk Assessment process requires that considerations for the criticality of processes, equipment, and procedures are calculated and documented. 
+
+
+<details>
+<summary>The following resources provide some details and insight into the considerations for this process. Click the arrow for more details.</summary>
 
 - [Critical infrastructure cybersecurity prioritization: A cross-sector methodology for ranking operational technology cyber scenarios and critical entities](https://www.atlanticcouncil.org/in-depth-research-reports/issue-brief/critical-infrastructure-cybersecurity-prioritization/)
 - [Common Vulnerability Scoring System Version 4.0](https://www.first.org/cvss/v4-0/) - CVSS version 4.0 is the next generation of the Common Vulnerability Scoring System standard.
+</details>
 
 # Approach
 
@@ -64,15 +75,14 @@ These typcial likelihood ratings are not applicable when considering cybersecuri
 
 In the sections below, the factors that make up "likelihood" and "consequences" for IACS/OT environments are broken down as defined in the 'ISA/IEC-62443-3-2 Zone and Conduit Requirements (ZCR) 5: Perform a detailed cyber security risk assessment' section. The assessment team is shown how to leverage these factors to determine the overall severity for risks identified during a vulnerability assessment.
 
-```
-  Step 1: ZCR 5.1: Identify Threats
-  Step 2: ZCR 5.2: Identify Vulnerabilities
-  Step 3: ZCR 5.3: Factors for Estimating Consequences and Impact
-  Step 4: ZCR 5.4: Factors for Estimating Likelihood
-  Step 5: ZCR 5.5: Calculate Unmitigated Cybersecurity Risk
-  Step 6: Reporting Vulnerabilities and Vector Scores
-  Step 7: IACS STAR Calculator
-```
+- Step 1: ZCR 5.1: Identify Threats
+- Step 2: ZCR 5.2: Identify Vulnerabilities
+- Step 3: ZCR 5.3: Factors for Estimating Consequences and Impact
+- Step 4: ZCR 5.4: Factors for Estimating Likelihood
+- Step 5: ZCR 5.5: Calculate Unmitigated Cybersecurity Risk
+- Step 6: Reporting Vulnerabilities and Vector Scores
+- Step 7: IACS STAR Calculator
+
 
 ## Step 1: Identify Threats (ISA/IEC-62443-3-2 ZCR 5.1)
 
@@ -86,7 +96,10 @@ Following the model of the OWASP risk rating system, there are a few factors tha
 
 ### Threat Actor Factors
 
-It is important to understand threat actor groups when considering the skills, motivation, opportunities, and population of potential attackers. There are many lists that outline specific threat actor groups that are known to attack IACS/OT environments. These include: [Wikipedia: threat actor](https://en.wikipedia.org/wiki/Threat_actor), [MITRE](https://attack.mitre.org/groups/), [Mandiant](https://www.mandiant.com/resources/insights/apt-groups), [Crowdstrike](https://www.crowdstrike.com/adversaries/), [Dragos](https://www.dragos.com/threat-groups/), and more. To perform vulnerability assessments there needs to be an easier list that allows all stakeholders to agree. Each of these groups are more accurately defined by their skills, likelihood of success, and primary objectives. The following is one possible breakdown of threat actors associated with IACS/OT environments, each with their own levels of skill, motivation, opportunities, and group size.
+It is important to understand threat actor groups when considering the skills, motivation, opportunities, and population of potential attackers. There are many lists that outline specific threat actor groups that are known to attack IACS/OT environments. These include: [Wikipedia: threat actor](https://en.wikipedia.org/wiki/Threat_actor), [MITRE](https://attack.mitre.org/groups/), [Mandiant](https://www.mandiant.com/resources/insights/apt-groups), [Crowdstrike](https://www.crowdstrike.com/adversaries/), [Dragos](https://www.dragos.com/threat-groups/), and more. To perform vulnerability assessments there needs to be an easier list that allows all stakeholders to agree. Each of these groups are more accurately defined by their skills, likelihood of success, and primary objectives. 
+
+<details>
+<summary>The following is one possible breakdown of threat actors associated with IACS/OT environments, each with their own levels of skill, motivation, opportunities, and group size. Click the arrow to view these.</summary>
 
 - **Malware**: Malicious programs that have a specific affect on vulnerable / compromised systems. This includes general malware, IACS/OT malware, and custom malware.
 - **Script Kiddies**: Uses tools, techiques, and malware that are known, common, and easily accessible.
@@ -96,8 +109,11 @@ It is important to understand threat actor groups when considering the skills, m
 - **Employee**: Disgruntled and reckless employees that have privileged access to systems and devices as well as the knowledge about the technologies and networks.
 - **Vendor**: Rogue vendor, integrator, or consultant that is disgruntled, reckless, or malicious. Have knowledge about technologies and may have privileged access to systems, networks, and devices.
 - **Cyberwarrior**: Nation-state threat actors that typically operate in groups to achieve specific goals. Trained to live-off-the-land, steal credentials, and exfiltrate information. Has access to custom tools and malware designed to maintain persistence, propagate, and achieve their goals.
+</details>
 
 To compute the likelihood that a threat actor group will be successful the following numerical ratings will be assigned to skill level, motivation, opportunity, and size categories. The level of each category can be estimated to calculate the Threat Agent Factor which will be used to compute the overall likelihood that an event will be realized.  
+
+<details><summary>Click the arrow to reivew the likelidhood factors.</summary>
 
 - **Skill Level** - How technically skilled is this group of threat actors? 
   - Limited Information Technology (IT), network, and no Operational Technology (OT) skills (1)
@@ -130,6 +146,7 @@ To compute the likelihood that a threat actor group will be successful the follo
   - Remote vendor / integrator users (7)
   - Physical malicious users (8)
   - Remote anonymous internet users (9)
+</details>
 
 ## Step 2: Identify Vulnerabilities (ISA/IEC-62443-3-2 ZCR 5.2)
 
@@ -144,6 +161,8 @@ The identification of vulnerabilities depends on the type of vulnerability asses
 
 The next set of factors are related to understanding the identified vulnerability. The goal here is to estimate the 
 likelihood that the particular vulnerability will be exploited and used to gain access to the environment, provide persistence on a system or device, or be used to achieve the threat actor's goals. To understand the vulnerability the factors involving access, exploitation, and public awareness should be considered. Additionally, one of the Foundational Requirements outlined in the ISA/IEC 62443 series of standards includes Timely Response to Events (TRE). This should be added to the factors when understanding the vulnerability within the IACS/OT environment.
+
+<details><summary>Click the arrow to review the vulnerability factors.</summary>
 
 - **Ease of Access** - How easy is it for this group of threat agents to access the environment and discover the existence of the vulnerability? 
   - Requires physical access to environment or OT device (1)
@@ -177,16 +196,19 @@ likelihood that the particular vulnerability will be exploited and used to gain 
   - Centrally logged and without review (7)
   - Locally logged without review (8)
   - Not logged (9)
+</details>
 
 ## Step 3: Estimating Consequences and Impact (ISA/IEC-62443-3-2 ZCR 5.3)
 
 The original OWASP risk rating methodology used a combination of technical and business impact factors to analyze the impact when a vulnerability's exploitation was realized. While useful these are not the best ways to understand the impact of an exploited vulnerability to an IACS/OT enviornment. The Impact column of the [MITRE ATT&CK ICS Matrix](https://attack.mitre.org/matrices/ics/) provides good details about what can happen after successful exploitation. These Impacts are a combination of denial, loss, and manipulation to the process or locations that monitor the process. The FIRST.org [CVSSv4.0](https://www.first.org/cvss/v4-0/) scoring system has been updated to include a new supplemental metric group which includes rating factors that involve safety, automatable, recovery, value density, vulnerability response effort, and provider urgency. Hence, the IACS STAR will estimate consequences and impacts using technical factors and safety factors.
 
-**NOTE**: Business impacts are still an important factor for rating risk. However, business impact factors are considerations that should be left to the Detailed Risk Analysis. The IACS STAR is designed to be used when rating the risk of vulnerabilities which feed into the Detailed Risk Analysis process. Therefore, the IACS STAR calculations will attempt to understand the safety impact factors rather than the business impact factors. (Business impact factors may be incorporated into IACS STAR calculations at a future date.)
+[!NOTE]: Business impacts are still an important factor for rating risk. However, business impact factors are considerations that should be left to the Detailed Risk Analysis. The IACS STAR is designed to be used when rating the risk of vulnerabilities which feed into the Detailed Risk Analysis process. Therefore, the IACS STAR calculations will attempt to understand the safety impact factors rather than the business impact factors. (Business impact factors may be incorporated into IACS STAR calculations at a future date.)
 
 ### Technical Impact Factors
 
 Technical impact can be broken down into factors aligned with the traditional security areas of concern: confidentiality, integrity, availability, and accountability. The goal is to estimate the magnitude of the impact on the system if the vulnerability were to be exploited.
+
+<details><summary>Click the arrow to review the technical impact factors.</summary>
 
 - **Loss of Confidentiality** - How much data could be disclosed and how sensitive is it? 
   - No data lost (0)
@@ -219,12 +241,15 @@ Technical impact can be broken down into factors aligned with the traditional se
   - Local logging and cameras but no MFA and no central logging (5)
   - Local logging but no MFA, no central logging, and no cameras (7)
   - No local or central logging, no MFA, and no cameras (9)
+</details>
 
 ### Safety Impact Factors
 
 The safety impact stems from the technical impact and requires a deep understanding of the process itself. The stakeholders of the System-Under-Consideration (SUC) will have an understanding of how each system and device within the SUC affects safe operations. These stakeholders will be able to provide details relating to how a situation, should exploitation of a condition be realized, will affect the environment, process, equipment and issues related to recoverability. 
 
 Rating these factors takes a discussion between all team members. Initial ratings can be selected according to the information provided and conditions witnessed during the assessment. Selecting an initial rating will allow follow on discussions that will rate the factors more accurately.
+
+<details><summary>Click the arrow to review the safety impact factors.</summary>
 
 - **Environment Damage** - How much damage to the local environment, plant or public, will be realized by successful exploitation?
   - No environmental impact (0)
@@ -264,12 +289,15 @@ Rating these factors takes a discussion between all team members. Initial rating
   - Recovery not possible without limited government and vendor/integrator assistance (7)
   - Recovery not possible without moderate government and vendor/integrator assistance (8)
   - Recovery not possible without significant government and vendor/integrator assistance (9)
+</details>
 
 ## Step 4: Estimating Likelihood (ISA/IEC-62443-3-2 ZCR 5.4) and Consequences
 
 The likelihood that the exploitation of a vulnerability will be realized is defined using the factors calculated when identifying threats and vulnerabilities. The scores of the threat and vulnerability factors, respectively, are added together and divided by the number of factors used in the calculation. The resulting values can then be assigned a less granular categorization (e.g. low, medium, and high) to limit subjectivity and improve consensus.
 
 The same method will be used when calculating scores for consequences and impacts. The scores for the technical and safety impacts will be combined to achieve a low, medium, or high categorization.
+
+<details><summary>Click on the arrow to review the table.</summary>
 
 To calculate the likelihood and consequences rating category the 0 to 9 scale is split into three parts:
 
@@ -294,10 +322,14 @@ To calculate the likelihood and consequences rating category the 0 to 9 scale is
 </tr>
 </table>
 --->
+</details>
 
 ## Step 5: Calculate Unmitigated Cybersecurity Risk (ISA/IEC-62443-3-2 ZCR 5.5)
 
 Once the likelihood and consequence ratings have been determined the overall risk associated with the vulnerability can be calculated. This calculation will result in the unmitigated risk rating for the vulnerability which is required for input into the ISA/IEC 62443 Detailed Risk Analysis. The following table will be used to combine the resulting likelihood and consequence categories and assign an unmitigated risk score.
+
+
+<details><summary>Click on the arrow to review the table.</summary>
 
 ![Scoring Categories](./images/istar_unmitigated_risk_categories_20230721.jpg)
 
@@ -338,6 +370,7 @@ Once the likelihood and consequence ratings have been determined the overall ris
 </table>
 <br/>
 --->
+</details>
 
 ## Step 5: Reporting Vulnerabilities and Vector Scores
 
