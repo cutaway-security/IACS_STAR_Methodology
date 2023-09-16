@@ -13,7 +13,14 @@ Security assessments and penetration testing of an Industrial and Automation Con
 
 The IACS System Testing and Assessment Rating (STAR) Methodology (IACS STAR) is intended to be a methodology to estimate the severity of identified risks to the IACS/OT environment. This methodology includes the classic qualitative risk calculation elements while adding the consequence considerations necessary for understanding risks to IACS/OT processes and equipment. Having a system in place that addresses IACS/OT concerns for rating risks will save time and eliminate arguing about prioritizations and improve countermeasure selection in order to quickly reduce risk. 
 
-The authors have tried hard to make this model simple to use, while keeping enough detail for accurate risk estimates to be made. Please reference the section below on customization for more information about tailoring the model for use in a specific organization.
+The authors of this methdology have tried hard to make this model simple to use, while keeping enough detail for accurate risk estimates to be made. Please reference the section below on customization for more information about tailoring the model for use in a specific organization.
+
+<details>
+<summary>Click the arrow For resources that help explain the challenges and obstacles for analyzing and rating risk in IACS/OT environments.</summary>
+
+- [The Blind Spot: How to Simply Calculate Cyber Attack Likelihood Using the Exploitability Assessment](https://www.cybersecureot.info/post/the-blind-spot-how-to-simply-calculate-cyber-attack-likelihood-using-the-exploitability-assessment)
+- [Maximizing Limited Resources in OT Security - Spiceworks](https://www.spiceworks.com/tech/devops/guest-article/maximizing-limited-resources-in-ot-security/amp/)
+</details>
 
 # Overview 
 
@@ -29,7 +36,7 @@ Over the years there has been a lot of debate about how to rate risk within indu
 - Mozilla resources:
     - [Risk Assessment Summary](https://infosec.mozilla.org/guidelines/assessing_security_risk)
     - [Rapid Risk Assessment (RRA)](https://infosec.mozilla.org/guidelines/risk/rapid_risk_assessment.html)
-- [The Blind Spot: How to Simply Calculate Cyber Attack Likelihood Using the Exploitability Assessment](https://www.cybersecureot.info/post/the-blind-spot-how-to-simply-calculate-cyber-attack-likelihood-using-the-exploitability-assessment)
+
 </details>
 
 The risk and vulnerability assessment process is augmented by threat modeling to identify and prioritize potential attack vectors and successful exploitations. 
@@ -48,12 +55,13 @@ The risk and vulnerability assessment process is augmented by threat modeling to
 - [OWASP Threat Dragon](https://owasp.org/www-project-threat-dragon/) - threat modeling tool
 </details>
 
-The ISA/IEC 62443 CSMS Detailed Risk Assessment process requires that considerations for the criticality of processes, equipment, and procedures are calculated and documented. 
-
+The ISA/IEC 62443 CSMS Detailed Risk Assessment process requires that considerations for the criticality of processes, equipment, and procedures are calculated and documented. Each process environment are unique to themselves. While the technologies and implementation details may be similar their implementation, management procedures, and selected counter-measures will be different for each instance. Indeed, the most effective way to secure these environments is to consider what the actual process is designed to accomplish and considering issues that might not necessarily be tied to common technological vulnerabilities that are evaluated by traditional risk and vulnerability assessment processes. 
 
 <details>
 <summary>The following resources provide some details and insight into the considerations for this process. Click the arrow for more details.</summary>
 
+- [Idaho National Labs Cyber Informed Engineering](https://inl.gov/cie/)
+- [Idaho National Labs Consequence-driven Cyber-Informed Engineering](https://inl.gov/cce/)
 - [Critical infrastructure cybersecurity prioritization: A cross-sector methodology for ranking operational technology cyber scenarios and critical entities](https://www.atlanticcouncil.org/in-depth-research-reports/issue-brief/critical-infrastructure-cybersecurity-prioritization/)
 - [Common Vulnerability Scoring System Version 4.0](https://www.first.org/cvss/v4-0/) - CVSS version 4.0 is the next generation of the Common Vulnerability Scoring System standard.
 </details>
@@ -202,8 +210,7 @@ likelihood that the particular vulnerability will be exploited and used to gain 
 
 The original OWASP risk rating methodology used a combination of technical and business impact factors to analyze the impact when a vulnerability's exploitation was realized. While useful these are not the best ways to understand the impact of an exploited vulnerability to an IACS/OT enviornment. The Impact column of the [MITRE ATT&CK ICS Matrix](https://attack.mitre.org/matrices/ics/) provides good details about what can happen after successful exploitation. These Impacts are a combination of denial, loss, and manipulation to the process or locations that monitor the process. The FIRST.org [CVSSv4.0](https://www.first.org/cvss/v4-0/) scoring system has been updated to include a new supplemental metric group which includes rating factors that involve safety, automatable, recovery, value density, vulnerability response effort, and provider urgency. Hence, the IACS STAR will estimate consequences and impacts using technical factors and safety factors.
 
-> [!NOTE]
-> Business impacts are still an important factor for rating risk. However, business impact factors are considerations that should be left to the Detailed Risk Analysis. The IACS STAR is designed to be used when rating the risk of vulnerabilities which feed into the Detailed Risk Analysis process. Therefore, the IACS STAR calculations will attempt to understand the safety impact factors rather than the business impact factors. (Business impact factors may be incorporated into IACS STAR calculations at a future date.)
+***NOTE***: Business impacts are still an important factor for rating risk. However, business impact factors are considerations that should be left to the Detailed Risk Analysis. The IACS STAR is designed to be used when rating the risk of vulnerabilities which feed into the Detailed Risk Analysis process. Therefore, the IACS STAR calculations will attempt to understand the safety impact factors rather than the business impact factors. (Business impact factors may be incorporated into IACS STAR calculations at a future date.)
 
 ### Technical Impact Factors
 
@@ -396,14 +403,25 @@ The assessment report is the most important part of an assessment. It provides c
 
 Once computed the resulting score vector would be represented in the following format:
 
-**(SL:0/M:0/O:0/A:0/EA:0/EE:0/AW:0/DR:0/LC:0/LI:0/LA:0/LAC:0/ED:0/PD:0/SE:0/R:0)**
+```
+(SL:0/M:0/O:0/A:0/EA:0/EE:0/AW:0/DR:0/LC:0/LI:0/LA:0/LAC:0/ED:0/PD:0/SE:0/R:0)
+```
 
 # IACS STAR Calculator
 
 The IACS STAR score calculator (website coming soon) has been set up to aid in the calculation of the IACS STAR vulnerability scores. This calculator follows the model provided by the [OWASP Risk Rating Calculator](https://owasp-risk-rating.com/). It can be used when considering the scoring of each of the factors that are used to calculate likelihood and consequence. It is intended to aid in discussions and to move towards consensus amongst stakeholders. It can also be used to provide the vector score to be added to the assessment findings.
 
+## Online IACS STAR Calculator
+
+The online calculator: [IACS-STAR Calculator](https://iacs-star-calculator.com/)
+
+The online documentation: [IACS-STAR Methodology](https://iacs-star-calculator.com/methodology.html)
+
+## On Premise IACS STAR Calculator 
 To run this calculator locally clone this repository, open a terminal to the repo directory, and run a Python web server with the following command:
 
-**python3 -m http.server 9000**
+```
+python3 -m http.server 9000
+```
 
 Open your web browser to your [local IACS STAR score calculator](http://localhost:9000/iacs_star_calculator.html).
