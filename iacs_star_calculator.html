@@ -262,8 +262,8 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
             <!--Threat Actor Opportunity:  When accessing the control environment, how are the threat actors limited by deployed countermeasures?-->
             <h6>Opportunity</h6>
             <select class="custom-select custom-select-sm" id="o" data-toggle="tooltip" data-placement="top" title="What resources and opportunities are required for this group of threat agents to find and exploit this vulnerability?">
-                <option class="text-0" value="0">0 - Physical access and local authentication is required and response time is less than fifteen minutes</option>
-                <option class="text-1" value="1">1 - Physical access and local authentication is required but response time is more than fifteen minutes</option>
+                <option class="text-0" value="0">0 - Physical access and local authentication are required and response time is less than fifteen minutes</option>
+                <option class="text-1" value="1">1 - Physical access and local authentication are required but response time is more than fifteen minutes</option>
                 <option class="text-2" value="2">2</option>
                 <option class="text-3" value="3">3 - Physical and remote access is possible, local authentication required, and active monitoring is enabled</option>
                 <option class="text-4" value="4">4</option>
@@ -404,7 +404,7 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-1" value="1">1 - Minimal production interruption and easily recoverable</option>
                 <option class="text-2" value="2">2 - </option>
                 <option class="text-3" value="3">3 - Device or service interrupted but process not impacted</option>
-                <option class="text-4" value="4">4 - Production services temperarily interrupted by easily recoverable</option>
+                <option class="text-4" value="4">4 - Production services temporarily interrupted by easily recoverable</option>
                 <option class="text-5" value="5">5 - </option>
                 <option class="text-6" value="6">6 - Production services interrupted but does not affect other processes</option>
                 <option class="text-7" value="7">7 - Production services interrupted and impacts other processes</option>
@@ -464,7 +464,7 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
 
             <!--Safety Equipment - How well are digital safety equipment deployed and protected?-->
             <h6>Safety Equipment</h6>
-            <select class="custom-select custom-select-sm" id="se" data-toggle="tooltip" data-placement="top" title="How well are digital safety equipment deployed and protected?">
+            <select class="custom-select custom-select-sm" id="se" data-toggle="tooltip" data-placement="top" title="How well is digital safety equipment deployed and protected?">
                 <option class="text-0" value="0">0 - Safety equipment not required for process</option>
                 <option class="text-1" value="1">1 - Safety equipment required for process but not remotely accessible or on the same network as vulnerability</option>
                 <option class="text-2" value="2">2 - Safety equipment required for process, remotely accessible, and requires MFA but not on the same network as vulnerability</option>
@@ -507,7 +507,7 @@ Overall Risk Severity: <span id="R"></span>
 <div class="alert m-3" role="alert">
 Score Vector: <a id="score" target="_blank"></a>
 </div>
-<p>This Risk Rating Calculator is based on <a href="https://github.com/cutaway-security/IACS_STAR_Methodology" target="_blank">IACS System Testing and Assessment Rating (STAR) Methodology</a>. To understand how to effectively use this calculator to score implementation vulnerabilities, please have the stakeholders and assessment team read this <a href="./methodology.html" target="_blank">documentation</a> and discuss. Some of these factors will be consistent for all issues identified for the System-Under-Consideration (SUC).</p> 
+<p>This Risk Rating Calculator is based on <a href="https://github.com/cutaway-security/IACS_STAR_Methodology" target="_blank">IACS System Testing and Assessment Rating (STAR) Methodology</a>. To understand how to effectively use this calculator to score implementation vulnerabilities, please have the stakeholders and assessment team read the <a href="./methodology.html" target="_blank">methodology documentation</a> to understand the likihood and consequence factors. Threat actor factor scores will, most likely, be consistent for all situations involving the System-Under-Consideration (SUC). Stakeholders may be required to accruately score the safety impact factors for each issue being reviewed.</p> 
 <p>This Risk Rating Calculator was generated using the example of <a href="https://owasp-risk-rating.com/" target="_blank">OWASP's Risk Rating Calculator</a>.</p> 
 <p>This project was developed and is supported by <a href="https://www.cutawaysecurity.com/" target="_blank">Cutaway Security, LLC.</a></p> 
         </div>
