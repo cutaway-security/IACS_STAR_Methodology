@@ -177,7 +177,8 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                         score = score + ')';
                         $('#score').text(score);
                         /*$("#score").attr("href", "https://iacs-risk-rating.com/?vector=" + score);*/
-                        $("#score").attr("href", "https://localhost:9000?vector=" + score);
+                        /*$("#score").attr("href", "https://localhost:9000?vector=" + score);*/
+                        $("#score").attr("href", "https://iacs-star-calculator.com/?vector=" + score);
                         matrix[0][0] = 'Informational';
                         matrix[1][0] = 'Low';
                         matrix[2][0] = 'Medium';
@@ -247,16 +248,16 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
             <!--Threat Actor Motive: How motivated of the threat actors once they obtain access to the control environment? An excellent guide for this is the Impact column of the [MITRE ATT&CK ICS Matrix](https://attack.mitre.org/matrices/ics/).-->
             <h6>Motive</h6>
             <select class="custom-select custom-select-sm" id="m" data-toggle="tooltip" data-placement="top" title="How motivated of the threat actors once they obtain access to the control environment?">
-                <option class="text-0" value="0">0 - Physical access and local authentication is required and response time is less than fifteen minutes</option>
-                <option class="text-1" value="1">1 - Physical access and local authentication is required but response time is more than fifteen minutes</option>
-                <option class="text-2" value="2">2</option>
-                <option class="text-3" value="3">3 - Physical and remote access is possible, local authentication required, and active monitoring is enabled</option>
+                <option class="text-0" value="0">0</option>
+                <option class="text-1" value="1">1 No reward or intention to impact control environment</option>
+                <option class="text-2" value="2">2 - Theft of operational data or equipment</option>
+                <option class="text-3" value="3">3 - Create loss of view and control as a result of target-of-opportunity access to assets</option>
                 <option class="text-4" value="4">4</option>
-                <option class="text-5" value="5">5 - Limited logging of physical or remote access but administrative privileges are required to access network devices, systems, and applications</option>
-                <option class="text-6" value="6">6 - Undetected physical or remote access but administrative privileges are required to access network devices, systems, and applications</option>
+                <option class="text-5" value="5">5 - Limit access to file shares and prevent view and control using common malware</option>
+                <option class="text-6" value="6">6 - Prevent view and control using specially designed malware</option>
                 <option class="text-7" value="7">7</option>
-                <option class="text-8" value="8">8 - Undetected physical or remote access that provides requires authentication to some network devices, systems, and applications</option>
-                <option class="text-9" value="9">9 - Undetected physical or remote access that provides elevated permissions to network devices, systems, and applications</option> 
+                <option class="text-8" value="8">8 - Manipulate view and control using privileged remote access and/or specially designed malware</option>
+                <option class="text-9" value="9">9 - Prevent operation of safety equipment or cause a catastrophic failure</option> 
             </select>
 
             <!--Threat Actor Opportunity:  When accessing the control environment, how are the threat actors limited by deployed countermeasures?-->
@@ -333,10 +334,10 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-3" value="3">3 - Not publicly known but common configuration vulnerability</option>
                 <option class="text-4" value="4">4</option>
                 <option class="text-5" value="5">5 - Publicly identified on vendor website or within NVD Vulnerabilities database but no known exploit available</option>
-                <option class="text-6" value="6">6 - Publicly identified on vendor website or within NVD Vulnerabilities databaseno known exploit available but target threat actor group can develop exploit</option>
+                <option class="text-6" value="6">6 - Publicly identified on vendor website or within NVD Vulnerabilities database, no known exploit available but identified threat actor group can develop exploit</option>
                 <option class="text-7" value="7">7 - </option>
                 <option class="text-8" value="8">8 - Publicly identified on vendor website, vulnerability databases, and exploit available in public forums, i.e. Metasploit, Exploit-DB</option>
-                <option class="text-9" value="9">9 - Public identified and in CISA Known Exploited Vulnerabilityes Catalog</option>     
+                <option class="text-9" value="9">9 - Public identified and in CISA Known Exploited Vulnerabilities Catalog</option>     
             </select>
 
             <!--Detection/Response - How likely is an exploit to be detected?-->
@@ -449,7 +450,7 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
 
             <!--Process Damage - How much damange to the process equipment will be realized by successful exploitation?-->
             <h6>Process Damage</h6>
-            <select class="custom-select custom-select-sm" id="pd" data-toggle="tooltip" data-placement="top" title="How much damange to the process equipment will be realized by successful exploitation?">
+            <select class="custom-select custom-select-sm" id="pd" data-toggle="tooltip" data-placement="top" title="How much damage to the process equipment will be realized by successful exploitation?">
                 <option class="text-0" value="0">0 - No devices can be damaged and configurations cannot be modified</option>
                 <option class="text-1" value="1">1 - Device or monitoring systems / applications can be modified but do not damage device or process</option>
                 <option class="text-2" value="2">2 - </option>
@@ -507,7 +508,7 @@ Overall Risk Severity: <span id="R"></span>
 <div class="alert m-3" role="alert">
 Score Vector: <a id="score" target="_blank"></a>
 </div>
-<p>This Risk Rating Calculator is based on <a href="https://github.com/cutaway-security/IACS_STAR_Methodology" target="_blank">IACS System Testing and Assessment Rating (STAR) Methodology</a>. To understand how to effectively use this calculator to score implementation vulnerabilities, please have the stakeholders and assessment team read the <a href="./methodology.html" target="_blank">methodology documentation</a> to understand the likihood and consequence factors. Threat actor factor scores will, most likely, be consistent for all situations involving the System-Under-Consideration (SUC). Stakeholders may be required to accruately score the safety impact factors for each issue being reviewed.</p> 
+<p>This Risk Rating Calculator is based on <a href="https://github.com/cutaway-security/IACS_STAR_Methodology" target="_blank">IACS System Testing and Assessment Rating (STAR) Methodology</a>. To understand how to effectively use this calculator to score implementation vulnerabilities, please have the stakeholders and assessment team read the <a href="./methodology.html" target="_blank">methodology documentation</a> to understand the likelihood and consequence factors. Threat actor factor scores will, most likely, be consistent for all situations involving the System-Under-Consideration (SUC). Stakeholders may be required to accurately score the safety impact factors for each issue being reviewed.</p> 
 <p>This Risk Rating Calculator was generated using the example of <a href="https://owasp-risk-rating.com/" target="_blank">OWASP's Risk Rating Calculator</a>.</p> 
 <p>This project was developed and is supported by <a href="https://www.cutawaysecurity.com/" target="_blank">Cutaway Security, LLC.</a></p> 
         </div>
