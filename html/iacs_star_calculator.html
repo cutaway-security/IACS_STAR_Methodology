@@ -242,14 +242,14 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-6" value="6">6 - Advanced IT, advanced network, and moderate OT technical skills</option>
                 <option class="text-7" value="7">7</option>
                 <option class="text-8" value="8">8 - Advanced OT technical skills</option>
-                <option class="text-9" value="9">9 - Security penetration skills and knowledge of OT technologies</option> 
+                <option class="text-9" value="9">9 - Security penetration skills and knowledge of OT technologies</option>
             </select>
 
             <!--Threat Actor Motive: How motivated of the threat actors once they obtain access to the control environment? An excellent guide for this is the Impact column of the [MITRE ATT&CK ICS Matrix](https://attack.mitre.org/matrices/ics/).-->
             <h6>Motive</h6>
             <select class="custom-select custom-select-sm" id="m" data-toggle="tooltip" data-placement="top" title="How motivated of the threat actors once they obtain access to the control environment?">
                 <option class="text-0" value="0">0</option>
-                <option class="text-1" value="1">1 No reward or intention to impact control environment</option>
+                <option class="text-1" value="1">1 - No reward or intention to impact control environment</option>
                 <option class="text-2" value="2">2 - Theft of operational data or equipment</option>
                 <option class="text-3" value="3">3 - Create loss of view and control as a result of target-of-opportunity access to assets</option>
                 <option class="text-4" value="4">4</option>
@@ -257,7 +257,7 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-6" value="6">6 - Prevent view and control using specially designed malware</option>
                 <option class="text-7" value="7">7</option>
                 <option class="text-8" value="8">8 - Manipulate view and control using privileged remote access and/or specially designed malware</option>
-                <option class="text-9" value="9">9 - Prevent operation of safety equipment or cause a catastrophic failure</option> 
+                <option class="text-9" value="9">9 - Prevent operation of safety equipment or cause a catastrophic failure</option>
             </select>
 
             <!--Threat Actor Opportunity:  When accessing the control environment, how are the threat actors limited by deployed countermeasures?-->
@@ -272,7 +272,7 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-6" value="6">6 -Undetected physical or remote access but administrative privileges are required to access network devices, systems, and applications</option>
                 <option class="text-7" value="7">7</option>
                 <option class="text-8" value="8">8 - Undetected physical or remote access that provides requires authentication to some network devices, systems, and applications</option>
-                <option class="text-9" value="9">9 - Undetected physical or remote access that provides elevated permissions to network devices, systems, and applications</option>   
+                <option class="text-9" value="9">9 - Undetected physical or remote access that provides elevated permissions to network devices, systems, and applications</option>
             </select>
 
             <!--Threat Actor Access: What is the physical or remote access capabilities achieved by successful exploitation within the process?-->
@@ -287,7 +287,7 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-6" value="6">6</option>
                 <option class="text-7" value="7">7 - Remote vendor / integrator users</option>
                 <option class="text-8" value="8">8 - Physical malicious users</option>
-                <option class="text-9" value="9">9 - Remote anonymous internet users</option> 
+                <option class="text-9" value="9">9 - Remote anonymous internet users</option>
             </select>
             <div class="alert m-3" role="alert">
                 Threat Actor Factor: <span id="TAF"></span>
@@ -307,7 +307,7 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-6" value="6">6 - Remotely accessible but no automated tools to discover for OT technology</option>
                 <option class="text-7" value="7">7 - Remotely accessible but no automated tools to discover for IT technology</option>
                 <option class="text-8" value="8">8 - Remotely accessible and automated tools available for IT technology</option>
-                <option class="text-9" value="9">9 - Remotely accessible and automated tools available for OT technology</option>  
+                <option class="text-9" value="9">9 - Remotely accessible and automated tools available for OT technology</option>
             </select>
 
             <!--Vulnerability/Ease of exploit: How easy is it to actually exploit the vulnerability? -->
@@ -322,7 +322,7 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-6" value="6">6 - Custom scripts / tools can be made to exploit OT technology</option>
                 <option class="text-7" value="7">7</option>
                 <option class="text-8" value="8">8 - Automated tools available for IT technology</option>
-                <option class="text-9" value="9">9 - Automated tools available for OT technology</option>  
+                <option class="text-9" value="9">9 - Automated tools available for OT technology</option>
             </select>
 
             <!--Vulnerability/Awareness: How well known is this vulnerability?-->
@@ -332,12 +332,12 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-1" value="1">1 - Unknown OT Vulnerability</option>
                 <option class="text-2" value="2">2 - Unknown IT Vulnerability</option>
                 <option class="text-3" value="3">3 - Not publicly known but common configuration vulnerability</option>
-                <option class="text-4" value="4">4</option>
+                <option class="text-4" value="4"></option>
                 <option class="text-5" value="5">5 - Publicly identified on vendor website or within NVD Vulnerabilities database but no known exploit available</option>
                 <option class="text-6" value="6">6 - Publicly identified on vendor website or within NVD Vulnerabilities database, no known exploit available but identified threat actor group can develop exploit</option>
-                <option class="text-7" value="7">7 - </option>
+                <option class="text-7" value="7"></option>
                 <option class="text-8" value="8">8 - Publicly identified on vendor website, vulnerability databases, and exploit available in public forums, i.e. Metasploit, Exploit-DB</option>
-                <option class="text-9" value="9">9 - Public identified and in CISA Known Exploited Vulnerabilities Catalog</option>     
+                <option class="text-9" value="9">9 - Public identified and in CISA Known Exploited Vulnerabilities Catalog</option>
             </select>
 
             <!--Detection/Response - How likely is an exploit to be detected?-->
@@ -345,14 +345,14 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
             <select class="custom-select custom-select-sm" id="dr" data-toggle="tooltip" data-placement="top" title="How likely is an exploit to be detected?">
                 <option class="text-0" value="0">0 - N/A</option>
                 <option class="text-1" value="1">1 - Centrally logged with alerts and formal review and response plan</option>
-                <option class="text-2" value="2">2 - </option>
+                <option class="text-2" value="2">2</option>
                 <option class="text-3" value="3">3 - Centrally logged with alerts and formal review but no response plan</option>
-                <option class="text-4" value="4">4 - </option>
-                <option class="text-5" value="5">5 - </option>
+                <option class="text-4" value="4">4</option>
+                <option class="text-5" value="5">5</option>
                 <option class="text-6" value="6">6 - Centrally logged with alerts, but no formal review or response plan</option>
                 <option class="text-7" value="7">7 - Centrally logged and without review</option>
                 <option class="text-8" value="8">8 - Locally logged without review</option>
-                <option class="text-9" value="9">9 - Not logged</option> 
+                <option class="text-9" value="9">9 - Not logged</option>
             </select>
             <div class="alert m-3" role="alert">
                 Vulnerability Factor: <span id="VF"></span>
@@ -380,7 +380,7 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-6" value="6">6 - Extensive network configuration data and some device configuration data disclosed</option>
                 <option class="text-7" value="7">7 - Some process network and device configuration data disclosed</option>
                 <option class="text-8" value="8">8</option>
-                <option class="text-9" value="9">9 - All process network and device configuration data disclosed</option> 
+                <option class="text-9" value="9">9 - All process network and device configuration data disclosed</option>
             </select>
 
             <!--Loss of Integrity - How is the process data changed and does it impact critical functions?-->
@@ -395,7 +395,7 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-6" value="6">6 - Remote modification of device configurations used for non-critical functions</option>
                 <option class="text-7" value="7">7 - Local modification of set points used for critical functions</option>
                 <option class="text-8" value="8">8 - Remote modification of set points used for critical functions</option>
-                <option class="text-9" value="9">9 - Remote modification of device configurations used for critical functions</option> 
+                <option class="text-9" value="9">9 - Remote modification of device configurations used for critical functions</option>
             </select>
 
             <!--Loss of Availability - How are production and safety services impacted?-->
@@ -403,14 +403,14 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
             <select class="custom-select custom-select-sm" id="la" data-toggle="tooltip" data-placement="top" title="How are production and safety services impacted?">
                 <option class="text-0" value="0">0 - N/A</option>
                 <option class="text-1" value="1">1 - Minimal production interruption and easily recoverable</option>
-                <option class="text-2" value="2">2 - </option>
+                <option class="text-2" value="2"></option>
                 <option class="text-3" value="3">3 - Device or service interrupted but process not impacted</option>
                 <option class="text-4" value="4">4 - Production services temporarily interrupted by easily recoverable</option>
-                <option class="text-5" value="5">5 - </option>
+                <option class="text-5" value="5"></option>
                 <option class="text-6" value="6">6 - Production services interrupted but does not affect other processes</option>
                 <option class="text-7" value="7">7 - Production services interrupted and impacts other processes</option>
                 <option class="text-8" value="8">8 - All production services completely lost</option>
-                <option class="text-9" value="9">9 - Loss of process safety functionality</option>    
+                <option class="text-9" value="9">9 - Loss of process safety functionality</option>
             </select>
 
             <!--Loss of Accountability - Are the threat actor actions traceable to an individual? -->
@@ -420,12 +420,12 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-1" value="1">1 - Central logging, Multifactor Authentication (MFA), and cameras</option>
                 <option class="text-2" value="2">2 - Central logging, Multifactor Authentication (MFA), but no cameras</option>
                 <option class="text-3" value="3">3 - Local logging, Multifactor Authentication (MFA), and cameras but no central logging</option>
-                <option class="text-4" value="4">4 - </option>
+                <option class="text-4" value="4">4</option>
                 <option class="text-5" value="5">5 - Local logging and cameras but no MFA and no central logging</option>
-                <option class="text-6" value="6">6 - </option>
+                <option class="text-6" value="6">6</option>
                 <option class="text-7" value="7">7 - Local logging but no MFA, no central logging, and no cameras</option>
-                <option class="text-8" value="8">8 - </option>
-                <option class="text-9" value="9">9 - No local or central logging, no MFA, and no cameras</option> 
+                <option class="text-8" value="8">8</option>
+                <option class="text-9" value="9">9 - No local or central logging, no MFA, and no cameras</option>
             </select>
             <div class="alert m-3" role="alert">
                 Technical Impact Factor: <span id="TIF"></span>
@@ -439,13 +439,13 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-0" value="0">0 - No environmental impact</option>
                 <option class="text-1" value="1">1 - Environment damage limited by safety equipment, active, and passive protections</option>
                 <option class="text-2" value="2">2 - Environment damage limited by active and passive protections</option>
-                <option class="text-3" value="3">3</option>
+                <option class="text-3" value="3"></option>
                 <option class="text-4" value="4">4 - Environment damage limited by passive protections only</option>
                 <option class="text-5" value="5">5 - Safety equipment not remotely accessible and active and passive protections are in place</option>
-                <option class="text-6" value="6">6</option>
+                <option class="text-6" value="6"></option>
                 <option class="text-7" value="7">7 - Safety equipment remotely accessible but active and passive protections are sufficient</option>
                 <option class="text-8" value="8">8 - Safety equipment remotely accessible and situation might overwhelm active protections but passive protections are sufficient</option>
-                <option class="text-9" value="9">9 - Safety equipment on production network and situation might overwhelm active or passive protections</option> 
+                <option class="text-9" value="9">9 - Safety equipment on production network and situation might overwhelm active or passive protections</option>
             </select>
 
             <!--Process Damage - How much damange to the process equipment will be realized by successful exploitation?-->
@@ -453,14 +453,14 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
             <select class="custom-select custom-select-sm" id="pd" data-toggle="tooltip" data-placement="top" title="How much damage to the process equipment will be realized by successful exploitation?">
                 <option class="text-0" value="0">0 - No devices can be damaged and configurations cannot be modified</option>
                 <option class="text-1" value="1">1 - Device or monitoring systems / applications can be modified but do not damage device or process</option>
-                <option class="text-2" value="2">2 - </option>
+                <option class="text-2" value="2"></option>
                 <option class="text-3" value="3">3 - Device device configuration can be changed but easily recoverable</option>
-                <option class="text-4" value="4">4 - Device damaged requiring manual update but limited impact to process</option>
-                <option class="text-5" value="5">5 - </option>
+                <option class="text-4" value="4">4 - Device damaged requiring manual update but limited impact to proces</option>
+                <option class="text-5" value="5"></option>
                 <option class="text-6" value="6">6 - Device damaged requiring manual update but significant impact to process</option>
                 <option class="text-7" value="7">7 - Safety equipment configuration changed but limited impact to process</option>
                 <option class="text-8" value="8">8 - Safety equipment damaged but limited impact to process</option>
-                <option class="text-9" value="9">9 - Safety equipment damaged causing process failure or automatic shutdown</option>   
+                <option class="text-9" value="9">9 - Safety equipment damaged causing process failure or automatic shutdown</option>
             </select>
 
             <!--Safety Equipment - How well are digital safety equipment deployed and protected?-->
@@ -475,7 +475,7 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-6" value="6">6 - Safety equipment vulnerable and remotely accessible but requires MFA</option>
                 <option class="text-7" value="7">7 - Safety equipment vulnerable and remotely accessible but requires authentication but no MFA</option>
                 <option class="text-8" value="8">8 - Safety equipment vulnerable and remotely accessible but requires authentication but but default/hardcoded password in place and no MFA</option>
-                <option class="text-9" value="9">9 - Safety equipment vulnerable, remotely accessible, and does not require authentication</option>    
+                <option class="text-9" value="9">9 - Safety equipment vulnerable, remotely accessible, and does not require authentication</option>
             </select>
 
             <!--Recoverability - How well is the organization / process team prepared to recover during successful exploitation?-->
@@ -490,7 +490,7 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-6" value="6">6 - Recovery not possible without vendor / integrator assistance</option>
                 <option class="text-7" value="7">7 - Recovery not possible without limited government and vendor / integrator assistance</option>
                 <option class="text-8" value="8">8 - Recovery not possible without moderate government and vendor / integrator assistance</option>
-                <option class="text-9" value="9">9 - Recovery not possible without significant government and vendor / integrator assistance</option>   
+                <option class="text-9" value="9">9 - Recovery not possible without significant government and vendor / integrator assistance</option>
             </select>
             <div class="alert m-3" role="alert">
                 Safety Impact Factor: <span id="SIF"></span>                
