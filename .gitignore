@@ -398,3 +398,10 @@ FodyWeavers.xsd
 *.sln.iml
 
 venv
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/vcs.xml
+/.idea/IACS_STAR_Methodology.iml
+/.idea/.gitignore
