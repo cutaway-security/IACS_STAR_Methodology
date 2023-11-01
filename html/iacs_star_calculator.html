@@ -209,8 +209,8 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                         }
                         mLF = getRiskInNum(LF);
                         mCF = getRiskInNum(CF);
-                        $('#R').parent().removeClass('text-Note text-Low text-Medium text-High text-Critical').addClass('text-' + matrix[mLF][mCF]);
-                        $('#R').text(matrix[mLF][mCF]);
+                        $('#Risk').parent().removeClass('text-Note text-Low text-Medium text-High text-Critical').addClass('text-' + matrix[mLF][mCF]);
+                        $('#Risk').text(matrix[mLF][mCF]);
                     }
                     
                     function getUrlParameter(name) {
@@ -505,7 +505,7 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
 </div>
 </div>
 <div class="alert m-3" role="alert">
-Overall Risk Severity: <span id="R"></span>
+Overall Risk Severity: <span id="Risk"></span>
 </div>
 <div class="alert m-3" role="alert">
 Score Vector: <a id="score" target="_blank"></a>
