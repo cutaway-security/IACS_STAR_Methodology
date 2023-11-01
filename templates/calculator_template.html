@@ -153,10 +153,12 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                         matrix[0] = [];
                         matrix[1] = [];
                         matrix[2] = [];
-                        TAF = (+$("#sl").val() + +$("#m").val() + +$("#o").val() + +$("#a").val()) / 4;
+                        TAF = (+ $("#sl").val() + +$("#m").val() + +$("#o").val() + +$("#a").val()) / 4;
                         VF = (+$("#ea").val() + +$("#ee").val() + +$("#aw").val() + +$("#dr").val()) / 4;
-                        TIF = (+$("#lc").val() + +$("#li").val() + +$("#la").val() + +$("#lac").val()) / 4;
-                        SIF = (+$("#ed").val() + +$("#pd").val() + +$("#se").val() + +$("#r").val()) / 4;
+                        TIF = (+ ($("#lc").val()  * {{ risk_weight.TIF_LC }} )+ +($("#li").val() * {{ risk_weight.TIF_LI }} )
+                                + + ($("#la").val()* {{ risk_weight.TIF_LA }} ) + + ($("#lac").val() * {{ risk_weight.TIF_LAC }} )) / 4;
+                        SIF = (+($("#ed").val() * {{ risk_weight.SIF_ED }} ) + +($("#pd").val()  * {{ risk_weight.SIF_PD }} )
+                                + +($("#se").val()  * {{ risk_weight.SIF_SE }} )+ +($("#r").val() * {{ risk_weight.SIF_R }} )) / 4;
                         score = '(';
                         score = score + 'SL:' + $("#sl").val() + '/';
                         score = score + 'M:' + $("#m").val() + '/';
