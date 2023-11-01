@@ -214,14 +214,14 @@ option_strings:
 
 risk_weight:
   # ( TIF_LC + TIF_LI + TIF_LA + TIF_LAC ) / 4 = must result in "1" to be accepted
-  TIF_LC: 1.5
-  TIF_LI: 0.5
+  TIF_LC: 1
+  TIF_LI: 1
   TIF_LA: 1
   TIF_LAC: 1
 
 
   # ( SIF_ED + SIF_PD + SIF_SE + SIF_R ) / 4 = must result in "1" to be accepted
   SIF_ED: 1
-  SIF_PD: 1.5
-  SIF_SE: 0.5
+  SIF_PD: 1
+  SIF_SE: 1
   SIF_R: 1
