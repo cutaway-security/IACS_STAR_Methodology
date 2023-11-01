@@ -1,5 +1,13 @@
 #!/usr/bin/env python
 
+
+"""
+pip install PyYAML
+pip install -U Jinja2
+
+"""
+
+
 import argparse
 import yaml
 from jinja2 import Environment, FileSystemLoader
