@@ -16,7 +16,7 @@ Usage:
 ./generate_calculator.py
 
 The above command would generate the "iacs_star_calculator.html" in the html folder based on the default config
-"default.yaml". Changing the config file is possible using parameter "config". Asuming you have created a config called
+"default.yaml". Changing the config file is possible using parameter "config". Assuming you have created a config called
 pharma.yaml this could be done using the following command.
 
 ./generate_calculator.py --config pharma.yaml

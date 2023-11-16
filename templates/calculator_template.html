@@ -91,7 +91,7 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                             $(this).addClass('text-' + $(this).val());
                             calculate();
                         });
-                        init(getUrlParameter('vector'), getUrlParameter('v'));
+                        init(atob(getUrlParameter('vector')), getUrlParameter('v'));
                         colorize();
                         calculate();
                     });
@@ -99,7 +99,7 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                     function init(vector, v) {
                         var i = 0;
                         var part = '';
-                        var partials = ["sl", "m", "o", "s", "ed", "ee", "a", "id", "lc", "li", "lav", "lac", "fd", "rd", "nc", "pv"];
+                        var partials = ["sl", "m", "o", "a", "ea", "ee", "aw", "dr", "lc", "li", "la", "lac", "ed", "pd", "se", "r"];
                         for (var i = 0; i < partials.length; i++) {
                             $("#" + partials[i]).val(0);
                         }
@@ -177,10 +177,12 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                         score = score + 'SE:' + $("#se").val() + '/';
                         score = score + 'R:' + $("#r").val();
                         score = score + ')';
+                        score_param = btoa(score)
+                        
                         $('#score').text(score);
-                        /*$("#score").attr("href", "https://iacs-risk-rating.com/?vector=" + score);*/
-                        /*$("#score").attr("href", "https://localhost:9000?vector=" + score);*/
-                        $("#score").attr("href", "https://iacs-star-calculator.com/?vector=" + score);
+                        /*$("#score").attr("href", "https://iacs-risk-rating.com/?vector=" + score_param);*/
+                        $("#score").attr("href", "http://localhost:9000/iacs_star_calculator.html?vector=" + score_param);
+                        /*$("#score").attr("href", "https://iacs-star-calculator.com/?vector=" + score_param);*/
                         matrix[0][0] = 'Informational';
                         matrix[1][0] = 'Low';
                         matrix[2][0] = 'Medium';
