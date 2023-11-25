@@ -180,9 +180,9 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                         score_param = btoa(score)
                         
                         $('#score').text(score);
-                        /*$("#score").attr("href", "https://iacs-risk-rating.com/?vector=" + score_param);*/
-                        /*$("#score").attr("href", "http://localhost:9000/iacs_star_calculator.html?vector=" + score_param);*/
-                        $("#score").attr("href", "https://iacs-star-calculator.com/?vector=" + score_param);
+                        /*$("#score").attr("href", "https://iacs-risk-rating.com/{{filename}}?vector=" + score_param);*/
+                        /*$("#score").attr("href", "http://localhost:9000/{{filename}}?vector=" + score_param);*/
+                        $("#score").attr("href", "https://iacs-star-calculator.com/{{filename}}?vector=" + score_param);
                         matrix[0][0] = 'Informational';
                         matrix[1][0] = 'Low';
                         matrix[2][0] = 'Medium';

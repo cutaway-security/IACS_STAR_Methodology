@@ -66,7 +66,8 @@ def main(config_file:str, template_file:str):
 
             context = {
                 "option_strings": config["option_strings"],
-                "risk_weight": config["risk_weight"]
+                "risk_weight": config["risk_weight"],
+                "filename": config["outfile"]["filename"]
             }
 
             with open(outfile, mode="w", encoding="utf-8") as results:
