@@ -1,66 +1,70 @@
 .container { 
     background: rgba(255, 153, 51, .5); 
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 body {
     background-color: #cccccc;
+    font-size: 16px;
 }
 .text-0 {
-    color: #ffffff;
-    background-color: #9cc2e5;
+    color: #000000;
+    background-color: #b8d4ea; /* Pastel blue */
 }
 .text-1 {
-    color: #ffffff;
-    background-color: #6ea0d2;
+    color: #000000;
+    background-color: #a0c4e2; /* Lighter blue */
 }
 .text-2 {
-    color: #ffffff;
-    background-color: #4383c4;
+    color: #000000;
+    background-color: #89b5db; /* Soft blue */
 }
 .text-3 {
-    color: #ffffff;
-    background-color: #3178bf;
+    color: #000000;
+    background-color: #74a6d3; /* Gentle blue */
 }
 .text-4 {
-    color: #ffffff;
-    background-color: #fed655;
+    color: #000000;
+    background-color: #fee29b; /* Pastel yellow */
 }
 .text-5 {
-    color: #ffffff;
-    background-color: #feca22;
+    color: #000000;
+    background-color: #fedc75; /* Light yellow */
 }
 .text-6 {
-    color: #ffffff;
-    background-color: #fec50d;
+    color: #000000;
+    background-color: #fecf4e; /* Soft yellow */
 }
 .text-7 {
-    color: #ffffff;
-    background-color: #f4b366;
+    color: #000000;
+    background-color: #fbc490; /* Warmer pastel orange */
 }
 .text-8 {
-    color: #ffffff;
-    background-color: #f19d39;
+    color: #000000;
+    background-color: #fabc6a; /* Light orange */
 }
 .text-9 {
-    color: #ffffff;
-    background-color: #f09426;
+    color: #000000;
+    background-color: #faa835; /* Soft orange */
 }
 .text-Note {
-    color: #ffffff;
-    background-color: #9cc2e5;
+    color: #000000;
+    background-color: #b8d4ea; /* Pastel blue */
 }
 .text-Low {
-    color: #ffffff;
-    background-color: #3178bf;
+    color: #000000;
+    background-color: #74a6d3; /* Gentle blue */
 }
 .text-Medium {
-    color: #ffffff;
-    background-color: #fec50d;
+    color: #000000;
+    background-color: #fecf4e; /* Soft yellow */
 }
 .text-High {
-    color: #ffffff;
-    background-color: #f09426;
+    color: #000000;
+    background-color: #faa835; /* Soft orange */
 }
 .text-Critical {
-    color: #ffffff;
-    background-color: #d63e34;
+    color: #000000;
+    background-color: #f98a70; /* Pastel red */
 }
+
