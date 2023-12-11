@@ -1,0 +1,227 @@
+outfile:
+  #specifing the filename of the output file that will be created in output folder "html"
+  filename: iacs_star_calculator.html
+
+option_strings:
+  TAF_SL:
+    # Threat Actor Skill level: How technically skilled is this group of threat actors?
+    option_0: "0 - N/A"
+    option_1: "1 - Limited Information Technology (IT), network, and no Operational Technology (OT) skills"
+    option_2: "2"
+    option_3: "3 - Moderate IT, limited network, and no OT technical skills"
+    option_4: "4"
+    option_5: "5 - Advanced IT, moderate network, and limited OT technical skills"
+    option_6: "6 - Advanced IT, advanced network, and moderate OT technical skills"
+    option_7: "7"
+    option_8: "8 - Advanced OT technical skills"
+    option_9: "9 - Security penetration skills and knowledge of OT technologies"
+
+  TAF_M:
+    # Threat Actor Motive: How motivated of the threat actors once they obtain access to the control environment? An excellent guide for this is the Impact column of the [MITRE ATT&CK ICS Matrix](https://attack.mitre.org/matrices/ics/).
+    option_0: "0 - N/A"
+    option_1: "1 - No reward or intention to impact control environment"
+    option_2: "2 - Theft of operational data or equipment"
+    option_3: "3 - Create loss of view and control as a result of target-of-opportunity access to assets"
+    option_4: "4"
+    option_5: "5 - Limit access to file shares and prevent view and control using common malware"
+    option_6: "6 - Prevent view and control using specially designed malware"
+    option_7: "7"
+    option_8: "8 - Manipulate view and control using privileged remote access and/or specially designed malware"
+    option_9: "9 - Prevent operation of safety equipment or cause a catastrophic failure"
+
+  TAF_O:
+    # Threat Actor Opportunity:  When accessing the control environment, how are the threat actors limited by deployed countermeasures?
+    option_0: "0 - Physical access and local authentication are required and response time is less than fifteen minutes"
+    option_1: "1 - Physical access and local authentication are required but response time is more than fifteen minutes"
+    option_2: "2"
+    option_3: "3 - Physical and remote access is possible, local authentication required, and active monitoring is enabled"
+    option_4: "4"
+    option_5: "5 - Limited logging of physical or remote access but administrative privileges are required to access network devices, systems, and applications"
+    option_6: "6 -Undetected physical or remote access but administrative privileges are required to access network devices, systems, and applications"
+    option_7: "7"
+    option_8: "8 - Undetected physical or remote access that provides requires authentication to some network devices, systems, and applications"
+    option_9: "9 - Undetected physical or remote access that provides elevated permissions to network devices, systems, and applications"
+
+  TAF_A:
+    #Threat Actor Access: What is the physical or remote access capabilities achieved by successful exploitation within the process?
+    option_0: "0 - N/A"
+    option_1: "1 - Physical owner/operator users"
+    option_2: "2 - Physical vendor / integrator users"
+    option_3: "3 - Remote owner/operator users"
+    option_4: "4"
+    option_5: "5 - Remote owner/operator users"
+    option_6: "6"
+    option_7: "7 - Remote vendor / integrator users"
+    option_8: "8 - Physical malicious users"
+    option_9: "9 - Remote anonymous internet users"
+
+# Vulnerability Factor
+  VF_EA:
+    # Vulnerability/Ease of discovery: How easy is it for this group of threat actors to access the environment and discover the existence of the vulnerability?
+    option_0: "0 - N/A"
+    option_1: "1 - Requires physical access to environment or OT device"
+    option_2: "2 - Requires physical access to environment or IT device"
+    option_3: "3 - Remotely accessible but countermeasures protecting OT technology"
+    option_4: "4 - Remotely accessible but countermeasures protecting IT technology"
+    option_5: "5"
+    option_6: "6 - Remotely accessible but no automated tools to discover for OT technology"
+    option_7: "7 - Remotely accessible but no automated tools to discover for IT technology"
+    option_8: "8 - Remotely accessible and automated tools available for IT technology"
+    option_9: "9 - Remotely accessible and automated tools available for OT technology"
+
+  VF_EE:
+    # Vulnerability/Ease of exploit: How easy is it to actually exploit the vulnerability?
+    option_0: "0 - N/A"
+    option_1: "1 - No known proof of concept"
+    option_2: "2 - Countermeasures protecting OT technology"
+    option_3: "3 - Denial-of-Service possible but no code execution"
+    option_4: "4"
+    option_5: "5 - Custom scripts / tools can be made to exploit IT technology"
+    option_6: "6 - Custom scripts / tools can be made to exploit OT technology"
+    option_7: "7"
+    option_8: "8 - Automated tools available for IT technology"
+    option_9: "9 - Automated tools available for OT technology"
+
+  VF_AW:
+    # Vulnerability/Awareness: How well known is this vulnerability?
+    option_0: "0 - N/A"
+    option_1: "1 - Unknown OT Vulnerability"
+    option_2: "2 - Unknown IT Vulnerability"
+    option_3: "3 - Not publicly known but common configuration vulnerability"
+    option_4: ""
+    option_5: "5 - Publicly identified on vendor website or within NVD Vulnerabilities database but no known exploit available"
+    option_6: "6 - Publicly identified on vendor website or within NVD Vulnerabilities database, no known exploit available but identified threat actor group can develop exploit"
+    option_7: ""
+    option_8: "8 - Publicly identified on vendor website, vulnerability databases, and exploit available in public forums, i.e. Metasploit, Exploit-DB"
+    option_9: "9 - Public identified and in CISA Known Exploited Vulnerabilities Catalog"
+
+  VF_DR:
+    # -Detection/Response - How likely is an exploit to be detected?
+    option_0: "0 - N/A"
+    option_1: "1 - Centrally logged with alerts and formal review and response plan"
+    option_2: "2"
+    option_3: "3 - Centrally logged with alerts and formal review but no response plan"
+    option_4: "4"
+    option_5: "5"
+    option_6: "6 - Centrally logged with alerts, but no formal review or response plan"
+    option_7: "7 - Centrally logged and without review"
+    option_8: "8 - Locally logged without review"
+    option_9: "9 - Not logged"
+
+  TIF_LC:
+    # Loss of Confidentiality - How much data could be disclosed and how sensitive is it?
+    option_0: "0 - No data lost"
+    option_1: "1"
+    option_2: "2 - Minimal architecture configuration data disclosed"
+    option_3: "3"
+    option_4: "4 - Minimal network configuration data but no device configuration data disclosed"
+    option_5: "5"
+    option_6: "6 - Extensive network configuration data and some device configuration data disclosed"
+    option_7: "7 - Some process network and device configuration data disclosed"
+    option_8: "8"
+    option_9: "9 - All process network and device configuration data disclosed"
+
+  TIF_LI:
+    # Loss of Integrity - How is the process data changed and does it impact critical functions?
+    option_0: "0 - N/A"
+    option_1: "1 - Modification of historical data not used for control"
+    option_2: "2 - Modification of historical data used for control"
+    option_3: "3"
+    option_4: "4 - Local modification of set points used for non-critical functions"
+    option_5: "5 - Remote modification of set points used for non-critical functions"
+    option_6: "6 - Remote modification of device configurations used for non-critical functions"
+    option_7: "7 - Local modification of set points used for critical functions"
+    option_8: "8 - Remote modification of set points used for critical functions"
+    option_9: "9 - Remote modification of device configurations used for critical functions"
+
+  TIF_LA:
+    # Loss of Availability - How are production and safety services impacted?
+    option_0: "0 - N/A"
+    option_1: "1 - Minimal production interruption and easily recoverable"
+    option_2: ""
+    option_3: "3 - Device or service interrupted but process not impacted"
+    option_4: "4 - Production services temporarily interrupted by easily recoverable"
+    option_5: ""
+    option_6: "6 - Production services interrupted but does not affect other processes"
+    option_7: "7 - Production services interrupted and impacts other processes"
+    option_8: "8 - All production services completely lost"
+    option_9: "9 - Loss of process safety functionality"
+
+  TIF_LAC:
+    # Loss of Accountability - Are the threat actor actions traceable to an individual?
+    option_0: "0 - N/A"
+    option_1: "1 - Central logging, Multifactor Authentication (MFA), and cameras"
+    option_2: "2 - Central logging, Multifactor Authentication (MFA), but no cameras"
+    option_3: "3 - Local logging, Multifactor Authentication (MFA), and cameras but no central logging"
+    option_4: "4"
+    option_5: "5 - Local logging and cameras but no MFA and no central logging"
+    option_6: "6"
+    option_7: "7 - Local logging but no MFA, no central logging, and no cameras"
+    option_8: "8"
+    option_9: "9 - No local or central logging, no MFA, and no cameras"
+
+  SIF_ED:
+    # Environment Damage - How much damage to the local environment, plant or public, will be realized by successful exploitation?
+    option_0: "0 - No environmental impact"
+    option_1: "1 - Environment damage limited by safety equipment, active, and passive protections"
+    option_2: "2 - Environment damage limited by active and passive protections"
+    option_3: ""
+    option_4: "4 - Environment damage limited by passive protections only"
+    option_5: "5 - Safety equipment not remotely accessible and active and passive protections are in place"
+    option_6: ""
+    option_7: "7 - Safety equipment remotely accessible but active and passive protections are sufficient"
+    option_8: "8 - Safety equipment remotely accessible and situation might overwhelm active protections but passive protections are sufficient"
+    option_9: "9 - Safety equipment on production network and situation might overwhelm active or passive protections"
+
+  SIF_PD:
+    # Process Damage - How much damange to the process equipment will be realized by successful exploitation?
+    option_0: "0 - No devices can be damaged and configurations cannot be modified"
+    option_1: "1 - Device or monitoring systems / applications can be modified but do not damage device or process"
+    option_2: ""
+    option_3: "3 - Device device configuration can be changed but easily recoverable"
+    option_4: "4 - Device damaged requiring manual update but limited impact to proces"
+    option_5: ""
+    option_6: "6 - Device damaged requiring manual update but significant impact to process"
+    option_7: "7 - Safety equipment configuration changed but limited impact to process"
+    option_8: "8 - Safety equipment damaged but limited impact to process"
+    option_9: "9 - Safety equipment damaged causing process failure or automatic shutdown"
+
+  SIF_SE:
+    # Safety Equipment - How well are digital safety equipment deployed and protected?
+    option_0: "0 - Safety equipment not required for process"
+    option_1: "1 - Safety equipment required for process but not remotely accessible or on the same network as vulnerability"
+    option_2: "2 - Safety equipment required for process, remotely accessible, and requires MFA but not on the same network as vulnerability"
+    option_3: "3 - Safety equipment required for process and remotely accessible but does not require MFA and not on the same network as vulnerability"
+    option_4: "4 - Safety equipment required for process, remotely accessible, requires MFA, and on the same network as vulnerability"
+    option_5: "5 - Safety equipment required for process, remotely accessible, does not require MFA, and on the same network as vulnerability"
+    option_6: "6 - Safety equipment vulnerable and remotely accessible but requires MFA"
+    option_7: "7 - Safety equipment vulnerable and remotely accessible but requires authentication but no MFA"
+    option_8: "8 - Safety equipment vulnerable and remotely accessible but requires authentication but but default/hardcoded password in place and no MFA"
+    option_9: "9 - Safety equipment vulnerable, remotely accessible, and does not require authentication"
+
+  SIF_R:
+    # Recoverability - How well is the organization / process team prepared to recover during successful exploitation?
+    option_0: "0 - Vulnerability will not require or limit recovery operations"
+    option_1: "1 - Process will automatically recover with no manual efforts"
+    option_2: "2 - Process will recover with minimal manual efforts"
+    option_3: "3"
+    option_4: "4 - Process will recover with extensive manual efforts"
+    option_5: "5"
+    option_6: "6 - Recovery not possible without vendor / integrator assistance"
+    option_7: "7 - Recovery not possible without limited government and vendor / integrator assistance"
+    option_8: "8 - Recovery not possible without moderate government and vendor / integrator assistance"
+    option_9: "9 - Recovery not possible without significant government and vendor / integrator assistance"
+
+risk_weight:
+  # ( TIF_LC + TIF_LI + TIF_LA + TIF_LAC ) / 4 = must result in "1" to be accepted
+  TIF_LC: 1
+  TIF_LI: 1
+  TIF_LA: 1
+  TIF_LAC: 1
+
+
+  # ( SIF_ED + SIF_PD + SIF_SE + SIF_R ) / 4 = must result in "1" to be accepted
+  SIF_ED: 1
+  SIF_PD: 1
+  SIF_SE: 1
+  SIF_R: 1
