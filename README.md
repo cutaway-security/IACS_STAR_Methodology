@@ -424,3 +424,62 @@ python3 -m http.server 9000
 ```
 
 Open your web browser to your [local IACS STAR score calculator](http://localhost:9000/iacs_star_calculator.html).
+
+
+## Generate IACS STAR Calculator 
+
+The IACS STAR calculator can be generated based on data specified in yaml file. The allows to  easily change die wording of the risk descriptions or to create yaml files for different languages. 
+
+
+```
+(venv) ➜  ./generate_calculator.py 
+[*] Reading config file config/default.yaml
+[*] Using template file html/default.yaml
+[*] Wrote html file html/iacs_star_calculator.html
+
+```
+
+The generator allows to change the html template file or the config file using the parameters --template or --config. 
+
+## Config file 
+
+The yaml configuration files allows currently contain 3 main areas. 
+1. section *outfile* allows to specify the file name of the output file that will be generated in the html folder
+2. section *option_strings* contains different subsections for the option fields. Each subsection needs to specify *option_0* to *option_9* that will be used as text description for the options in the corresponding drop down fields.
+3. section *risk_weigh* allows to adjust the weighing for calculation of the 
+
+```
+outfile:
+  #specifing the filename of the output file that will be created in output folder "html"
+  filename: iacs_star_calculator.html
+
+option_strings:
+  TAF_SL:
+    # Threat Actor Skill level: How technically skilled is this group of threat actors?
+    option_0: "0 - N/A"
+    option_1: "1 - Limited Information Technology (IT), network, and no Operational Technology (OT) skills"
+    option_2: "2"
+    option_3: "3 - Moderate IT, limited network, and no OT technical skills"
+    option_4: "4"
+    option_5: "5 - Advanced IT, moderate network, and limited OT technical skills"
+    option_6: "6 - Advanced IT, advanced network, and moderate OT technical skills"
+    option_7: "7"
+    option_8: "8 - Advanced OT technical skills"
+    option_9: "9 - Security penetration skills and knowledge of OT technologies"
+
+[...]
+
+risk_weight:
+  # ( TIF_LC + TIF_LI + TIF_LA + TIF_LAC ) / 4 = must result in "1" to be accepted
+  TIF_LC: 1
+  TIF_LI: 1
+  TIF_LA: 1
+  TIF_LAC: 1
+
+
+  # ( SIF_ED + SIF_PD + SIF_SE + SIF_R ) / 4 = must result in "1" to be accepted
+  SIF_ED: 1
+  SIF_PD: 1
+  SIF_SE: 1
+  SIF_R: 1
+```
