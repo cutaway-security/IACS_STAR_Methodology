@@ -426,7 +426,7 @@ python3 -m http.server 9000
 Open your web browser to your [local IACS STAR score calculator](http://localhost:9000/iacs_star_calculator.html).
 
 
-## Generate IACS STAR Calculator 
+## Generate or update the IACS STAR Calculator 
 
 The IACS STAR calculator can be generated based on data specified in yaml file. The allows to  easily change die wording of the risk descriptions or to create yaml files for different languages. 
 
