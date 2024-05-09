@@ -428,18 +428,26 @@ Open your web browser to your [local IACS STAR score calculator](http://localhos
 
 ## Generate or update the IACS STAR Calculator 
 
-The IACS STAR calculator can be generated based on data specified in yaml file. The allows to  easily change die wording of the risk descriptions or to create yaml files for different languages. 
+The IACS STAR calculator can be generated based on data specified in yaml file. This allows to easily change the wording of the risk descriptions or to create yaml files for different languages. 
 
+The generator requires PyYAML and Jinja2 as dependencies. Those can be installed with `pip install -r requirements.txt`.
 
+**Usage:**
 ```
 (venv) ➜  ./generate_calculator.py 
 [*] Reading config file config/default.yaml
-[*] Using template file html/default.yaml
+[*] Using template file html/iacs_star_calculator.html
 [*] Wrote html file html/iacs_star_calculator.html
 
 ```
 
-The generator allows to change the html template file or the config file using the parameters --template or --config. 
+The above command would generate the "iacs_star_calculator.html" in the html folder based on the default config
+"default.yaml". Changing the config file is possible using parameter "config". Assuming you have created a config called
+pharma.yaml this could be done using the following command.
+
+```
+./generate_calculator.py --config pharma.yaml
+```
 
 ## Config file 
 

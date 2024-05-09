@@ -82,7 +82,7 @@ def main(config_file:str, template_file:str):
 if __name__=="__main__":
     parser = argparse.ArgumentParser(description="File that generates a static calculator file from yaml input")
     parser.add_argument("--config", metavar="FILE", type=str, required=False, default="config/default.yaml")
-    parser.add_argument("--template", metavar="FILE", type=str, required=False, default="html/default.yaml")
+    parser.add_argument("--template", metavar="FILE", type=str, required=False, default="html/calculator_template.html")
     args = parser.parse_args()
 
     main(config_file=args.config, template_file=args.template)
