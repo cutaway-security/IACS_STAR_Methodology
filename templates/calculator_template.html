@@ -1,0 +1,535 @@
+<!--
+Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com/
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IACS STAR</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <style>
+            .container { 
+                background: rgba(255, 153, 51, .5); 
+            }
+            body {
+                background-color: #cccccc;
+            }
+        </style>
+        <style type="text/css">
+            .text-0 {
+                color: #ffffff;
+                background-color: #9cc2e5;
+            }
+            .text-1 {
+                color: #ffffff;
+                background-color: #6ea0d2;
+            }
+            .text-2 {
+                color: #ffffff;
+                background-color: #4383c4;
+            }
+            .text-3 {
+                color: #ffffff;
+                background-color: #3178bf;
+            }
+            .text-4 {
+                color: #ffffff;
+                background-color: #fed655;
+            }
+            .text-5 {
+                color: #ffffff;
+                background-color: #feca22;
+            }
+            .text-6 {
+                color: #ffffff;
+                background-color: #fec50d;
+            }
+            .text-7 {
+                color: #ffffff;
+                background-color: #f4b366;
+            }
+            .text-8 {
+                color: #ffffff;
+                background-color: #f19d39;
+            }
+            .text-9 {
+                color: #ffffff;
+                background-color: #f09426;
+            }
+            .text-Note {
+                color: #ffffff;
+                background-color: #9cc2e5;
+            }
+            .text-Low {
+                color: #ffffff;
+                background-color: #3178bf;
+            }
+            .text-Medium {
+                color: #ffffff;
+                background-color: #fec50d;
+            }
+            .text-High {
+                color: #ffffff;
+                background-color: #f09426;
+            }
+            .text-Critical {
+                color: #ffffff;
+                background-color: #d63e34;
+            }
+        </style>
+        <script>
+
+                    function update_form() {
+                        init($('#vector-input').val(), '')
+                        colorize()
+                    }
+
+                    function init(vector, v) {
+                        var i = 0;
+                        var part = '';
+                        var partials = ["sl", "m", "o", "a", "ea", "ee", "aw", "dr", "lc", "li", "la", "lac", "ed", "pd", "se", "r"];
+                        for (var i = 0; i < partials.length; i++) {
+                            $("#" + partials[i]).val(0);
+                        }
+                        var reg = /^\d+$/;
+                        if (reg.test(v) && v.length == 16) {
+                            for (var i = 0; i < v.length; i++) {
+                                $("#" + partials[i].toLowerCase()).val(parseInt(v[i]));
+                            }
+                        } else {
+                            vector = vector.replace('(', '').replace(')', '');
+                            var values = vector.split('/');
+                            for (var i = 0; i <= values.length - 1; i++) {
+                                part = values[i].split(':');
+                                if (part.length == 2) {
+                                    if (partials.indexOf(part[0].toLowerCase()) >= 0 && ! isNaN(parseInt(part[1])) && parseInt(part[1]) >= 0 && parseInt(part[1]) <= 9) {
+                                        $("#" + part[0].toLowerCase()).val(parseInt(part[1]));
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    function colorize() {
+                        $('.custom-select').each(function() {
+                            $(this).removeClass('text-0 text-1 text-2 text-3 text-4 text-5 text-6 text-7 text-8 text-9');
+                            $(this).addClass('text-' + $(this).val());
+                        });
+                    }
+                    function getRisk(score) {
+                        if(score == 0) return 'Informational';
+                        if(score <  3) return 'Low';
+                        if(score <  6) return 'Medium';
+                        if(score <= 9) return 'High';
+                    }
+                    
+                    function getRiskInNum(score) {
+                        if(score <  3) return 0;
+                        if(score <  6) return 1;
+                        if(score <= 9) return 2;
+                    }
+                    
+                    function setFactor(factor, sFactor) {
+                        $('#' + sFactor).parent().removeClass('text-Note text-Low text-Medium text-High text-Critical').addClass('text-' + getRisk(factor));
+                        $('#' + sFactor).text(getRisk(factor)+' ('+sFactor+': '+factor+')');
+
+                    }
+
+                    function calculate() {
+                        var TAF, VF, TIF, SIF, LF, CF, R, mLF, mCF = 0;
+                        var score = '';
+                        var matrix = [];
+                        matrix[0] = [];
+                        matrix[1] = [];
+                        matrix[2] = [];
+                        TAF = (+ $("#sl").val() + +$("#m").val() + +$("#o").val() + +$("#a").val()) / 4;
+                        VF = (+$("#ea").val() + +$("#ee").val() + +$("#aw").val() + +$("#dr").val()) / 4;
+                        TIF = (+ ($("#lc").val()  * {{ risk_weight.TIF_LC }} )+ +($("#li").val() * {{ risk_weight.TIF_LI }} )
+                                + + ($("#la").val()* {{ risk_weight.TIF_LA }} ) + + ($("#lac").val() * {{ risk_weight.TIF_LAC }} )) / 4;
+                        SIF = (+($("#ed").val() * {{ risk_weight.SIF_ED }} ) + +($("#pd").val()  * {{ risk_weight.SIF_PD }} )
+                                + +($("#se").val()  * {{ risk_weight.SIF_SE }} )+ +($("#r").val() * {{ risk_weight.SIF_R }} )) / 4;
+                        score = '(';
+                        score = score + 'SL:' + $("#sl").val() + '/';
+                        score = score + 'M:' + $("#m").val() + '/';
+                        score = score + 'O:' + $("#o").val() + '/';
+                        score = score + 'A:' + $("#a").val() + '/';
+                        score = score + 'EA:' + $("#ea").val() + '/';
+                        score = score + 'EE:' + $("#ee").val() + '/';
+                        score = score + 'AW:' + $("#aw").val() + '/';
+                        score = score + 'DR:' + $("#dr").val() + '/';
+                        score = score + 'LC:' + $("#lc").val() + '/';
+                        score = score + 'LI:' + $("#li").val() + '/';
+                        score = score + 'LA:' + $("#la").val() + '/';
+                        score = score + 'LAC:' + $("#lac").val() + '/';
+                        score = score + 'ED:' + $("#ed").val() + '/';
+                        score = score + 'PD:' + $("#pd").val() + '/';
+                        score = score + 'SE:' + $("#se").val() + '/';
+                        score = score + 'R:' + $("#r").val();
+                        score = score + ')';
+                        score_param = btoa(score)
+                        
+                        $('#score').text(score);
+                        /*$("#score").attr("href", "https://iacs-risk-rating.com/{{filename}}?vector=" + score_param);*/
+                        /*$("#score").attr("href", "http://localhost:9000/{{filename}}?vector=" + score_param);*/
+                        $("#score").attr("href", "https://iacs-star-calculator.com/{{filename}}?vector=" + score_param);
+                        matrix[0][0] = 'Informational';
+                        matrix[1][0] = 'Low';
+                        matrix[2][0] = 'Medium';
+                        matrix[0][1] = 'Low';
+                        matrix[1][1] = 'Medium';
+                        matrix[2][1] = 'High';
+                        matrix[0][2] = 'Medium';
+                        matrix[1][2] = 'High';
+                        matrix[2][2] = 'Critical';
+                        LF = (TAF + VF) / 2;
+                        CF = (TIF + SIF) / 2;
+                        /*
+                        if (SIF != 0) {
+                            CF = SIF;
+                        } else {
+                            CF = TIF;
+                        }
+                        */
+                        setFactor(TAF, 'TAF');
+                        setFactor(VF, 'VF');
+                        setFactor(TIF, 'TIF');
+                        setFactor(SIF, 'SIF');
+                        setFactor(LF, 'LF');
+                        setFactor(CF, 'CF');
+                        if (LF != 0 && CF != 0) {
+                        }
+                        mLF = getRiskInNum(LF);
+                        mCF = getRiskInNum(CF);
+                        $('#Risk').parent().removeClass('text-Note text-Low text-Medium text-High text-Critical').addClass('text-' + matrix[mLF][mCF]);
+                        $('#Risk').text(matrix[mLF][mCF]);
+                    }
+                    
+                    function getUrlParameter(name) {
+                        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+                        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+                        var results = regex.exec(location.search);
+                        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+                    };  
+
+                $(document).ready(function() {
+                    $(function () {
+                        $('[data-toggle="tooltip"]').tooltip()
+                        $('.custom-select').change(function() {
+                            $(this).removeClass('text-0 text-1 text-2 text-3 text-4 text-5 text-6 text-7 text-8 text-9');
+                            $(this).addClass('text-' + $(this).val());
+                            calculate();
+                        });
+                        init(atob(getUrlParameter('vector')), getUrlParameter('v'));
+                        colorize();
+                        calculate();
+                    });                  
+                });
+        </script>
+    </head>
+    <body>
+
+        <div class="container">
+            <h1>IACS System Testing and Assessment Rating Score Calculator</h1>
+            <div class="row">
+<div class="col-md-12">
+    <div class="row">
+        <div class="alert m-3" role="alert">
+            Republish Score Vector: <input id="vector-input" type="text" size="70" /> <input type="button" onclick="update_form()" value="update"/>
+        </div>
+    </div>   
+</div>    
+<div class="col-md-6">             
+    <h2>Likelihood Factors</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <h5>Threat Actor Factors</h5>
+            <!--Threat Actor Skill level: How technically skilled is this group of threat actors? -->
+            <h6>Skill Level</h6>
+            <select class="custom-select custom-select-sm" id="sl" data-toggle="tooltip" data-placement="top" title="How technically skilled is this group of threat actors?">
+                <option class="text-0" value="0">{{ option_strings.TAF_SL.option_0 }}</option>
+                <option class="text-1" value="1">{{ option_strings.TAF_SL.option_1 }}</option>
+                <option class="text-2" value="2">{{ option_strings.TAF_SL.option_2 }}</option>
+                <option class="text-3" value="3">{{ option_strings.TAF_SL.option_3 }}</option>
+                <option class="text-4" value="4">{{ option_strings.TAF_SL.option_4 }}</option>
+                <option class="text-5" value="5">{{ option_strings.TAF_SL.option_5 }}</option>
+                <option class="text-6" value="6">{{ option_strings.TAF_SL.option_6 }}</option>
+                <option class="text-7" value="7">{{ option_strings.TAF_SL.option_7 }}</option>
+                <option class="text-8" value="8">{{ option_strings.TAF_SL.option_8 }}</option>
+                <option class="text-9" value="9">{{ option_strings.TAF_SL.option_9 }}</option>
+            </select>
+
+            <!--Threat Actor Motive: How motivated of the threat actors once they obtain access to the control environment? An excellent guide for this is the Impact column of the [MITRE ATT&CK ICS Matrix](https://attack.mitre.org/matrices/ics/).-->
+            <h6>Motive</h6>
+            <select class="custom-select custom-select-sm" id="m" data-toggle="tooltip" data-placement="top" title="How motivated of the threat actors once they obtain access to the control environment?">
+                <option class="text-0" value="0">{{ option_strings.TAF_M.option_0 }}</option>
+                <option class="text-1" value="1">{{ option_strings.TAF_M.option_1 }}</option>
+                <option class="text-2" value="2">{{ option_strings.TAF_M.option_2 }}</option>
+                <option class="text-3" value="3">{{ option_strings.TAF_M.option_3 }}</option>
+                <option class="text-4" value="4">{{ option_strings.TAF_M.option_4 }}</option>
+                <option class="text-5" value="5">{{ option_strings.TAF_M.option_5 }}</option>
+                <option class="text-6" value="6">{{ option_strings.TAF_M.option_6 }}</option>
+                <option class="text-7" value="7">{{ option_strings.TAF_M.option_7 }}</option>
+                <option class="text-8" value="8">{{ option_strings.TAF_M.option_8 }}</option>
+                <option class="text-9" value="9">{{ option_strings.TAF_M.option_9 }}</option>
+            </select>
+
+            <!--Threat Actor Opportunity:  When accessing the control environment, how are the threat actors limited by deployed countermeasures?-->
+            <h6>Opportunity</h6>
+            <select class="custom-select custom-select-sm" id="o" data-toggle="tooltip" data-placement="top" title="What resources and opportunities are required for this group of threat agents to find and exploit this vulnerability?">
+                <option class="text-0" value="0">{{ option_strings.TAF_O.option_0 }}</option>
+                <option class="text-1" value="1">{{ option_strings.TAF_O.option_1 }}</option>
+                <option class="text-2" value="2">{{ option_strings.TAF_O.option_2 }}</option>
+                <option class="text-3" value="3">{{ option_strings.TAF_O.option_3 }}</option>
+                <option class="text-4" value="4">{{ option_strings.TAF_O.option_4 }}</option>
+                <option class="text-5" value="5">{{ option_strings.TAF_O.option_5 }}</option>
+                <option class="text-6" value="6">{{ option_strings.TAF_O.option_6 }}</option>
+                <option class="text-7" value="7">{{ option_strings.TAF_O.option_7 }}</option>
+                <option class="text-8" value="8">{{ option_strings.TAF_O.option_8 }}</option>
+                <option class="text-9" value="9">{{ option_strings.TAF_O.option_9 }}</option>
+            </select>
+
+            <!--Threat Actor Access: What is the physical or remote access capabilities achieved by successful exploitation within the process?-->
+            <h6>Access</h6>
+            <select class="custom-select custom-select-sm" id="a" data-toggle="tooltip" data-placement="top" title="How large is this group of threat agents?">
+                <option class="text-0" value="0">{{ option_strings.TAF_A.option_0 }}</option>
+                <option class="text-1" value="1">{{ option_strings.TAF_A.option_1 }}</option>
+                <option class="text-2" value="2">{{ option_strings.TAF_A.option_2 }}</option>
+                <option class="text-3" value="3">{{ option_strings.TAF_A.option_3 }}</option>
+                <option class="text-4" value="4">{{ option_strings.TAF_A.option_4 }}</option>
+                <option class="text-5" value="5">{{ option_strings.TAF_A.option_5 }}</option>
+                <option class="text-6" value="6">{{ option_strings.TAF_A.option_6 }}</option>
+                <option class="text-7" value="7">{{ option_strings.TAF_A.option_7 }}</option>
+                <option class="text-8" value="8">{{ option_strings.TAF_A.option_8 }}</option>
+                <option class="text-9" value="9">{{ option_strings.TAF_A.option_9 }}</option>
+            </select>
+            <div class="alert m-3" role="alert">
+                Threat Actor Factor: <span id="TAF"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h5>Vulnerability Factors</h5>
+            <!--Vulnerability/Ease of discovery: How easy is it for this group of threat actors to access the environment and discover the existence of the vulnerability? -->
+            <h6>Ease of Discovery</h6>
+            <select class="custom-select custom-select-sm" id="ea" data-toggle="tooltip" data-placement="top" title="How easy is it for this group of threat agents to discover this vulnerability?">
+                <option class="text-0" value="0">{{ option_strings.VF_EA.option_0 }}</option>
+                <option class="text-1" value="1">{{ option_strings.VF_EA.option_1 }}</option>
+                <option class="text-2" value="2">{{ option_strings.VF_EA.option_2 }}</option>
+                <option class="text-3" value="3">{{ option_strings.VF_EA.option_3 }}</option>
+                <option class="text-4" value="4">{{ option_strings.VF_EA.option_4 }}</option>
+                <option class="text-5" value="5">{{ option_strings.VF_EA.option_5 }}</option>
+                <option class="text-6" value="6">{{ option_strings.VF_EA.option_6 }}</option>
+                <option class="text-7" value="7">{{ option_strings.VF_EA.option_7 }}</option>
+                <option class="text-8" value="8">{{ option_strings.VF_EA.option_8 }}</option>
+                <option class="text-9" value="9">{{ option_strings.VF_EA.option_9 }}</option>
+            </select>
+
+            <!--Vulnerability/Ease of exploit: How easy is it to actually exploit the vulnerability? -->
+            <h6>Ease of Exploit</h6>
+            <select class="custom-select custom-select-sm" id="ee" data-toggle="tooltip" data-placement="top" title="How easy is it for this group of threat agents to actually exploit this vulnerability?">
+                <option class="text-0" value="0">{{ option_strings.VF_EE.option_0 }}</option>
+                <option class="text-1" value="1">{{ option_strings.VF_EE.option_1 }}</option>
+                <option class="text-2" value="2">{{ option_strings.VF_EE.option_2 }}</option>
+                <option class="text-3" value="3">{{ option_strings.VF_EE.option_3 }}</option>
+                <option class="text-4" value="4">{{ option_strings.VF_EE.option_4 }}</option>
+                <option class="text-5" value="5">{{ option_strings.VF_EE.option_5 }}</option>
+                <option class="text-6" value="6">{{ option_strings.VF_EE.option_6 }}</option>
+                <option class="text-7" value="7">{{ option_strings.VF_EE.option_7 }}</option>
+                <option class="text-8" value="8">{{ option_strings.VF_EE.option_8 }}</option>
+                <option class="text-9" value="9">{{ option_strings.VF_EE.option_9 }}</option>
+            </select>
+
+            <!--Vulnerability/Awareness: How well known is this vulnerability?-->
+            <h6>Awareness</h6>
+            <select class="custom-select custom-select-sm" id="aw" data-toggle="tooltip" data-placement="top" title="How well known is this vulnerability to this group of threat agents?">
+                <option class="text-0" value="0">{{ option_strings.VF_AW.option_0 }}</option>
+                <option class="text-1" value="1">{{ option_strings.VF_AW.option_1 }}</option>
+                <option class="text-2" value="2">{{ option_strings.VF_AW.option_2 }}</option>
+                <option class="text-3" value="3">{{ option_strings.VF_AW.option_3 }}</option>
+                <option class="text-4" value="4">{{ option_strings.VF_AW.option_4 }}</option>
+                <option class="text-5" value="5">{{ option_strings.VF_AW.option_5 }}</option>
+                <option class="text-6" value="6">{{ option_strings.VF_AW.option_6 }}</option>
+                <option class="text-7" value="7">{{ option_strings.VF_AW.option_7 }}</option>
+                <option class="text-8" value="8">{{ option_strings.VF_AW.option_8 }}</option>
+                <option class="text-9" value="9">{{ option_strings.VF_AW.option_9 }}</option>
+            </select>
+
+            <!--Detection/Response - How likely is an exploit to be detected?-->
+            <h6>Intrusion Detection</h6>
+            <select class="custom-select custom-select-sm" id="dr" data-toggle="tooltip" data-placement="top" title="How likely is an exploit to be detected?">
+                <option class="text-0" value="0">{{ option_strings.VF_DR.option_0 }}</option>
+                <option class="text-1" value="1">{{ option_strings.VF_DR.option_1 }}</option>
+                <option class="text-2" value="2">{{ option_strings.VF_DR.option_2 }}</option>
+                <option class="text-3" value="3">{{ option_strings.VF_DR.option_3 }}</option>
+                <option class="text-4" value="4">{{ option_strings.VF_DR.option_4 }}</option>
+                <option class="text-5" value="5">{{ option_strings.VF_DR.option_5 }}</option>
+                <option class="text-6" value="6">{{ option_strings.VF_DR.option_6 }}</option>
+                <option class="text-7" value="7">{{ option_strings.VF_DR.option_7 }}</option>
+                <option class="text-8" value="8">{{ option_strings.VF_DR.option_8 }}</option>
+                <option class="text-9" value="9">{{ option_strings.VF_DR.option_9 }}</option>
+            </select>
+            <div class="alert m-3" role="alert">
+                Vulnerability Factor: <span id="VF"></span>
+            </div>
+        </div>
+    </div>
+    <div class="alert m-3" role="alert">
+        Likelihoood Factor: <span id="LF"></span>
+    </div>
+</div>
+<div class="col-md-6">                
+    <h2>Consequence Factors</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <h5>Technical Impact Factors</h5>
+            <!--Loss of Confidentiality - How much data could be disclosed and how sensitive is it?-->
+            <h6>Loss of Confidentiality</h6>
+            <select class="custom-select custom-select-sm" id="lc" data-toggle="tooltip" data-placement="top" title="How much data could be disclosed and how sensitive is it?">
+                <option class="text-0" value="0">{{ option_strings.TIF_LC.option_0 }}</option>
+                <option class="text-1" value="1">{{ option_strings.TIF_LC.option_1 }}</option>
+                <option class="text-2" value="2">{{ option_strings.TIF_LC.option_2 }}</option>
+                <option class="text-3" value="3">{{ option_strings.TIF_LC.option_3 }}</option>
+                <option class="text-4" value="4">{{ option_strings.TIF_LC.option_4 }}</option>
+                <option class="text-5" value="5">{{ option_strings.TIF_LC.option_5 }}</option>
+                <option class="text-6" value="6">{{ option_strings.TIF_LC.option_6 }}</option>
+                <option class="text-7" value="7">{{ option_strings.TIF_LC.option_7 }}</option>
+                <option class="text-8" value="8">{{ option_strings.TIF_LC.option_8 }}</option>
+                <option class="text-9" value="9">{{ option_strings.TIF_LC.option_9 }}</option>
+            </select>
+
+            <!--Loss of Integrity - How is the process data changed and does it impact critical functions?-->
+            <h6>Loss of Integrity</h6>
+            <select class="custom-select custom-select-sm" id="li" data-toggle="tooltip" data-placement="top" title="How is the process data changed and does it impact critical functions?">
+                <option class="text-0" value="0">{{ option_strings.TIF_LI.option_0 }}</option>
+                <option class="text-1" value="1">{{ option_strings.TIF_LI.option_1 }}</option>
+                <option class="text-2" value="2">{{ option_strings.TIF_LI.option_2 }}</option>
+                <option class="text-3" value="3">{{ option_strings.TIF_LI.option_3 }}</option>
+                <option class="text-4" value="4">{{ option_strings.TIF_LI.option_4 }}</option>
+                <option class="text-5" value="5">{{ option_strings.TIF_LI.option_5 }}</option>
+                <option class="text-6" value="6">{{ option_strings.TIF_LI.option_6 }}</option>
+                <option class="text-7" value="7">{{ option_strings.TIF_LI.option_7 }}</option>
+                <option class="text-8" value="8">{{ option_strings.TIF_LI.option_8 }}</option>
+                <option class="text-9" value="9">{{ option_strings.TIF_LI.option_9 }}</option>
+            </select>
+
+            <!--Loss of Availability - How are production and safety services impacted?-->
+            <h6>Loss of Availability</h6>
+            <select class="custom-select custom-select-sm" id="la" data-toggle="tooltip" data-placement="top" title="How are production and safety services impacted?">
+                <option class="text-0" value="0">{{ option_strings.TIF_LA.option_0 }}</option>
+                <option class="text-1" value="1">{{ option_strings.TIF_LA.option_1 }}</option>
+                <option class="text-2" value="2">{{ option_strings.TIF_LA.option_2 }}</option>
+                <option class="text-3" value="3">{{ option_strings.TIF_LA.option_3 }}</option>
+                <option class="text-4" value="4">{{ option_strings.TIF_LA.option_4 }}</option>
+                <option class="text-5" value="5">{{ option_strings.TIF_LA.option_5 }}</option>
+                <option class="text-6" value="6">{{ option_strings.TIF_LA.option_6 }}</option>
+                <option class="text-7" value="7">{{ option_strings.TIF_LA.option_7 }}</option>
+                <option class="text-8" value="8">{{ option_strings.TIF_LA.option_8 }}</option>
+                <option class="text-9" value="9">{{ option_strings.TIF_LA.option_9 }}</option>
+            </select>
+
+            <!--Loss of Accountability - Are the threat actor actions traceable to an individual? -->
+            <h6>Loss of Accountability</h6>
+            <select class="custom-select custom-select-sm" id="lac" data-toggle="tooltip" data-placement="top" title="Are the threat actor actions traceable to an individual?">
+                <option class="text-0" value="0">{{ option_strings.TIF_LAC.option_0 }}</option>
+                <option class="text-1" value="1">{{ option_strings.TIF_LAC.option_1 }}</option>
+                <option class="text-2" value="2">{{ option_strings.TIF_LAC.option_2 }}</option>
+                <option class="text-3" value="3">{{ option_strings.TIF_LAC.option_3 }}</option>
+                <option class="text-4" value="4">{{ option_strings.TIF_LAC.option_4 }}</option>
+                <option class="text-5" value="5">{{ option_strings.TIF_LAC.option_5 }}</option>
+                <option class="text-6" value="6">{{ option_strings.TIF_LAC.option_6 }}</option>
+                <option class="text-7" value="7">{{ option_strings.TIF_LAC.option_7 }}</option>
+                <option class="text-8" value="8">{{ option_strings.TIF_LAC.option_8 }}</option>
+                <option class="text-9" value="9">{{ option_strings.TIF_LAC.option_9 }}</option>
+            </select>
+            <div class="alert m-3" role="alert">
+                Technical Impact Factor: <span id="TIF"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h5>Safety Impact Factors</h5>
+            <!--Environment Damage - How much damage to the local environment, plant or public, will be realized by successful exploitation?-->
+            <h6>Environment Damage</h6>
+            <select class="custom-select custom-select-sm" id="ed" data-toggle="tooltip" data-placement="top" title="How much damage to the local environment, plant or public, will be realized by successful exploitation?">
+                <option class="text-0" value="0">{{ option_strings.SIF_ED.option_0 }}</option>
+                <option class="text-1" value="1">{{ option_strings.SIF_ED.option_1 }}</option>
+                <option class="text-2" value="2">{{ option_strings.SIF_ED.option_2 }}</option>
+                <option class="text-3" value="3">{{ option_strings.SIF_ED.option_3 }}</option>
+                <option class="text-4" value="4">{{ option_strings.SIF_ED.option_4 }}</option>
+                <option class="text-5" value="5">{{ option_strings.SIF_ED.option_5 }}</option>
+                <option class="text-6" value="6">{{ option_strings.SIF_ED.option_6 }}</option>
+                <option class="text-7" value="7">{{ option_strings.SIF_ED.option_7 }}</option>
+                <option class="text-8" value="8">{{ option_strings.SIF_ED.option_8 }}</option>
+                <option class="text-9" value="9">{{ option_strings.SIF_ED.option_9 }}</option>
+            </select>
+
+            <!--Process Damage - How much damange to the process equipment will be realized by successful exploitation?-->
+            <h6>Process Damage</h6>
+            <select class="custom-select custom-select-sm" id="pd" data-toggle="tooltip" data-placement="top" title="How much damage to the process equipment will be realized by successful exploitation?">
+                <option class="text-0" value="0">{{ option_strings.SIF_PD.option_0 }}</option>
+                <option class="text-1" value="1">{{ option_strings.SIF_PD.option_1 }}</option>
+                <option class="text-2" value="2">{{ option_strings.SIF_PD.option_2 }}</option>
+                <option class="text-3" value="3">{{ option_strings.SIF_PD.option_3 }}</option>
+                <option class="text-4" value="4">{{ option_strings.SIF_PD.option_4 }}</option>
+                <option class="text-5" value="5">{{ option_strings.SIF_PD.option_5 }}</option>
+                <option class="text-6" value="6">{{ option_strings.SIF_PD.option_6 }}</option>
+                <option class="text-7" value="7">{{ option_strings.SIF_PD.option_7 }}</option>
+                <option class="text-8" value="8">{{ option_strings.SIF_PD.option_8 }}</option>
+                <option class="text-9" value="9">{{ option_strings.SIF_PD.option_9 }}</option>
+            </select>
+
+            <!--Safety Equipment - How well are digital safety equipment deployed and protected?-->
+            <h6>Safety Equipment</h6>
+            <select class="custom-select custom-select-sm" id="se" data-toggle="tooltip" data-placement="top" title="How well is digital safety equipment deployed and protected?">
+                <option class="text-0" value="0">{{ option_strings.SIF_SE.option_0 }}</option>
+                <option class="text-1" value="1">{{ option_strings.SIF_SE.option_1 }}</option>
+                <option class="text-2" value="2">{{ option_strings.SIF_SE.option_2 }}</option>
+                <option class="text-3" value="3">{{ option_strings.SIF_SE.option_3 }}</option>
+                <option class="text-4" value="4">{{ option_strings.SIF_SE.option_4 }}</option>
+                <option class="text-5" value="5">{{ option_strings.SIF_SE.option_5 }}</option>
+                <option class="text-6" value="6">{{ option_strings.SIF_SE.option_6 }}</option>
+                <option class="text-7" value="7">{{ option_strings.SIF_SE.option_7 }}</option>
+                <option class="text-8" value="8">{{ option_strings.SIF_SE.option_8 }}</option>
+                <option class="text-9" value="9">{{ option_strings.SIF_SE.option_9 }}</option>
+            </select>
+
+            <!--Recoverability - How well is the organization / process team prepared to recover during successful exploitation?-->
+            <h6>Recoverability</h6>
+            <select class="custom-select custom-select-sm" id="r" data-toggle="tooltip" data-placement="top" title="How much personally identifiable information could be disclosed?">
+                <option class="text-0" value="0">{{ option_strings.SIF_R.option_0 }}</option>
+                <option class="text-1" value="1">{{ option_strings.SIF_R.option_1 }}</option>
+                <option class="text-2" value="2">{{ option_strings.SIF_R.option_2 }}</option>
+                <option class="text-3" value="3">{{ option_strings.SIF_R.option_3 }}</option>
+                <option class="text-4" value="4">{{ option_strings.SIF_R.option_4 }}</option>
+                <option class="text-5" value="5">{{ option_strings.SIF_R.option_5 }}</option>
+                <option class="text-6" value="6">{{ option_strings.SIF_R.option_6 }}</option>
+                <option class="text-7" value="7">{{ option_strings.SIF_R.option_7 }}</option>
+                <option class="text-8" value="8">{{ option_strings.SIF_R.option_8 }}</option>
+                <option class="text-9" value="9">{{ option_strings.SIF_R.option_9 }}</option>
+            </select>
+            <div class="alert m-3" role="alert">
+                Safety Impact Factor: <span id="SIF"></span>                
+            </div>
+        </div>
+    </div>
+    <div class="alert m-3" role="alert">
+        Consequece Factor: <span id="CF"></span>        
+    </div>
+</div>
+</div>
+<div class="alert m-3" role="alert">
+Overall Risk Severity: <span id="Risk"></span>
+</div>
+<div class="alert m-3" role="alert">
+Score Vector: <a id="score" target="_blank"></a>
+</div>
+
+<p>This Risk Rating Calculator is based on <a href="https://github.com/cutaway-security/IACS_STAR_Methodology" target="_blank">IACS System Testing and Assessment Rating (STAR) Methodology</a>. To understand how to effectively use this calculator to score implementation vulnerabilities, please have the stakeholders and assessment team read the <a href="./methodology.html" target="_blank">methodology documentation</a> to understand the likelihood and consequence factors. Threat actor factor scores will, most likely, be consistent for all situations involving the System-Under-Consideration (SUC). Stakeholders may be required to accurately score the safety impact factors for each issue being reviewed.</p> 
+<p>This Risk Rating Calculator was generated using the example of <a href="https://owasp-risk-rating.com/" target="_blank">OWASP's Risk Rating Calculator</a>.</p> 
+<p>This project was developed and is supported by <a href="https://www.cutawaysecurity.com/" target="_blank">Cutaway Security, LLC.</a></p> 
+        </div>
+    </body>
+</html>
