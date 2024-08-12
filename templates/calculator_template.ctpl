@@ -84,6 +84,42 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
         </style>
         <script>
 
+            window.onload = function() {
+                // Call the function when the page loads
+                const decodedVector = getDecodedVectorFromUrl();
+                if (decodedVector){
+                    init(decodedVector,'')
+                    colorize()
+                }
+                console.log(decodedVector);
+            };
+            
+            function getDecodedVectorFromUrl() {
+                // Get the full URL
+                const url = window.location.href;
+
+                // Create a URL object
+                const urlObj = new URL(url);
+
+                // Get the 'vector' parameter from the URL
+                const vectorParam = urlObj.searchParams.get('vector');
+
+                if (vectorParam) {
+                    // Base64 decode the 'vector' parameter
+                    try {
+                        // Decode the base64 string
+                        const decodedVector = atob(vectorParam);
+                        return decodedVector;
+                    } catch (error) {
+                        console.error('Error decoding vector parameter:', error);
+                        return null;
+                    }
+                } else {
+                    console.error('No vector parameter found in the URL.');
+                    return null;
+                }
+            }
+
                     function update_form() {
                         init($('#vector-input').val(), '')
                         colorize()
@@ -378,7 +414,7 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
         </div>
     </div>
     <div class="alert m-3" role="alert">
-        Likelihoood Factor: <span id="LF"></span>
+        Likelihood Factor: <span id="LF"></span>
     </div>
 </div>
 <div class="col-md-6">                
@@ -466,7 +502,7 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-9" value="9">{{ option_strings.SIF_ED.option_9 }}</option>
             </select>
 
-            <!--Process Damage - How much damange to the process equipment will be realized by successful exploitation?-->
+            <!--Process Damage - How much damage to the process equipment will be realized by successful exploitation?-->
             <h6>Process Damage</h6>
             <select class="custom-select custom-select-sm" id="pd" data-toggle="tooltip" data-placement="top" title="How much damage to the process equipment will be realized by successful exploitation?">
                 <option class="text-0" value="0">{{ option_strings.SIF_PD.option_0 }}</option>
@@ -516,7 +552,7 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
         </div>
     </div>
     <div class="alert m-3" role="alert">
-        Consequece Factor: <span id="CF"></span>        
+        Consequence Factor: <span id="CF"></span>        
     </div>
 </div>
 </div>

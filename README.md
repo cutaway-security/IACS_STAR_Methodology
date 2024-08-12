@@ -1,8 +1,11 @@
 # IACS System Testing and Assessment Rating (STAR) Methodology (IACS STAR)
 A methodology for scoring implementation vulnerabilities identified when testing and performing cybersecurity assessments of industrial and automation control environments.  
 
+Get started with the [IACS STAR Calculator](#iacs-star-calculator)
+
 ## Contributions
 
+* Development Committee: [Don C. Weber](https://www.linkedin.com/in/cutaway/), [Christoph Bless](https://www.linkedin.com/in/christoph-bless-111374199/), [Jessa Davis](https://www.linkedin.com/in/davisjessa/)
 * Author: Don C. Weber
 * IACS/OT Contributors: Oscar Delgado, Danielle Jablanski, Tim Conway, Brandon Workentin
 * IT/Infosec Contributors: Jeff Williams (Author of original OWASP Risk Rating Methodology)
@@ -16,7 +19,7 @@ The IACS System Testing and Assessment Rating (STAR) Methodology (IACS STAR) is 
 The authors of this methodology have tried hard to make this model simple to use, while keeping enough detail for accurate risk estimates to be made. Please reference the section below on customization for more information about tailoring the model for use in a specific organization.
 
 <details>
-<summary>Click the arrow For resources that help explain the challenges and obstacles for analyzing and rating risk in IACS/OT environments.</summary>
+<summary>Click the arrow for resources that help explain the challenges and obstacles for analyzing and rating risk in IACS/OT environments.</summary>
 
 - [The Blind Spot: How to Simply Calculate Cyber Attack Likelihood Using the Exploitability Assessment](https://www.cybersecureot.info/post/the-blind-spot-how-to-simply-calculate-cyber-attack-likelihood-using-the-exploitability-assessment)
 - [Maximizing Limited Resources in OT Security - Spiceworks](https://www.spiceworks.com/tech/devops/guest-article/maximizing-limited-resources-in-ot-security/amp/)
@@ -428,38 +431,72 @@ Open your web browser to your [local IACS STAR score calculator](http://localhos
 
 ## Generate or update the IACS STAR Calculator 
 
-The IACS STAR calculator can be generated based on data specified in yaml file. This allows to easily change the wording of the risk descriptions or to create yaml files for different languages. 
+The IACS STAR calculator can be generated based on data specified in YAML file. This allows to easily change the wording of the risk descriptions or to create yaml files for different languages. 
 
 The generator requires PyYAML and Jinja2 as dependencies. Those can be installed with `pip install -r requirements.txt`.
 
-**Usage:**
+### Usage:
+
+The calculator generation script is designed to work on Windows and Linux. The following is the common help statement for the calculator generation script.
+
+```PowerShell
+PS CutSec [08/12/2024 16:56:13]> py .\generate_calculator.py -h
+usage: generate_calculator.py [-h] [-c FILENAME.yaml] [-t FILENAME.html]
+
+Generate a custom static IACS calculator file from YAML input.
+
+options:
+  -h, --help            show this help message and exit
+  -c FILENAME.yaml, --config FILENAME.yaml
+                        Filename for the YAML configuration file. (default: default.yaml)
+  -t FILENAME.html, --template FILENAME.html
+                        Filename for the calculator's HTML template file. (default: calculator_template.html)
 ```
+
+By default the calculator generation will use the `config/default.yaml` file as the configuration file. The default template file is `templates/calculator_template.html`. The following example outputs a new calculator named `custom-iacs_star_calculator.html` in the `html` directory. Update the YAML file in the configuration directory to create your own calculator.
+
+```zsh
 (venv) ➜  ./generate_calculator.py 
-[*] Reading config file config/default.yaml
-[*] Using template file html/iacs_star_calculator.html
-[*] Wrote html file html/iacs_star_calculator.html
-
+[*] Reading config file: default.yaml
+[*] Using template file: calculator_template.cptl
+[*] Wrote new calculator html file: \home\iacs-user\Tools\IACS-STAR_Methodology\html\custom-iacs_star_calculator.html
+[*] To start a local web server open a terminal, change to the 'html' directory, and run 'python3 -m http.server 9000'
+[*] Use new calculator by navigating to http://localhost:9000:/custom-iacs_star_calculator.html
 ```
 
-The above command would generate the "iacs_star_calculator.html" in the html folder based on the default config
-"default.yaml". Changing the config file is possible using parameter "config". Assuming you have created a config called
-pharma.yaml this could be done using the following command.
+Calculators can be generated for difference IACS sectors. The following example demonstrates the creation of a calculator for the Pharmaceutical industry. The `pharma.yaml` file has been updated with verbiage from this industry and placed in the `config` directory.
 
-```
-./generate_calculator.py --config pharma.yaml
+```zsh
+(venv) ➜  ./generate_calculator.py --config pharma.yaml
+[*] Reading config file: pharma.yaml
+[*] Using template file: calculator_template.cptl
+[*] Wrote new calculator html file: \home\iacs-user\Tools\IACS-STAR_Methodology\html\pharma-iacs_star_calculator.html
+[*] To start a local web server open a terminal, change to the 'html' directory, and run 'python3 -m http.server 9000'
+[*] Use new calculator by navigating to http://localhost:9000:/pharma-iacs_star_calculator.html
 ```
 
-## Config file 
+Calculators templates can be used to change colors and other calculator functions. The following example demonstrates the creation of a calculator for a paper mill industry. An updated calculator with a dark theme is being used for this calculator version. The `dark_calc.ctpl` file has been updated with new calculator functionality and placed in the `template` directory.
+
+```zsh
+(venv) ➜  ./generate_calculator.py -c papermill.yaml --template dark_calc.ctpl
+[*] Reading config file: papermill.yaml
+[*] Using template file: dark_calc.cptl
+[*] Wrote new calculator html file: \home\iacs-user\Tools\IACS-STAR_Methodology\html\paper_dark-iacs_star_calculator.html
+[*] To start a local web server open a terminal, change to the 'html' directory, and run 'python3 -m http.server 9000'
+[*] Use new calculator by navigating to http://localhost:9000:/paper_dark-iacs_star_calculator.html
+```
+
+### Editing the YAML Configuration File 
 
 The yaml configuration files allows currently contain 3 main areas. 
 1. section *outfile* allows to specify the file name of the output file that will be generated in the html folder
 2. section *option_strings* contains different subsections for the option fields. Each subsection needs to specify *option_0* to *option_9* that will be used as text description for the options in the corresponding drop down fields.
 3. section *risk_weigh* allows to adjust the weighing for calculation of the 
 
-```
+```YAML
 outfile:
   #specifing the filename of the output file that will be created in output folder "html"
-  filename: iacs_star_calculator.html
+  filename: custom-iacs_star_calculator.html
 
 option_strings:
   TAF_SL:

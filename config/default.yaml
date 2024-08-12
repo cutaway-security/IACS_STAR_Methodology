@@ -1,6 +1,6 @@
 outfile:
-  #specifing the filename of the output file that will be created in output folder "html"
-  filename: iacs_star_calculator.html
+  #specifying the filename of the output file that will be created in output folder "html"
+  filename: custom-iacs_star_calculator.html
 
 option_strings:
   TAF_SL:
@@ -88,10 +88,10 @@ option_strings:
     option_1: "1 - Unknown OT Vulnerability"
     option_2: "2 - Unknown IT Vulnerability"
     option_3: "3 - Not publicly known but common configuration vulnerability"
-    option_4: ""
+    option_4: "4"
     option_5: "5 - Publicly identified on vendor website or within NVD Vulnerabilities database but no known exploit available"
     option_6: "6 - Publicly identified on vendor website or within NVD Vulnerabilities database, no known exploit available but identified threat actor group can develop exploit"
-    option_7: ""
+    option_7: "7"
     option_8: "8 - Publicly identified on vendor website, vulnerability databases, and exploit available in public forums, i.e. Metasploit, Exploit-DB"
     option_9: "9 - Public identified and in CISA Known Exploited Vulnerabilities Catalog"
 
@@ -138,10 +138,10 @@ option_strings:
     # Loss of Availability - How are production and safety services impacted?
     option_0: "0 - N/A"
     option_1: "1 - Minimal production interruption and easily recoverable"
-    option_2: ""
+    option_2: "2"
     option_3: "3 - Device or service interrupted but process not impacted"
     option_4: "4 - Production services temporarily interrupted by easily recoverable"
-    option_5: ""
+    option_5: "5"
     option_6: "6 - Production services interrupted but does not affect other processes"
     option_7: "7 - Production services interrupted and impacts other processes"
     option_8: "8 - All production services completely lost"
@@ -165,22 +165,22 @@ option_strings:
     option_0: "0 - No environmental impact"
     option_1: "1 - Environment damage limited by safety equipment, active, and passive protections"
     option_2: "2 - Environment damage limited by active and passive protections"
-    option_3: ""
+    option_3: "3"
     option_4: "4 - Environment damage limited by passive protections only"
     option_5: "5 - Safety equipment not remotely accessible and active and passive protections are in place"
-    option_6: ""
+    option_6: "6"
     option_7: "7 - Safety equipment remotely accessible but active and passive protections are sufficient"
     option_8: "8 - Safety equipment remotely accessible and situation might overwhelm active protections but passive protections are sufficient"
     option_9: "9 - Safety equipment on production network and situation might overwhelm active or passive protections"
 
   SIF_PD:
-    # Process Damage - How much damange to the process equipment will be realized by successful exploitation?
+    # Process Damage - How much damage to the process equipment will be realized by successful exploitation?
     option_0: "0 - No devices can be damaged and configurations cannot be modified"
     option_1: "1 - Device or monitoring systems / applications can be modified but do not damage device or process"
-    option_2: ""
+    option_2: "2"
     option_3: "3 - Device device configuration can be changed but easily recoverable"
-    option_4: "4 - Device damaged requiring manual update but limited impact to proces"
-    option_5: ""
+    option_4: "4 - Device damaged requiring manual update but limited impact to process"
+    option_5: "5"
     option_6: "6 - Device damaged requiring manual update but significant impact to process"
     option_7: "7 - Safety equipment configuration changed but limited impact to process"
     option_8: "8 - Safety equipment damaged but limited impact to process"
