@@ -2,6 +2,15 @@ outfile:
   #specifying the filename of the output file that will be created in output folder "html"
   filename: custom-iacs_star_calculator.html
 
+target:
+  # Local site configuration
+  schema: http
+  host: localhost:9000
+  
+  # Main site configuration
+  #schema: https
+  #host: iacs-star-calculator.com
+
 option_strings:
   TAF_SL:
     option_comment: "Threat Actor Skill level: How technically skilled is this group of threat actors?"
@@ -234,7 +243,6 @@ risk_weight:
   TIF_LI: 1
   TIF_LA: 1
   TIF_LAC: 1
-
 
   # ( SIF_ED + SIF_PD + SIF_SE + SIF_R ) / 4 = must result in "1" to be accepted
   SIF_ED: 1

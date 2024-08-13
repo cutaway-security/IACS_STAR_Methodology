@@ -40,7 +40,8 @@ using the default configuration file "papermill.yaml".
 
     ./generate_calculator.py -c papermill.yaml --template dark_template.ctpl    
     '''
-
+    
+    # Print help and example statement
     inParser.print_help()
     print(f"{examples_statement}")
     sys.exit()
@@ -106,8 +107,9 @@ def main(config_file:str, template_file:str):
 
         # Setup the output file for the new calculator
         ######################
-        outfile_name = config["outfile"]["filename"]
-        outfile = os.path.join(iacs_out_dir,outfile_name)
+        outfile_name      = config["outfile"]["filename"]
+        outfile           = os.path.join(iacs_out_dir,outfile_name)
+        site_url          = f"{config["target"]["schema"]}://{config["target"]["host"]}/{iacs_out_dir_name}"
 
         # Do not stomp previous calculators
         ######################
@@ -149,9 +151,10 @@ def main(config_file:str, template_file:str):
         # Prepare template data
         ######################
         context = {
+            "filename": config["outfile"]["filename"],
+            "target": config["target"],
             "option_strings": config["option_strings"],
-            "risk_weight": config["risk_weight"],
-            "filename": config["outfile"]["filename"]
+            "risk_weight": config["risk_weight"]
         }
 
         # Output custom calculator
@@ -163,7 +166,7 @@ def main(config_file:str, template_file:str):
         # New calculator generated. Tell user where it is and how to access.
         ######################
         print(f"[*] To start a local web server open a terminal, change to the \'custom\' directory, and run \'python3 -m http.server 9000\'")
-        print(f"[*] Use new calculator by navigating to http://localhost:9000:/{outfile_name}")
+        print(f"[*] Use new calculator by navigating to {site_url}/{outfile_name}")
 
 ######################
 # Main Stub
