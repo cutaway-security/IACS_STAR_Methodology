@@ -111,7 +111,7 @@ def main(config_file:str, template_file:str):
         outfile      = os.path.join(iacs_out_dir,outfile_name)
         site_schema  = config["target"]["schema"]
         site_host    = config["target"]["host"]
-        site_url     = f"{site_schema}://{site_host}/{iacs_out_dir_name}"
+        site_url     = f"{site_schema}://{site_host}"
 
         # Do not stomp previous calculators
         ######################
