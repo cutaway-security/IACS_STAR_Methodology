@@ -6,10 +6,10 @@ target:
   # Local site configuration
   schema: http
   host: localhost:9000
-  
-  # Main site configuration
+
+  # Main site configuration, include html subdirectory name for GitHub Pages
   #schema: https
-  #host: iacs-star-calculator.com
+  #host: iacs-star-calculator.com/html
 
 option_strings:
   TAF_SL:
