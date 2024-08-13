@@ -64,7 +64,7 @@ def main(config_file:str, template_file:str):
     iacs_config_dir_name   = "config"
     iacs_template_dir_name = "templates"
     iacs_out_dir_name      = "custom"
-    iacs_dir           = os.path.dirname(os.getcwd())
+    iacs_dir           = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     iacs_config_dir    = os.path.join(iacs_dir,iacs_config_dir_name)
     iacs_config_file   = os.path.join(iacs_config_dir,config_file)
     iacs_template_dir  = os.path.join(iacs_dir,iacs_template_dir_name)
