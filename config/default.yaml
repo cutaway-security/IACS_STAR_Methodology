@@ -4,7 +4,8 @@ outfile:
 
 option_strings:
   TAF_SL:
-    # Threat Actor Skill level: How technically skilled is this group of threat actors?
+    option_comment: "Threat Actor Skill level: How technically skilled is this group of threat actors?"
+    option_title: "How technically skilled is this group of threat actors?"
     option_0: "0 - N/A"
     option_1: "1 - Limited Information Technology (IT), network, and no Operational Technology (OT) skills"
     option_2: "2"
@@ -17,7 +18,8 @@ option_strings:
     option_9: "9 - Security penetration skills and knowledge of OT technologies"
 
   TAF_M:
-    # Threat Actor Motive: How motivated of the threat actors once they obtain access to the control environment? An excellent guide for this is the Impact column of the [MITRE ATT&CK ICS Matrix](https://attack.mitre.org/matrices/ics/).
+    option_comment: "Threat Actor Motive: How motivated of the threat actors once they obtain access to the control environment? An excellent guide for this is the Impact column of the [MITRE ATT&CK ICS Matrix](https://attack.mitre.org/matrices/ics/)."
+    option_title: "How motivated of the threat actors once they obtain access to the control environment?"
     option_0: "0 - N/A"
     option_1: "1 - No reward or intention to impact control environment"
     option_2: "2 - Theft of operational data or equipment"
@@ -30,7 +32,8 @@ option_strings:
     option_9: "9 - Prevent operation of safety equipment or cause a catastrophic failure"
 
   TAF_O:
-    # Threat Actor Opportunity:  When accessing the control environment, how are the threat actors limited by deployed countermeasures?
+    option_comment: "Threat Actor Opportunity: When accessing the control environment, how are the threat actors limited by deployed countermeasures?"
+    option_title: "When accessing the control environment, how are the threat actors limited by deployed countermeasures?"
     option_0: "0 - Physical access and local authentication are required and response time is less than fifteen minutes"
     option_1: "1 - Physical access and local authentication are required but response time is more than fifteen minutes"
     option_2: "2"
@@ -43,21 +46,23 @@ option_strings:
     option_9: "9 - Undetected physical or remote access that provides elevated permissions to network devices, systems, and applications"
 
   TAF_A:
-    #Threat Actor Access: What is the physical or remote access capabilities achieved by successful exploitation within the process?
+    option_comment: "Threat Actor Access: What is the physical or remote access capabilities achieved by successful exploitation within the process?"
+    option_title: "What is the physical or remote access capabilities achieved by successful exploitation within the process?"
     option_0: "0 - N/A"
     option_1: "1 - Physical owner/operator users"
-    option_2: "2 - Physical vendor / integrator users"
-    option_3: "3 - Remote owner/operator users"
-    option_4: "4"
-    option_5: "5 - Remote owner/operator users"
-    option_6: "6"
-    option_7: "7 - Remote vendor / integrator users"
+    option_2: "2 - Physical vendor/integrator users"
+    option_3: "3 - Remote owner/operator users with Multifactor Authentication (MFA)"
+    option_4: "4 - Remote vendor/integrator users with Multifactor Authentication (MFA)"
+    option_5: "5 - Remote owner/operator users without Multifactor Authentication (MFA)"
+    option_6: "6 - Remote vendor/integrator users without Multifactor Authentication (MFA)"
+    option_7: "7 - Remote access without Multifactor Authentication (MFA) or logging"
     option_8: "8 - Physical malicious users"
     option_9: "9 - Remote anonymous internet users"
 
 # Vulnerability Factor
   VF_EA:
-    # Vulnerability/Ease of discovery: How easy is it for this group of threat actors to access the environment and discover the existence of the vulnerability?
+    option_comment: "Vulnerability/Ease of discovery: How easy is it for this group of threat actors to access the environment and discover the existence of the vulnerability?"
+    option_title: "How easy is it for this group of threat actors to access the environment and discover the existence of the vulnerability?"
     option_0: "0 - N/A"
     option_1: "1 - Requires physical access to environment or OT device"
     option_2: "2 - Requires physical access to environment or IT device"
@@ -70,7 +75,8 @@ option_strings:
     option_9: "9 - Remotely accessible and automated tools available for OT technology"
 
   VF_EE:
-    # Vulnerability/Ease of exploit: How easy is it to actually exploit the vulnerability?
+    option_comment: "Vulnerability/Ease of exploit: How easy is it to actually exploit the vulnerability?"
+    option_title: "How easy is it to actually exploit the vulnerability?"
     option_0: "0 - N/A"
     option_1: "1 - No known proof of concept"
     option_2: "2 - Countermeasures protecting OT technology"
@@ -83,7 +89,8 @@ option_strings:
     option_9: "9 - Automated tools available for OT technology"
 
   VF_AW:
-    # Vulnerability/Awareness: How well known is this vulnerability?
+    option_comment: "Vulnerability/Awareness: How well known is this vulnerability?"
+    option_title: "How well known is this vulnerability?"
     option_0: "0 - N/A"
     option_1: "1 - Unknown OT Vulnerability"
     option_2: "2 - Unknown IT Vulnerability"
@@ -96,7 +103,8 @@ option_strings:
     option_9: "9 - Public identified and in CISA Known Exploited Vulnerabilities Catalog"
 
   VF_DR:
-    # -Detection/Response - How likely is an exploit to be detected?
+    option_comment: "Detection/Response - How likely is an exploit to be detected?"
+    option_title: "How likely is an exploit to be detected?"
     option_0: "0 - N/A"
     option_1: "1 - Centrally logged with alerts and formal review and response plan"
     option_2: "2"
@@ -109,7 +117,8 @@ option_strings:
     option_9: "9 - Not logged"
 
   TIF_LC:
-    # Loss of Confidentiality - How much data could be disclosed and how sensitive is it?
+    option_comment: "Loss of Confidentiality - How much data could be disclosed and how sensitive is it?"
+    option_title: "How much data could be disclosed and how sensitive is it?"
     option_0: "0 - No data lost"
     option_1: "1"
     option_2: "2 - Minimal architecture configuration data disclosed"
@@ -122,7 +131,8 @@ option_strings:
     option_9: "9 - All process network and device configuration data disclosed"
 
   TIF_LI:
-    # Loss of Integrity - How is the process data changed and does it impact critical functions?
+    option_comment: "Loss of Integrity - How is the process data changed and does it impact critical functions?"
+    option_title: "How is the process data changed and does it impact critical functions?"
     option_0: "0 - N/A"
     option_1: "1 - Modification of historical data not used for control"
     option_2: "2 - Modification of historical data used for control"
@@ -135,7 +145,8 @@ option_strings:
     option_9: "9 - Remote modification of device configurations used for critical functions"
 
   TIF_LA:
-    # Loss of Availability - How are production and safety services impacted?
+    option_comment: "Loss of Availability - How are production and safety services impacted?"
+    option_title: "How are production and safety services impacted?"
     option_0: "0 - N/A"
     option_1: "1 - Minimal production interruption and easily recoverable"
     option_2: "2"
@@ -148,7 +159,8 @@ option_strings:
     option_9: "9 - Loss of process safety functionality"
 
   TIF_LAC:
-    # Loss of Accountability - Are the threat actor actions traceable to an individual?
+    option_comment: "Loss of Accountability - Are the threat actor actions traceable to an individual?"
+    option_title: "Are the threat actor actions traceable to an individual?"
     option_0: "0 - N/A"
     option_1: "1 - Central logging, Multifactor Authentication (MFA), and cameras"
     option_2: "2 - Central logging, Multifactor Authentication (MFA), but no cameras"
@@ -161,7 +173,8 @@ option_strings:
     option_9: "9 - No local or central logging, no MFA, and no cameras"
 
   SIF_ED:
-    # Environment Damage - How much damage to the local environment, plant or public, will be realized by successful exploitation?
+    option_comment: "Environment Damage - How much damage to the local environment, plant or public, will be realized by successful exploitation?"
+    option_title: "How much damage to the local environment, plant or public, will be realized by successful exploitation?"
     option_0: "0 - No environmental impact"
     option_1: "1 - Environment damage limited by safety equipment, active, and passive protections"
     option_2: "2 - Environment damage limited by active and passive protections"
@@ -174,7 +187,8 @@ option_strings:
     option_9: "9 - Safety equipment on production network and situation might overwhelm active or passive protections"
 
   SIF_PD:
-    # Process Damage - How much damage to the process equipment will be realized by successful exploitation?
+    option_comment: "Process Damage - How much damage to the process equipment will be realized by successful exploitation?"
+    option_title: "How much damage to the process equipment will be realized by successful exploitation?"
     option_0: "0 - No devices can be damaged and configurations cannot be modified"
     option_1: "1 - Device or monitoring systems / applications can be modified but do not damage device or process"
     option_2: "2"
@@ -187,7 +201,8 @@ option_strings:
     option_9: "9 - Safety equipment damaged causing process failure or automatic shutdown"
 
   SIF_SE:
-    # Safety Equipment - How well are digital safety equipment deployed and protected?
+    option_comment: "Safety Equipment - How well are digital safety equipment deployed and protected?"
+    option_title: "How well are digital safety equipment deployed and protected?"
     option_0: "0 - Safety equipment not required for process"
     option_1: "1 - Safety equipment required for process but not remotely accessible or on the same network as vulnerability"
     option_2: "2 - Safety equipment required for process, remotely accessible, and requires MFA but not on the same network as vulnerability"
@@ -200,7 +215,8 @@ option_strings:
     option_9: "9 - Safety equipment vulnerable, remotely accessible, and does not require authentication"
 
   SIF_R:
-    # Recoverability - How well is the organization / process team prepared to recover during successful exploitation?
+    option_comment: "Recoverability - How well is the organization / process team prepared to recover during successful exploitation?"
+    option_title: "How well is the organization / process team prepared to recover during successful exploitation?"
     option_0: "0 - Vulnerability will not require or limit recovery operations"
     option_1: "1 - Process will automatically recover with no manual efforts"
     option_2: "2 - Process will recover with minimal manual efforts"

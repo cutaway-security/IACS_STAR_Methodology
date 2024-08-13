@@ -316,7 +316,7 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
 
             <!--Threat Actor Opportunity:  When accessing the control environment, how are the threat actors limited by deployed countermeasures?-->
             <h6>Opportunity</h6>
-            <select class="custom-select custom-select-sm" id="o" data-toggle="tooltip" data-placement="top" title="What resources and opportunities are required for this group of threat agents to find and exploit this vulnerability?">
+            <select class="custom-select custom-select-sm" id="o" data-toggle="tooltip" data-placement="top" title="When accessing the control environment, how are the threat actors limited by deployed countermeasures?">
                 <option class="text-0" value="0">0 - Physical access and local authentication are required and response time is less than fifteen minutes</option>
                 <option class="text-1" value="1">1 - Physical access and local authentication are required but response time is more than fifteen minutes</option>
                 <option class="text-2" value="2">2</option>
@@ -331,15 +331,15 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
 
             <!--Threat Actor Access: What is the physical or remote access capabilities achieved by successful exploitation within the process?-->
             <h6>Access</h6>
-            <select class="custom-select custom-select-sm" id="a" data-toggle="tooltip" data-placement="top" title="How large is this group of threat agents?">
+            <select class="custom-select custom-select-sm" id="a" data-toggle="tooltip" data-placement="top" title="What is the physical or remote access capabilities achieved by successful exploitation within the process?">
                 <option class="text-0" value="0">0 - N/A</option>
                 <option class="text-1" value="1">1 - Physical owner/operator users</option>
-                <option class="text-2" value="2">2 - Physical vendor / integrator users</option>
-                <option class="text-3" value="3">3 - Remote owner/operator users</option>
-                <option class="text-4" value="4">4</option>
-                <option class="text-5" value="5">5 - Remote owner/operator users</option>
-                <option class="text-6" value="6">6</option>
-                <option class="text-7" value="7">7 - Remote vendor / integrator users</option>
+                <option class="text-2" value="2">2 - Physical vendor/integrator users</option>
+                <option class="text-3" value="3">3 - Remote owner/operator users with MFA</option>
+                <option class="text-4" value="4">4 - Remote vendor/integrator users with MFA</option>
+                <option class="text-5" value="5">5 - Remote owner/operator users without MFA</option>
+                <option class="text-6" value="6">6 - Remote vendor/integrator users without MFA</option>
+                <option class="text-7" value="7">7 - Remote access without MFA or logging</option>
                 <option class="text-8" value="8">8 - Physical malicious users</option>
                 <option class="text-9" value="9">9 - Remote anonymous internet users</option>
             </select>

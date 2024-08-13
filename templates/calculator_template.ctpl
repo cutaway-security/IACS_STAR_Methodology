@@ -284,9 +284,9 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
     <div class="row">
         <div class="col-md-6">
             <h5>Threat Actor Factors</h5>
-            <!--Threat Actor Skill level: How technically skilled is this group of threat actors? -->
+            <!--{{ option_strings.TAF_SL.option_comment }} -->
             <h6>Skill Level</h6>
-            <select class="custom-select custom-select-sm" id="sl" data-toggle="tooltip" data-placement="top" title="How technically skilled is this group of threat actors?">
+            <select class="custom-select custom-select-sm" id="sl" data-toggle="tooltip" data-placement="top" title="{{ option_strings.TAF_SL.option_title }}">
                 <option class="text-0" value="0">{{ option_strings.TAF_SL.option_0 }}</option>
                 <option class="text-1" value="1">{{ option_strings.TAF_SL.option_1 }}</option>
                 <option class="text-2" value="2">{{ option_strings.TAF_SL.option_2 }}</option>
@@ -299,9 +299,9 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-9" value="9">{{ option_strings.TAF_SL.option_9 }}</option>
             </select>
 
-            <!--Threat Actor Motive: How motivated of the threat actors once they obtain access to the control environment? An excellent guide for this is the Impact column of the [MITRE ATT&CK ICS Matrix](https://attack.mitre.org/matrices/ics/).-->
+            <!--{{ option_strings.TAF_M.option_comment }}-->
             <h6>Motive</h6>
-            <select class="custom-select custom-select-sm" id="m" data-toggle="tooltip" data-placement="top" title="How motivated of the threat actors once they obtain access to the control environment?">
+            <select class="custom-select custom-select-sm" id="m" data-toggle="tooltip" data-placement="top" title="{{ option_strings.TAF_M.option_title }}">
                 <option class="text-0" value="0">{{ option_strings.TAF_M.option_0 }}</option>
                 <option class="text-1" value="1">{{ option_strings.TAF_M.option_1 }}</option>
                 <option class="text-2" value="2">{{ option_strings.TAF_M.option_2 }}</option>
@@ -314,9 +314,9 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-9" value="9">{{ option_strings.TAF_M.option_9 }}</option>
             </select>
 
-            <!--Threat Actor Opportunity:  When accessing the control environment, how are the threat actors limited by deployed countermeasures?-->
+            <!--{{ option_strings.TAF_O.option_comment }}-->
             <h6>Opportunity</h6>
-            <select class="custom-select custom-select-sm" id="o" data-toggle="tooltip" data-placement="top" title="What resources and opportunities are required for this group of threat agents to find and exploit this vulnerability?">
+            <select class="custom-select custom-select-sm" id="o" data-toggle="tooltip" data-placement="top" title="{{ option_strings.TAF_O.option_title }}?">
                 <option class="text-0" value="0">{{ option_strings.TAF_O.option_0 }}</option>
                 <option class="text-1" value="1">{{ option_strings.TAF_O.option_1 }}</option>
                 <option class="text-2" value="2">{{ option_strings.TAF_O.option_2 }}</option>
@@ -329,9 +329,9 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-9" value="9">{{ option_strings.TAF_O.option_9 }}</option>
             </select>
 
-            <!--Threat Actor Access: What is the physical or remote access capabilities achieved by successful exploitation within the process?-->
+            <!--{{ option_strings.TAF_A.option_comment }}-->
             <h6>Access</h6>
-            <select class="custom-select custom-select-sm" id="a" data-toggle="tooltip" data-placement="top" title="How large is this group of threat agents?">
+            <select class="custom-select custom-select-sm" id="a" data-toggle="tooltip" data-placement="top" title="{{ option_strings.TAF_A.option_title }}">
                 <option class="text-0" value="0">{{ option_strings.TAF_A.option_0 }}</option>
                 <option class="text-1" value="1">{{ option_strings.TAF_A.option_1 }}</option>
                 <option class="text-2" value="2">{{ option_strings.TAF_A.option_2 }}</option>
@@ -349,9 +349,9 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
         </div>
         <div class="col-md-6">
             <h5>Vulnerability Factors</h5>
-            <!--Vulnerability/Ease of discovery: How easy is it for this group of threat actors to access the environment and discover the existence of the vulnerability? -->
+            <!--{{ option_strings.VF_EA.option_comment }}-->
             <h6>Ease of Discovery</h6>
-            <select class="custom-select custom-select-sm" id="ea" data-toggle="tooltip" data-placement="top" title="How easy is it for this group of threat agents to discover this vulnerability?">
+            <select class="custom-select custom-select-sm" id="ea" data-toggle="tooltip" data-placement="top" title="{{ option_strings.VF_EA.option_title }}">
                 <option class="text-0" value="0">{{ option_strings.VF_EA.option_0 }}</option>
                 <option class="text-1" value="1">{{ option_strings.VF_EA.option_1 }}</option>
                 <option class="text-2" value="2">{{ option_strings.VF_EA.option_2 }}</option>
@@ -364,9 +364,9 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-9" value="9">{{ option_strings.VF_EA.option_9 }}</option>
             </select>
 
-            <!--Vulnerability/Ease of exploit: How easy is it to actually exploit the vulnerability? -->
+            <!--{{ option_strings.VF_EE.option_comment }}-->
             <h6>Ease of Exploit</h6>
-            <select class="custom-select custom-select-sm" id="ee" data-toggle="tooltip" data-placement="top" title="How easy is it for this group of threat agents to actually exploit this vulnerability?">
+            <select class="custom-select custom-select-sm" id="ee" data-toggle="tooltip" data-placement="top" title="{{ option_strings.VF_EE.option_title }}">
                 <option class="text-0" value="0">{{ option_strings.VF_EE.option_0 }}</option>
                 <option class="text-1" value="1">{{ option_strings.VF_EE.option_1 }}</option>
                 <option class="text-2" value="2">{{ option_strings.VF_EE.option_2 }}</option>
@@ -379,9 +379,9 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-9" value="9">{{ option_strings.VF_EE.option_9 }}</option>
             </select>
 
-            <!--Vulnerability/Awareness: How well known is this vulnerability?-->
+            <!--{{ option_strings.VF_AW.option_comment }}-->
             <h6>Awareness</h6>
-            <select class="custom-select custom-select-sm" id="aw" data-toggle="tooltip" data-placement="top" title="How well known is this vulnerability to this group of threat agents?">
+            <select class="custom-select custom-select-sm" id="aw" data-toggle="tooltip" data-placement="top" title="{{ option_strings.VF_AW.option_title }}">
                 <option class="text-0" value="0">{{ option_strings.VF_AW.option_0 }}</option>
                 <option class="text-1" value="1">{{ option_strings.VF_AW.option_1 }}</option>
                 <option class="text-2" value="2">{{ option_strings.VF_AW.option_2 }}</option>
@@ -394,9 +394,9 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-9" value="9">{{ option_strings.VF_AW.option_9 }}</option>
             </select>
 
-            <!--Detection/Response - How likely is an exploit to be detected?-->
+            <!--{{ option_strings.VF_DR.option_comment }}-->
             <h6>Intrusion Detection</h6>
-            <select class="custom-select custom-select-sm" id="dr" data-toggle="tooltip" data-placement="top" title="How likely is an exploit to be detected?">
+            <select class="custom-select custom-select-sm" id="dr" data-toggle="tooltip" data-placement="top" title="{{ option_strings.VF_DR.option_title }}">
                 <option class="text-0" value="0">{{ option_strings.VF_DR.option_0 }}</option>
                 <option class="text-1" value="1">{{ option_strings.VF_DR.option_1 }}</option>
                 <option class="text-2" value="2">{{ option_strings.VF_DR.option_2 }}</option>
@@ -422,9 +422,9 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
     <div class="row">
         <div class="col-md-6">
             <h5>Technical Impact Factors</h5>
-            <!--Loss of Confidentiality - How much data could be disclosed and how sensitive is it?-->
+            <!--{{ option_strings.TIF_LC.option_comment }}-->
             <h6>Loss of Confidentiality</h6>
-            <select class="custom-select custom-select-sm" id="lc" data-toggle="tooltip" data-placement="top" title="How much data could be disclosed and how sensitive is it?">
+            <select class="custom-select custom-select-sm" id="lc" data-toggle="tooltip" data-placement="top" title="{{ option_strings.TIF_LC.option_title }}">
                 <option class="text-0" value="0">{{ option_strings.TIF_LC.option_0 }}</option>
                 <option class="text-1" value="1">{{ option_strings.TIF_LC.option_1 }}</option>
                 <option class="text-2" value="2">{{ option_strings.TIF_LC.option_2 }}</option>
@@ -437,9 +437,9 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-9" value="9">{{ option_strings.TIF_LC.option_9 }}</option>
             </select>
 
-            <!--Loss of Integrity - How is the process data changed and does it impact critical functions?-->
+            <!--{{ option_strings.TIF_LI.option_comment }}-->
             <h6>Loss of Integrity</h6>
-            <select class="custom-select custom-select-sm" id="li" data-toggle="tooltip" data-placement="top" title="How is the process data changed and does it impact critical functions?">
+            <select class="custom-select custom-select-sm" id="li" data-toggle="tooltip" data-placement="top" title="{{ option_strings.TIF_LI.option_title }}">
                 <option class="text-0" value="0">{{ option_strings.TIF_LI.option_0 }}</option>
                 <option class="text-1" value="1">{{ option_strings.TIF_LI.option_1 }}</option>
                 <option class="text-2" value="2">{{ option_strings.TIF_LI.option_2 }}</option>
@@ -452,9 +452,9 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-9" value="9">{{ option_strings.TIF_LI.option_9 }}</option>
             </select>
 
-            <!--Loss of Availability - How are production and safety services impacted?-->
+            <!--{{ option_strings.TIF_LA.option_comment }}-->
             <h6>Loss of Availability</h6>
-            <select class="custom-select custom-select-sm" id="la" data-toggle="tooltip" data-placement="top" title="How are production and safety services impacted?">
+            <select class="custom-select custom-select-sm" id="la" data-toggle="tooltip" data-placement="top" title="{{ option_strings.TIF_LA.option_title }}?">
                 <option class="text-0" value="0">{{ option_strings.TIF_LA.option_0 }}</option>
                 <option class="text-1" value="1">{{ option_strings.TIF_LA.option_1 }}</option>
                 <option class="text-2" value="2">{{ option_strings.TIF_LA.option_2 }}</option>
@@ -467,9 +467,9 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-9" value="9">{{ option_strings.TIF_LA.option_9 }}</option>
             </select>
 
-            <!--Loss of Accountability - Are the threat actor actions traceable to an individual? -->
+            <!--{{ option_strings.TIF_LAC.option_comment }} -->
             <h6>Loss of Accountability</h6>
-            <select class="custom-select custom-select-sm" id="lac" data-toggle="tooltip" data-placement="top" title="Are the threat actor actions traceable to an individual?">
+            <select class="custom-select custom-select-sm" id="lac" data-toggle="tooltip" data-placement="top" title="{{ option_strings.TIF_LAC.option_title }}">
                 <option class="text-0" value="0">{{ option_strings.TIF_LAC.option_0 }}</option>
                 <option class="text-1" value="1">{{ option_strings.TIF_LAC.option_1 }}</option>
                 <option class="text-2" value="2">{{ option_strings.TIF_LAC.option_2 }}</option>
@@ -487,9 +487,9 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
         </div>
         <div class="col-md-6">
             <h5>Safety Impact Factors</h5>
-            <!--Environment Damage - How much damage to the local environment, plant or public, will be realized by successful exploitation?-->
+            <!--{{ option_strings.SIF_ED.option_comment }}-->
             <h6>Environment Damage</h6>
-            <select class="custom-select custom-select-sm" id="ed" data-toggle="tooltip" data-placement="top" title="How much damage to the local environment, plant or public, will be realized by successful exploitation?">
+            <select class="custom-select custom-select-sm" id="ed" data-toggle="tooltip" data-placement="top" title="{{ option_strings.SIF_ED.option_title }}">
                 <option class="text-0" value="0">{{ option_strings.SIF_ED.option_0 }}</option>
                 <option class="text-1" value="1">{{ option_strings.SIF_ED.option_1 }}</option>
                 <option class="text-2" value="2">{{ option_strings.SIF_ED.option_2 }}</option>
@@ -502,9 +502,9 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-9" value="9">{{ option_strings.SIF_ED.option_9 }}</option>
             </select>
 
-            <!--Process Damage - How much damage to the process equipment will be realized by successful exploitation?-->
+            <!--{{ option_strings.SIF_PD.option_comment }}-->
             <h6>Process Damage</h6>
-            <select class="custom-select custom-select-sm" id="pd" data-toggle="tooltip" data-placement="top" title="How much damage to the process equipment will be realized by successful exploitation?">
+            <select class="custom-select custom-select-sm" id="pd" data-toggle="tooltip" data-placement="top" title="{{ option_strings.SIF_PD.option_title }}">
                 <option class="text-0" value="0">{{ option_strings.SIF_PD.option_0 }}</option>
                 <option class="text-1" value="1">{{ option_strings.SIF_PD.option_1 }}</option>
                 <option class="text-2" value="2">{{ option_strings.SIF_PD.option_2 }}</option>
@@ -517,9 +517,9 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-9" value="9">{{ option_strings.SIF_PD.option_9 }}</option>
             </select>
 
-            <!--Safety Equipment - How well are digital safety equipment deployed and protected?-->
+            <!--{{ option_strings.SIF_SE.option_comment }}-->
             <h6>Safety Equipment</h6>
-            <select class="custom-select custom-select-sm" id="se" data-toggle="tooltip" data-placement="top" title="How well is digital safety equipment deployed and protected?">
+            <select class="custom-select custom-select-sm" id="se" data-toggle="tooltip" data-placement="top" title="{{ option_strings.SIF_SE.option_title }}?">
                 <option class="text-0" value="0">{{ option_strings.SIF_SE.option_0 }}</option>
                 <option class="text-1" value="1">{{ option_strings.SIF_SE.option_1 }}</option>
                 <option class="text-2" value="2">{{ option_strings.SIF_SE.option_2 }}</option>
@@ -532,9 +532,9 @@ Source from OWASP Risk Rating Calculator 20230705: https://owasp-risk-rating.com
                 <option class="text-9" value="9">{{ option_strings.SIF_SE.option_9 }}</option>
             </select>
 
-            <!--Recoverability - How well is the organization / process team prepared to recover during successful exploitation?-->
+            <!--{{ option_strings.SIF_R.option_comment }}-->
             <h6>Recoverability</h6>
-            <select class="custom-select custom-select-sm" id="r" data-toggle="tooltip" data-placement="top" title="How much personally identifiable information could be disclosed?">
+            <select class="custom-select custom-select-sm" id="r" data-toggle="tooltip" data-placement="top" title="{{ option_strings.SIF_R.option_title }}">
                 <option class="text-0" value="0">{{ option_strings.SIF_R.option_0 }}</option>
                 <option class="text-1" value="1">{{ option_strings.SIF_R.option_1 }}</option>
                 <option class="text-2" value="2">{{ option_strings.SIF_R.option_2 }}</option>
