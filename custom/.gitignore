@@ -1,5 +1,0 @@
-# Use this file to keep an empty directory
-# Ignore all files put here, which could happen during testing.
-*
-# Except this file
-!.gitignore
