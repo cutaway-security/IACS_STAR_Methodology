@@ -17,16 +17,16 @@ minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "
 # Site Settings
 locale                   : "en-US"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
-title                    : "ICS Watch Dog"
+title                    : "IACS STAR"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "ICS Watch Dog"
-description              : "ICS Watch Dog is a project to help ICS / OT administrators and cybersecurity teams by making the implementation of SYSMON manageable."
-url                      : "https://icswatchdog.com"
+name                     : "IACS STAR Calculator and Methodology"
+description              : "A methodology and calculator for scoring implementation vulnerabilities identified when testing and performing cybersecurity assessments of industrial and automation control environments."
+url                      : "https://iacs-star-calculator.com"
 baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : "cutaway-security/icswatchdog"
-teaser                   : "/assets/images/icswatchdog_logo_0_250x250.png"
-logo                     : "/assets/images/icswatchdog_logo_1_circle_sm1.png"
+repository               : "cutaway-security/IACS_STAR_Methodology"
+teaser                   : "/assets/images/iacs_star_logo_circle_512x498.png"
+logo                     : "/assets/images/iacs_star_logo_circle_512x498.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : # true, false (default)
 words_per_minute         : 200
@@ -113,15 +113,15 @@ analytics:
 
 # Site Author
 author:
-  name             : "ICS Watch Dog"
-  avatar           : "/assets/images/icswatchdog_logo_0_250x250.png"
-  bio              : "Monitoring industrial, automation, and critical infrastructure assets for ICS / OT administrators and cybersecurity teams."
+  name             : "IACS STAR"
+  avatar           : "/assets/images/iacs_star_logo_circle_250x250.png"
+  bio              : "Making the calculation of implementation risk for industrial and automation control environments effective and realistic."
   location         : "Texas, USA"
   email            : "dev@cutawaysecurity.com"
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/cutaway-security/icswatchdog"
+      url: "https://github.com/cutaway-security/IACS_STAR_Methodology"
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       # url: "mailto:your.name@email.com"
@@ -155,7 +155,7 @@ footer:
       # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/cutaway-security/icswatchdog"
+      url: "https://github.com/cutaway-security/IACS_STAR_Methodology"
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
       # url:

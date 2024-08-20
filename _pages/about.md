@@ -4,27 +4,25 @@ title:  "Welcome to ICS Watch Dog!"
 permalink: /about/
 ---
 
-# ICS Watch Dog
+# IACS System Testing and Assessment Rating (STAR) Methodology (IACS STAR)
+A methodology for scoring implementation vulnerabilities identified when testing and performing cybersecurity assessments of industrial and automation control environments.  
 
-[Microsoft Sysinternals Sysmon](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon) is one of the methods for improving your organization's understanding of what has happened on your Microsoft servers and workstations. It improves your visibility while also providing the means to protect you system through application monitoring and control. The [ICS Watch Dog](https://icswatchdog.com) project aims to provide a usable Sysmon implementation from the start of your monitoring program through its maturity. We are here to help your team and we are hoping your team will help this project via issues, comments, discussions, and usable templates.
+Get started with the [IACS STAR Calculator](#iacs-star-calculator)
 
-# Similar Projects
-The following projects provide similar functionality and have also inspired some of the Sysmon templates used here.
+## Contributions
 
-* [Microsoft Sysinternals Sysmon](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon)
-* [SwiftOnSecurity Sysmon Config](https://github.com/SwiftOnSecurity/sysmon-config)
-* [Working With Sysmon Configurations Like a Pro Through Better Tooling - Matt Graeber](https://posts.specterops.io/working-with-sysmon-configurations-like-a-pro-through-better-tooling-be7ad7f99a47)
-* [Sysinternals Sysmon suspicious activity guide](https://learn.microsoft.com/en-us/archive/blogs/motiba/sysinternals-sysmon-suspicious-activity-guide)
+* Development Committee: [Don C. Weber](https://www.linkedin.com/in/cutaway/), [Christoph Bless](https://www.linkedin.com/in/christoph-bless-111374199/), [Jessa Davis](https://www.linkedin.com/in/davisjessa/)
+* Author: Don C. Weber
+* IACS/OT Contributors: Oscar Delgado, Danielle Jablanski, Tim Conway, Brandon Workentin
+* IT/Infosec Contributors: Jeff Williams (Author of original OWASP Risk Rating Methodology)
 
-# Project License
+# Introduction
 
-[Creative Commons Attribution 4.0 International](https://choosealicense.com/licenses/cc-by-4.0/): You may privatize, fork, edit, teach, publish, or deploy for commercial use - with attribution in the text.
+Security assessments and penetration testing of an Industrial and Automation Control Systems (IACS) / Operational Technology (OT) environment are two types of vulnerability assessments that feed information into the [ISA/IEC 62443](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards) risk assessment process. The Cyber Security Management System (CSMS) process, detailed in the ISA/IEC-62443-2-1 standard, requires a detailed risk assessment which is outlined in full within the ISA/IEC-62443-3-2 standard. The detailed risk assessment requires that a vulnerability assessment is conducted to identify unmitigated risk. These vulnerability assessments require that the assessment findings be qualitatively rated according to the threat, likelihood, and consequences should the vulnerability be exploited and threat actor success realized. 
 
-# Contributors
+The IACS System Testing and Assessment Rating (STAR) Methodology (IACS STAR) is intended to be a methodology to estimate the severity of identified risks to the IACS/OT environment. This methodology includes the classic qualitative risk calculation elements while adding the consequence considerations necessary for understanding risks to IACS/OT processes and equipment. Having a system in place that addresses IACS/OT concerns for rating risks will save time and eliminate arguing about prioritizations and improve countermeasure selection to quickly reduce risk. 
 
-* [Don C. Weber (cutaway)](https://www.linkedin.com/in/cutaway/)
-* [Aaron Boyd (icsblitz)](https://www.linkedin.com/in/aaron-b-2b620531/)
-* [Gavin Dilworth (zDHD)](https://www.linkedin.com/in/gavin-dilworth/)
+The authors of this methodology have tried hard to make this model simple to use, while keeping enough detail for accurate risk estimates to be made. Please reference the section below on customization for more information about tailoring the model for use in a specific organization.
 
 # Sponsor
 

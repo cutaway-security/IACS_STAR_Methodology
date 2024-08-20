@@ -5,41 +5,28 @@ hidden: true
 # example: "https://raw.githubusercontent.com/mmistakes/minimal-mistakes/master/docs/_pages/home.md"
 header:
   overlay_color: "#5e616c"
-  overlay_image: /assets/images/icswatchdog_banner_0.png
+  overlay_image: /assets/images/iacs_star_banner.png
   actions:
     - label: "<i class='fas fa-download'></i> Download now"
-      url: "https://github.com/cutaway-security/icswatchdog"
+      url: "https://github.com/cutaway-security/IACS_STAR_Methodology"
 excerpt: >
-  The [ICS Watch Dog](https://icswatchdog.com) project aims to provide a usable Sysmon implementation from the start of your monitoring program through its maturity. We are here to help your team and we are hoping your team will help this project via issues, comments, discussions, and usable templates.
+  The IACS System Testing and Assessment Rating (STAR) Methodology (IACS STAR) is intended to be a methodology to estimate the severity of identified risks to the IACS/OT environment. This methodology includes the classic qualitative risk calculation elements while adding the consequence considerations necessary for understanding risks to IACS/OT processes and equipment. Having a system in place that addresses IACS/OT concerns for rating risks will save time and eliminate arguing about prioritizations and improve countermeasure selection to quickly reduce risk.   
 feature_row:
-  - image_path: /assets/images/icswatchdog_logo_1_circle_sm1.png
-    alt: "Minimal"
-    title: "Minimal Config"
-    excerpt: "MS SYSMON Configuration File - minimal functionality implementation. START HERE"
-    url: "https://github.com/cutaway-security/ICSWatchDog/blob/main/sysmonconfig-minimal.xml"
+  - image_path: /assets/images/iacs_star_logo_circle_blue_512x498.png
+    alt: "Default Risk Calculator"
+    title: "Default Risk Calculator"
+    excerpt: "Start using the IACS STAR Calculator!!"
+    url: "https://iacs-star-calculator.com/html/iacs_star_calculator.html"
     btn_class: "btn--primary"
     btn_label: "Check it out!!"
-  - image_path: /assets/images/icswatchdog_logo_1_circle_sm1.png
-    alt: "Moderate"
-    title: "Moderate Config"
-    excerpt: "MS SYSMON Configuration File - moderate functionality implementation. Improve upon the basics."
-    url: "https://github.com/cutaway-security/ICSWatchDog/blob/main/sysmonconfig-export.xml"
+  - image_path: /assets/images/iacs_star_logo_circle_green_512x498.png
+    alt: "IACS STAR Methodology"
+    title: "IACS STAR Methodology White Paper"
+    excerpt: "Find out the methodology for using the IACS STAR Calculator."
+    url: "https://github.com/cutaway-security/IACS_STAR_Methodology/blob/main/CutSec_IACS-STAR_Methodology_20230916.pdf"
     btn_class: "btn--primary"
-    btn_label: "Check it out!!"
-  - image_path: /assets/images/icswatchdog_logo_1_circle_sm1.png
-    alt: "File Create Only"
-    title: "File Create Only Config"
-    excerpt: "MS SYSMON Configuration File - monitor file creation events"
-    url: "https://github.com/cutaway-security/ICSWatchDog/blob/main/sysmonconfig-filecreate-only.xml"
-    btn_class: "btn--primary"
-    btn_label: "Check it out!!"
-  - image_path: /assets/images/icswatchdog_logo_1_circle_sm1.png
-    alt: "Advanced"
-    title: "Advanded Workstation Config"
-    excerpt: "MS SYSMON Configuration File - Advanced configuration, which takes a lot of review and updating. You can try it, but you should NOT start here."
-    url: "https://github.com/cutaway-security/ICSWatchDog/blob/main/sysmonconfig-adv-workstation.xml"
-    btn_class: "btn--primary"
-    btn_label: "Check it out!!"
+    btn_label: "Download the PDF"
+
 ---
 
 {% include feature_row %}
