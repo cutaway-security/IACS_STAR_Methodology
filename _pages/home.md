@@ -10,7 +10,7 @@ header:
     - label: "<i class='fas fa-download'></i> Download now"
       url: "https://github.com/cutaway-security/IACS_STAR_Methodology"
 excerpt: >
-  The IACS System Testing and Assessment Rating (STAR) Methodology (IACS STAR) is intended to be a methodology to estimate the severity of identified risks to the IACS/OT environment. This methodology includes the classic qualitative risk calculation elements while adding the consequence considerations necessary for understanding risks to IACS/OT processes and equipment. Having a system in place that addresses IACS/OT concerns for rating risks will save time and eliminate arguing about prioritizations and improve countermeasure selection to quickly reduce risk.   
+  The IACS System Testing and Assessment Rating (STAR) Methodology (IACS STAR) is intended to be a methodology to estimate the severity of identified risks to the IACS/OT environment. 
 feature_row:
   - image_path: /assets/images/iacs_star_logo_circle_blue_512x498.png
     alt: "Default Risk Calculator"
