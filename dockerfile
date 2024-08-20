@@ -17,7 +17,8 @@ RUN apk add --no-cache build-base gcc cmake git
 COPY ./.devcontainer/iacs_star_python_requirements.txt ./requirements.txt
 # Install Python 3 and necessary build dependencies
 RUN apk add --no-cache python3 python3-dev py3-pip build-base libffi-dev
-RUN pip install --no-cache-dir --upgrade pip && pip install --no-cache-dir -r requirements.txt
+#RUN pip install --no-cache-dir --upgrade pip 
+RUN pip install --no-cache-dir -r /usr/src/app/requirements.txt
 
 # Update the Ruby bundler and install Jekyll
 RUN gem update bundler && gem install bundler jekyll
