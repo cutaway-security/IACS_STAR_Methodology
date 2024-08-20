@@ -1,5 +1,5 @@
-### The following file contents will start a new container and run the gem update commands
-### You can update the forwardPorts if you need a different port number for the web server
+// The following file contents will start a new container and run the gem update commands
+// You can update the forwardPorts if you need a different port number for the web server
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/docker-existing-dockerfile
 {
