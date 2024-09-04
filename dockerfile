@@ -5,16 +5,6 @@
 # At a minimum, use Alpine 3.2, Ruby 3.3.4, and Jekyll 3.10.x
 FROM ruby:3.2-alpine
 
-# Working Directory for HTML and calculators
-WORKDIR /app
-ADD folder /app/scripts
-ADD folder /app/config
-ADD folder /app/templates
-ADD folder /app/calcs
-COPY ./scripts/* /app/scripts
-COPY ./config/* /app/config
-COPY ./templates/* /app/templates
-
 # Add Jekyll dependencies to Alpine
 RUN apk update
 RUN apk add --no-cache build-base gcc cmake git 
@@ -29,6 +19,14 @@ RUN apk add --no-cache python3 python3-dev py3-pip build-base libffi-dev py3-yam
 # NOTE: Build calculators here or in devcontainer.json file using a script
 # Update the Ruby bundler and install Jekyll
 RUN gem update bundler && gem install bundler jekyll
+
+# Working Directory for HTML and calculators
+#WORKDIR /usr/src/app
+#COPY ./scripts/ ./scripts
+#COPY ./config/ ./config
+#COPY ./templates/ ./templates
+#COPY ./calcs/ ./calcs
+#ADD ./scripts/calc.js /assets/js/calc.js
 
 # If you wanted to run a script
 # CMD ["python", "./your-daemon-or-script.py"]
